@@ -76,9 +76,9 @@ public class MazeGenerator : EditorWindow
 
         SetNodesList();
         SetWallsList();
-        SetAdjacentNodesAndWalls();
+        // SetAdjacentNodesAndWalls();
 
-        SetPath(nodes[0][0]);
+        // SetPath(nodes[0][0]);
     }
 
     private void DestroyAll()
@@ -107,43 +107,46 @@ public class MazeGenerator : EditorWindow
     }
     private void SetWallsList()
     {
-        for (int y = 0; y < size.y; ++y)
+        // Horizontal
+        for (int y = 0; y < size.y+1; ++y)
         {
             List<GameObject> horWalls1dim = new List<GameObject>();
-            List<GameObject> verWalls1dim = new List<GameObject>();
 
             for (int x = 0; x < size.x; ++x)
             {
                 GameObject hor_w;
-                GameObject ver_w;
-
-                if (y == 0)
-                {
                     hor_w = Instantiate(horizontalWallPrefab, parentTransform);
-                    hor_w.transform.localPosition = new Vector3(x, 0, y -0.5f);
+                    hor_w.transform.localPosition = new Vector3(x, 0, y - 0.5f);
                     horWalls1dim.Add(hor_w);
                     hor_w.transform.name = $"wall_hor ({x}, {y})";
-                }
+
+            }
+
+            horizontalWalls.Add(horWalls1dim);
+        }
+
+
+        // Vertical
+        // Horizontal
+        for (int y = 0; y < size.y; ++y)
+        {
+            List<GameObject> verWalls1dim = new List<GameObject>();
+
+            for (int x = 0; x < size.x; ++x)
+            {
+                GameObject ver_w;
                 if (x == 0)
                 {
                     ver_w = Instantiate(verticalWallPrefeb, parentTransform);
-                    ver_w.transform.localPosition = new Vector3(x-0.5f, 0, y);
+                    ver_w.transform.localPosition = new Vector3(x - 0.5f, 0, y);
                     verWalls1dim.Add(ver_w);
                     ver_w.transform.name = $"wall_ver ({x}, {y})";
                 }
-
-                hor_w = Instantiate(horizontalWallPrefab, parentTransform);
-                hor_w.transform.localPosition = new Vector3(x, 0, y + 0.5f);
-                horWalls1dim.Add(hor_w);
-                hor_w.transform.name = $"wall_hor ({x}, {y})";
-
                 ver_w = Instantiate(verticalWallPrefeb, parentTransform);
                 ver_w.transform.localPosition = new Vector3(x + 0.5f, 0, y);
                 verWalls1dim.Add(ver_w);
                 ver_w.transform.name = $"wall_ver ({x}, {y})";
             }
-
-            horizontalWalls.Add(horWalls1dim);
             verticalWalls.Add(verWalls1dim);
         }
     }
@@ -174,9 +177,10 @@ public class MazeGenerator : EditorWindow
                 {
                     n.adjacentNodes.Add(Direction.Up, nodes[y+1][x]);
                 }
-                
-                // Walls 추가
 
+                // Walls 추가
+                Debug.Log($"Horizontal : {horizontalWalls.Count} x {horizontalWalls[0].Count}");
+                Debug.Log($"Vertical : {verticalWalls.Count} x {verticalWalls[0].Count}");
                 // 왼쪽
                 n.adjacentWalls.Add(Direction.Left, verticalWalls[y][x]);
                 // 오른쪽
