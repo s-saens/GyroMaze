@@ -76,15 +76,15 @@ public class MazeGenerator : EditorWindow
 
         SetNodesList();
         SetWallsList();
-        // SetAdjacentNodesAndWalls();
+        SetAdjacentNodesAndWalls();
 
-        // SetPath(nodes[0][0]);
+        SetPath(nodes[0][0]);
     }
 
     private void DestroyAll()
     {
         int c = parentTransform.childCount;
-        for(int i=0 ; i<c ; ++i)
+        for (int i = 0; i < c; ++i)
         {
             DestroyImmediate(parentTransform.GetChild(0).gameObject);
         }
@@ -108,17 +108,17 @@ public class MazeGenerator : EditorWindow
     private void SetWallsList()
     {
         // Horizontal
-        for (int y = 0; y < size.y+1; ++y)
+        for (int y = 0; y < size.y + 1; ++y)
         {
             List<GameObject> horWalls1dim = new List<GameObject>();
 
             for (int x = 0; x < size.x; ++x)
             {
                 GameObject hor_w;
-                    hor_w = Instantiate(horizontalWallPrefab, parentTransform);
-                    hor_w.transform.localPosition = new Vector3(x, 0, y - 0.5f);
-                    horWalls1dim.Add(hor_w);
-                    hor_w.transform.name = $"wall_hor ({x}, {y})";
+                hor_w = Instantiate(horizontalWallPrefab, parentTransform);
+                hor_w.transform.localPosition = new Vector3(x, 0, y - 0.5f);
+                horWalls1dim.Add(hor_w);
+                hor_w.transform.name = $"wall_hor ({x}, {y})";
 
             }
 
@@ -132,20 +132,13 @@ public class MazeGenerator : EditorWindow
         {
             List<GameObject> verWalls1dim = new List<GameObject>();
 
-            for (int x = 0; x < size.x; ++x)
+            for (int x = 0; x < size.x+1; ++x)
             {
                 GameObject ver_w;
-                if (x == 0)
-                {
                     ver_w = Instantiate(verticalWallPrefeb, parentTransform);
                     ver_w.transform.localPosition = new Vector3(x - 0.5f, 0, y);
                     verWalls1dim.Add(ver_w);
                     ver_w.transform.name = $"wall_ver ({x}, {y})";
-                }
-                ver_w = Instantiate(verticalWallPrefeb, parentTransform);
-                ver_w.transform.localPosition = new Vector3(x + 0.5f, 0, y);
-                verWalls1dim.Add(ver_w);
-                ver_w.transform.name = $"wall_ver ({x}, {y})";
             }
             verticalWalls.Add(verWalls1dim);
         }
@@ -163,30 +156,29 @@ public class MazeGenerator : EditorWindow
 
                 if (x > 0) // 왼쪽 추가할 수 있는 경우
                 {
-                    n.adjacentNodes.Add(Direction.Left, nodes[y][x-1]);
+                    n.adjacentNodes.Add(Direction.Left, nodes[y][x - 1]);
                 }
                 if (x < size.x - 1) // 오른쪽 ~
                 {
-                    n.adjacentNodes.Add(Direction.Right, nodes[y][x+1]);
+                    n.adjacentNodes.Add(Direction.Right, nodes[y][x + 1]);
                 }
-                if (y > 0) // 아래 ~
+                if (y > 0) // 위 ~
                 {
-                    n.adjacentNodes.Add(Direction.Down, nodes[y-1][x]);
+                    n.adjacentNodes.Add(Direction.Up, nodes[y - 1][x]);
                 }
-                if (y < size.y - 1) // 위 ~
+                if (y < size.y - 1) // 아래 ~
                 {
-                    n.adjacentNodes.Add(Direction.Up, nodes[y+1][x]);
+                    n.adjacentNodes.Add(Direction.Down, nodes[y + 1][x]);
                 }
 
                 // Walls 추가
-                Debug.Log($"Horizontal : {horizontalWalls.Count} x {horizontalWalls[0].Count}");
-                Debug.Log($"Vertical : {verticalWalls.Count} x {verticalWalls[0].Count}");
+
                 // 왼쪽
                 n.adjacentWalls.Add(Direction.Left, verticalWalls[y][x]);
                 // 오른쪽
-                n.adjacentWalls.Add(Direction.Right, verticalWalls[y][x+1]);
+                n.adjacentWalls.Add(Direction.Right, verticalWalls[y][x + 1]);
                 // 아래
-                n.adjacentWalls.Add(Direction.Down, horizontalWalls[y+1][x]);
+                n.adjacentWalls.Add(Direction.Down, horizontalWalls[y + 1][x]);
                 // 위
                 n.adjacentWalls.Add(Direction.Up, horizontalWalls[y][x]);
             }
@@ -196,22 +188,27 @@ public class MazeGenerator : EditorWindow
 
     private void SetPath(Node nowNode)
     {
-        if(nowNode.Visited == true)
+        if (nowNode.Visited == true)
         {
             return;
         }
         nowNode.Visited = true;
 
-        while(true)
+        while (true)
         {
-            Direction dir = RandomNextDirection(nodes[0][0]);
+            Direction dir = RandomNextDirection(nowNode);
             if (dir == Direction.None) // 더는 이동할 수 없을 때.
             {
                 return;
             }
-            nowNode.adjacentWalls[dir].SetActive(false);
-            SetPath(nowNode.adjacentNodes[dir]);
+            MakePath(dir, nowNode);
         }
+    }
+
+    private void MakePath(Direction dir, Node nowNode)
+    {
+        nowNode.adjacentWalls[dir].SetActive(false);
+        SetPath(nowNode.adjacentNodes[dir]);
     }
 
 
@@ -232,8 +229,6 @@ public class MazeGenerator : EditorWindow
 
         return Direction.None;
     }
-
-
 
 
 
@@ -270,7 +265,7 @@ public class MazeGenerator : EditorWindow
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
 
-        if(GUILayout.Button("Generate"))
+        if (GUILayout.Button("Generate"))
         {
             Generate();
         }
