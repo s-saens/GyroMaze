@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17628023, g: 0.2206259, b: 0.30295044, a: 1}
+  m_IndirectSpecularColor: {r: 0.1732901, g: 0.21659598, b: 0.29863095, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265457595}
   - component: {fileID: 265457596}
+  - component: {fileID: 265457597}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -170,8 +171,25 @@ MonoBehaviour:
   dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
   horizontalPivot: {fileID: 1489437410}
   verticalPivot: {fileID: 1843041307}
-  rotationLimit: 90
+  rotationLimit: 70
   rotationSpeed: 1.4
+--- !u!114 &265457597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265457594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc21e802ff4e41a68d30c9aceff9c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
+  cam: {fileID: 963194228}
+  ball: {fileID: 1353472710}
+  camPositionY: 10
+  lerpTime: 1
 --- !u!1 &521260160
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,14 +444,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.51899153, y: -0.21828574, z: 0.13906334, w: 0.81465364}
+  m_LocalRotation: {x: 0.7077328, y: 0.24598418, z: -0.2931525, w: 0.59385836}
   m_LocalPosition: {x: 0, y: 1000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 65, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 100, y: 45, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +488,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.20960999, g: 0, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -529,7 +547,7 @@ GameObject:
   - component: {fileID: 977644169}
   - component: {fileID: 977644172}
   - component: {fileID: 977644171}
-  - component: {fileID: 977644170}
+  - component: {fileID: 977644173}
   m_Layer: 5
   m_Name: MapRotateZone
   m_TagString: Untagged
@@ -557,19 +575,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &977644170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977644168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097d8f25b99444649b7c6c0b91de97a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
 --- !u!114 &977644171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +610,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977644168}
   m_CullTransparentMesh: 1
+--- !u!114 &977644173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977644168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a2c4eedbb834171b188cee4c047879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
+  zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
 --- !u!1 &1353472708 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7305436860757237840, guid: e69536a1cfbd74eaf96d4ef29822cd32,
@@ -627,6 +646,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1353472710 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3332798912045989444, guid: e69536a1cfbd74eaf96d4ef29822cd32,
+    type: 3}
+  m_PrefabInstance: {fileID: 812180076838490502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1489437410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8402304731612805957, guid: 1b19b74bbeb6a4b5fa1aa2a4ac967b57,
