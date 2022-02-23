@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
     public Transform ball;
 
     public float camPositionY = 4;
+    public float minCamPositionY = 3;
+    public float maxCamPositionY = 70;
     public float lerpTime = 0.2f;
 
     public float zoomStrength = 2;
@@ -35,6 +37,10 @@ public class CameraController : MonoBehaviour
 
     private void OnZoom(float amount)
     {
-        this.camPositionY -= amount * zoomStrength;
+        float targetPositionY = this.camPositionY - amount * zoomStrength;
+        if(targetPositionY > minCamPositionY && targetPositionY < maxCamPositionY)
+        {
+            camPositionY = targetPositionY;
+        }
     }
 }

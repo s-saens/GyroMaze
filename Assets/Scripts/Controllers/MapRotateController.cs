@@ -19,10 +19,11 @@ public class MapRotateController : MonoBehaviour
         dragEvent.OnDrag -= OnDrag;
     }
 
+    float wh = Screen.width * Screen.height;
     public void OnDrag(Vector2 dragVector)
     {
         float vertical = (dragVector.y) * 180 / Screen.width * rotationSpeed; // x축 회전 담당
-        float horizontal = -(dragVector.x) * 90 / Screen.height * rotationSpeed; // z축 회전 담당
+        float horizontal = -(dragVector.x) * 180 / Screen.height * rotationSpeed; // z축 회전 담당
 
         float rotatedRotationV = verticalPivot.transform.rotation.eulerAngles.x + vertical;
         float rotatedRotationH = horizontalPivot.transform.rotation.eulerAngles.z + horizontal;
