@@ -74,6 +74,15 @@ public class MazeGenerator : EditorWindow
 
     private void Generate()
     {
+        if(horizontalWallPrefab == null
+        || verticalWallPrefeb == null
+        || floorPrefab == null
+        || glassPrefab == null
+        || parentTransform == null)
+        {
+            Debug.LogWarning("Some is not assigned");
+            return;
+        }
         Clear();
 
         SetFloorAndCeiling();
