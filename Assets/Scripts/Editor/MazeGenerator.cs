@@ -53,6 +53,8 @@ public class MazeGenerator : EditorWindow
     private Vector2Int size = new Vector2Int(1, 1);
     private GameObject horizontalWallPrefab;
     private GameObject verticalWallPrefeb;
+    private GameObject floorPrefab;
+    private GameObject glassPrefab;
     private Transform parentTransform;
 
 
@@ -74,6 +76,7 @@ public class MazeGenerator : EditorWindow
     {
         Clear();
 
+        SetFloorAndCeiling();
         SetNodesList();
         SetWallsList();
         SetAdjacentNodesAndWalls();
@@ -88,6 +91,22 @@ public class MazeGenerator : EditorWindow
         {
             DestroyImmediate(parentTransform.GetChild(0).gameObject);
         }
+    }
+
+    private void SetFloorAndCeiling()
+    {
+        GameObject floor = Instantiate(floorPrefab, parentTransform);
+        GameObject glass = Instantiate(glassPrefab, parentTransform);
+
+        floor.transform.localPosition = new Vector3((size.x/2)-0.5f, -0.55f, (size.y/2)-0.5f);
+        glass.transform.localPosition = new Vector3((size.x/2)-0.5f, 0.55f, (size.y/2)-0.5f);
+
+        floor.transform.localScale = new Vector3(size.x + 0.1f, 0.1f, size.y + 0.1f);
+        glass.transform.localScale = new Vector3(size.x + 0.1f, 0.1f, size.y + 0.1f);
+
+        floor.name = "FLOOR";
+        glass.name = "GLASS";
+        
     }
 
     private void SetNodesList()
@@ -256,6 +275,17 @@ public class MazeGenerator : EditorWindow
         EditorGUILayout.BeginHorizontal();
 
         verticalWallPrefeb = (GameObject)EditorGUILayout.ObjectField("Wall - Vertical", verticalWallPrefeb, typeof(GameObject), false);
+
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+
+
+        floorPrefab = (GameObject)EditorGUILayout.ObjectField("Floor", floorPrefab, typeof(GameObject), false);
+
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+
+        glassPrefab = (GameObject)EditorGUILayout.ObjectField("Glass Ceiling", glassPrefab, typeof(GameObject), false);
 
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
