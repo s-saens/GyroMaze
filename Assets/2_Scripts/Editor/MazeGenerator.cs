@@ -51,8 +51,7 @@ public class MazeGenerator : EditorWindow
 {
     // Inputs
     private Vector2Int size = new Vector2Int(1, 1);
-    private GameObject horizontalWallPrefab;
-    private GameObject verticalWallPrefeb;
+    private GameObject wallPrefab;
     private GameObject floorPrefab;
     private GameObject glassPrefab;
     private Transform parentTransform;
@@ -74,8 +73,7 @@ public class MazeGenerator : EditorWindow
 
     private void Generate()
     {
-        if(horizontalWallPrefab == null
-        || verticalWallPrefeb == null
+        if(wallPrefab == null
         || floorPrefab == null
         || glassPrefab == null
         || parentTransform == null)
@@ -104,8 +102,8 @@ public class MazeGenerator : EditorWindow
 
     private void SetFloorAndCeiling()
     {
-        GameObject floor = Instantiate(floorPrefab, parentTransform);
-        GameObject glass = Instantiate(glassPrefab, parentTransform);
+        GameObject floor = (GameObject)PrefabUtility.InstantiatePrefab(floorPrefab, parentTransform);
+        GameObject glass = (GameObject)PrefabUtility.InstantiatePrefab(glassPrefab, parentTransform);
 
         floor.transform.localPosition = new Vector3((size.x/2)-0.5f, -0.55f, (size.y/2)-0.5f);
         glass.transform.localPosition = new Vector3((size.x/2)-0.5f, 0.55f, (size.y/2)-0.5f);
@@ -143,10 +141,11 @@ public class MazeGenerator : EditorWindow
             for (int x = 0; x < size.x; ++x)
             {
                 GameObject hor_w;
-                hor_w = Instantiate(horizontalWallPrefab, parentTransform);
+                hor_w = (GameObject)PrefabUtility.InstantiatePrefab(wallPrefab, parentTransform);
+                hor_w.transform.localRotation = Quaternion.Euler(0, 90, 0);
                 hor_w.transform.localPosition = new Vector3(x, 0, y - 0.5f);
                 horWalls1dim.Add(hor_w);
-                hor_w.transform.name = $"wall_hor ({x}, {y})";
+                hor_w.transform.name = $"wall(h)({x}, {y})";
 
             }
 
@@ -163,10 +162,10 @@ public class MazeGenerator : EditorWindow
             for (int x = 0; x < size.x+1; ++x)
             {
                 GameObject ver_w;
-                    ver_w = Instantiate(verticalWallPrefeb, parentTransform);
+                    ver_w = (GameObject)PrefabUtility.InstantiatePrefab(wallPrefab, parentTransform);
                     ver_w.transform.localPosition = new Vector3(x - 0.5f, 0, y);
                     verWalls1dim.Add(ver_w);
-                    ver_w.transform.name = $"wall_ver ({x}, {y})";
+                    ver_w.transform.name = $"wall(v)({x}, {y})";
             }
             verticalWalls.Add(verWalls1dim);
         }
@@ -278,12 +277,7 @@ public class MazeGenerator : EditorWindow
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
 
-        horizontalWallPrefab = (GameObject)EditorGUILayout.ObjectField("Wall - Horizontal", horizontalWallPrefab, typeof(GameObject), false);
-
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
-
-        verticalWallPrefeb = (GameObject)EditorGUILayout.ObjectField("Wall - Vertical", verticalWallPrefeb, typeof(GameObject), false);
+        wallPrefab = (GameObject)EditorGUILayout.ObjectField("Wall", wallPrefab, typeof(GameObject), false);
 
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
