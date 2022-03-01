@@ -16,33 +16,18 @@ public class Ball : MonoBehaviour
         this.rigid = this.GetComponent<Rigidbody>();
     }
 
-
-    // For Test. TODO : delete this.
-    public void Update()
-    {
-        if(Input.GetKey(KeyCode.W))
-        {
-            rigid.AddForce(Vector3.forward*1000);
-        }
-        if(Input.GetKey(KeyCode.S))
-        {
-            rigid.AddForce(Vector3.back*1000);
-        }
-        if(Input.GetKey(KeyCode.A))
-        {
-            rigid.AddForce(Vector3.left*1000);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            rigid.AddForce(Vector3.right*1000);
-        }
-    }
-
     private void OnCollisionStay(Collision coll)
     {
         if(coll.transform.tag == "Floor")
         {
             rollEvent.OnRoll?.Invoke(rigid.velocity.magnitude);
+        }
+    }
+    private void OnCollisionExit(Collision coll)
+    {
+        if(coll.transform.tag == "Floor")
+        {
+            rollEvent.OnExitFloor?.Invoke();
         }
     }
     private void OnCollisionEnter(Collision coll)
@@ -57,8 +42,6 @@ public class Ball : MonoBehaviour
             Vector3.Normalize(normal);
 
             QuantizeNormal(ref normal);
-
-            Debug.Log(normal);
 
             float normalVelocity = Mathf.Abs(Vector3.Dot(rigid.velocity, normal));
 
@@ -90,6 +73,5 @@ public class Ball : MonoBehaviour
             normal = -pivot.forward;
             return;
         }
-        Debug.Log("not changed");
     }
 }

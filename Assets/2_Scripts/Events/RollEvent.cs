@@ -5,4 +5,5 @@ using System;
 public class RollEvent : ScriptableObject
 {
     public Action<float> OnRoll;
+    public Action OnExitFloor;
 }
