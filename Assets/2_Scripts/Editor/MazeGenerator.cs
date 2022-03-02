@@ -73,7 +73,7 @@ public class MazeGenerator : EditorWindow
 
     private void Generate()
     {
-        if(wallPrefab == null
+        if (wallPrefab == null
         || floorPrefab == null
         || glassPrefab == null
         || parentTransform == null)
@@ -105,15 +105,15 @@ public class MazeGenerator : EditorWindow
         GameObject floor = (GameObject)PrefabUtility.InstantiatePrefab(floorPrefab, parentTransform);
         GameObject glass = (GameObject)PrefabUtility.InstantiatePrefab(glassPrefab, parentTransform);
 
-        floor.transform.localPosition = new Vector3((size.x/2)-0.5f, -0.55f, (size.y/2)-0.5f);
-        glass.transform.localPosition = new Vector3((size.x/2)-0.5f, 0.55f, (size.y/2)-0.5f);
+        floor.transform.localPosition = new Vector3((size.x / 2) - 0.5f, -0.55f, (size.y / 2) - 0.5f);
+        glass.transform.localPosition = new Vector3((size.x / 2) - 0.5f, 0.55f, (size.y / 2) - 0.5f);
 
         floor.transform.localScale = new Vector3(size.x + 0.1f, 0.1f, size.y + 0.1f);
         glass.transform.localScale = new Vector3(size.x + 0.1f, 0.1f, size.y + 0.1f);
 
         floor.name = "FLOOR";
         glass.name = "GLASS";
-        
+
     }
 
     private void SetNodesList()
@@ -159,13 +159,13 @@ public class MazeGenerator : EditorWindow
         {
             List<GameObject> verWalls1dim = new List<GameObject>();
 
-            for (int x = 0; x < size.x+1; ++x)
+            for (int x = 0; x < size.x + 1; ++x)
             {
                 GameObject ver_w;
-                    ver_w = (GameObject)PrefabUtility.InstantiatePrefab(wallPrefab, parentTransform);
-                    ver_w.transform.localPosition = new Vector3(x - 0.5f, 0, y);
-                    verWalls1dim.Add(ver_w);
-                    ver_w.transform.name = $"wall(v)({x}, {y})";
+                ver_w = (GameObject)PrefabUtility.InstantiatePrefab(wallPrefab, parentTransform);
+                ver_w.transform.localPosition = new Vector3(x - 0.5f, 0, y);
+                verWalls1dim.Add(ver_w);
+                ver_w.transform.name = $"wall(v)({x}, {y})";
             }
             verticalWalls.Add(verWalls1dim);
         }
@@ -238,7 +238,6 @@ public class MazeGenerator : EditorWindow
         SetPath(nowNode.adjacentNodes[dir]);
     }
 
-
     private Direction RandomNextDirection(Node lastNode)
     {
         Direction dir = (Direction)Random.Range(0, 4);
@@ -255,6 +254,90 @@ public class MazeGenerator : EditorWindow
         }
 
         return Direction.None;
+    }
+
+    private void Optimize()
+    {
+        OptimizeHorizontal();
+        OptimizeVertical();
+    }
+
+    private void OptimizeHorizontal()
+    {
+        for (int i = 0; i < size.y; ++i)
+        {
+            int activeCount = 0;
+            GameObject lastWall = null;
+            for (int j = 0; j < size.x; ++j)
+            {
+                if (horizontalWalls[i][j].activeSelf == true)
+                {
+                    activeCount++;
+                    lastWall = horizontalWalls[i][j];
+                    horizontalWalls[i][j].SetActive(false);
+
+                    if (j < size.x - 1)
+                    {
+                        continue;
+                    }
+                }
+
+                if (lastWall == null)
+                {
+                    continue;
+                }
+
+                float deltaX = (activeCount - 1) * 0.5f;
+
+                lastWall.SetActive(true);
+                lastWall.name += $"({activeCount})";
+                lastWall.transform.Translate(-deltaX, 0, 0, Space.World);
+                lastWall.transform.localScale = new Vector3(0.1f, 1, activeCount + 0.1f);
+
+                lastWall = null;
+
+                activeCount = 0;
+            }
+        }
+    }
+    private void OptimizeVertical()
+    {
+        for (int i = 0; i < size.x; ++i)
+        {
+            int activeCount = 0;
+            GameObject lastWall = null;
+            for (int j = 0; j < size.y; ++j)
+            {
+                if (verticalWalls[j][i].activeSelf == true)
+                {
+                    activeCount++;
+                    lastWall = verticalWalls[j][i];
+                    verticalWalls[j][i].SetActive(false);
+
+                    if (j < size.y - 1)
+                    {
+                        continue;
+                    }
+                }
+
+                if (lastWall == null)
+                {
+                    continue;
+                }
+
+                float deltaY = (activeCount - 1) * 0.5f;
+
+                Debug.Log(activeCount);
+                lastWall.SetActive(true);
+                lastWall.name += $"({activeCount})";
+                lastWall.transform.Translate(0, 0, -deltaY, Space.World);
+                lastWall.transform.localScale = new Vector3(0.1f, 1, activeCount + 0.1f);
+
+                lastWall = null;
+
+                activeCount = 0;
+            }
+        }
     }
 
 
@@ -305,6 +388,10 @@ public class MazeGenerator : EditorWindow
         if (GUILayout.Button("Destroy"))
         {
             DestroyAll();
+        }
+        if (GUILayout.Button("Optimize"))
+        {
+            Optimize();
         }
 
 

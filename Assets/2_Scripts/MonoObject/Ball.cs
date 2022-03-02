@@ -10,43 +10,57 @@ public class Ball : MonoBehaviour
 
 
     private Rigidbody rigid;
+    private Vector3 velocity;
 
     private void Awake()
     {
         this.rigid = this.GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        velocity = rigid.velocity;
+        if(Input.GetKey(KeyCode.W))
+        {
+            rigid.AddForce(Vector3.forward);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            rigid.AddForce(Vector3.back);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            rigid.AddForce(Vector3.left);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rigid.AddForce(Vector3.right);
+        }
+    }
+
     private void OnCollisionStay(Collision coll)
     {
-        if(coll.transform.tag == "Floor")
-        {
-            rollEvent.OnRoll?.Invoke(rigid.velocity.magnitude);
-        }
+        rollEvent.OnRoll?.Invoke(rigid.velocity.magnitude);
     }
     private void OnCollisionExit(Collision coll)
     {
-        if(coll.transform.tag == "Floor")
-        {
-            rollEvent.OnExitFloor?.Invoke();
-        }
+        rollEvent.OnExitFloor?.Invoke();
     }
     private void OnCollisionEnter(Collision coll)
     {
-        if(coll.transform.tag == "Wall")
+        Vector3 normal = Vector3.zero;
+        foreach(ContactPoint c in coll.contacts)
         {
-            Vector3 normal = Vector3.zero;
-            foreach(ContactPoint c in coll.contacts)
-            {
-                normal += c.normal;
-            }
-            Vector3.Normalize(normal);
-
-            QuantizeNormal(ref normal);
-
-            float normalVelocity = Mathf.Abs(Vector3.Dot(rigid.velocity, normal));
-
-            collideEvent.OnCollide?.Invoke(normalVelocity);
+            normal += c.normal;
         }
+        Vector3.Normalize(normal);
+
+        QuantizeNormal(ref normal);
+
+        float normalVelocity = Mathf.Abs(Vector3.Dot(velocity, normal));
+
+
+        collideEvent.OnCollide?.Invoke(normalVelocity);
     }
 
     private void QuantizeNormal(ref Vector3 normal)

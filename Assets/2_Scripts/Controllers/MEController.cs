@@ -25,7 +25,7 @@ public class MEController : MonoBehaviour
 
     private void OnRoll(float velocity)
     {
-        rollSound.volume = Mathf.Log10(velocity) * 0.5f;
+        rollSound.volume = Mathf.Clamp(Mathf.Log10(velocity) * 0.5f, 0, 1);
         rollSound.pitch = 0.5f + velocity * 0.05f;
     }
 
@@ -36,7 +36,7 @@ public class MEController : MonoBehaviour
 
     private void OnCollide(float normalVelocity)
     {
-        collideSound.volume = Mathf.Pow(normalVelocity * 0.5f, 2);
+        collideSound.volume = Mathf.Clamp(normalVelocity*0.05f, 0, 1);
         collideSound.pitch = 1f + normalVelocity * 0.05f;
         collideSound.Play();
     }

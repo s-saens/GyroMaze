@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &87314382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6681995600363147621, guid: 1b19b74bbeb6a4b5fa1aa2a4ac967b57,
+    type: 3}
+  m_PrefabInstance: {fileID: 656587019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265457594
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +660,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4552078052876654671, guid: e69536a1cfbd74eaf96d4ef29822cd32,
+        type: 3}
+      propertyPath: pivot
+      value: 
+      objectReference: {fileID: 87314382}
     - target: {fileID: 7305436860757237840, guid: e69536a1cfbd74eaf96d4ef29822cd32,
         type: 3}
       propertyPath: m_Name
@@ -1052,7 +1063,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499880721}
   m_CullTransparentMesh: 1
---- !u!1001 &1715688322
+--- !u!4 &12218329151101595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710832300679535376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 265457595}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &386099634947430250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044099838648103342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81fa321a54fe0433a92a8affc2243c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollSound: {fileID: 868897200}
+  collideSound: {fileID: 868897199}
+  rollEvent: {fileID: 11400000, guid: 9a26222b47aea46a7965a8e1dafe597d, type: 2}
+  collideEvent: {fileID: 11400000, guid: 04e79c7ff2a144816b70d6cd8ddbad87, type: 2}
+--- !u!114 &1490825653589599525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710832300679535376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d2bdc3d65e8486884421dead9bcd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
+  horizontalPivot: {fileID: 656587021}
+  verticalPivot: {fileID: 656587020}
+  rotationLimit: 70
+  rotationSpeed: 1.4
+  lockV: 0
+  lockH: 0
+--- !u!114 &1801466602986158200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265457594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f464f40064eb143e991e9d4af73a642c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1869312055034158957
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1121,68 +1194,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 569aa74ed4e544d3c917d4fe1dfd650c, type: 3}
---- !u!4 &12218329151101595
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710832300679535376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 265457595}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &386099634947430250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7044099838648103342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81fa321a54fe0433a92a8affc2243c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rollSound: {fileID: 868897200}
-  collideSound: {fileID: 868897199}
-  rollEvent: {fileID: 11400000, guid: 9a26222b47aea46a7965a8e1dafe597d, type: 2}
-  collideEvent: {fileID: 11400000, guid: 04e79c7ff2a144816b70d6cd8ddbad87, type: 2}
---- !u!114 &1490825653589599525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710832300679535376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86d2bdc3d65e8486884421dead9bcd82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
-  horizontalPivot: {fileID: 656587021}
-  verticalPivot: {fileID: 656587020}
-  rotationLimit: 70
-  rotationSpeed: 1.4
-  lockV: 0
-  lockH: 0
---- !u!114 &1801466602986158200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265457594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f464f40064eb143e991e9d4af73a642c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2194940329199630479
 Transform:
   m_ObjectHideFlags: 0
