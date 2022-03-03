@@ -98,6 +98,21 @@ public class MazeGenerator : EditorWindow
         {
             DestroyImmediate(parentTransform.GetChild(0).gameObject);
         }
+        Clear();
+    }
+    private void DestroyInActives()
+    {
+        int c = parentTransform.childCount;
+        for (int i = 0; i < c; ++i)
+        {
+            GameObject child = parentTransform.GetChild(i).gameObject;
+            if(child.activeSelf == false)
+            {
+                DestroyImmediate(child);
+                i--;
+                c--;
+            }
+        }
     }
 
     private void SetFloorAndCeiling()
@@ -340,6 +355,12 @@ public class MazeGenerator : EditorWindow
         }
     }
 
+    private void ClearMemory()
+    {
+        DestroyInActives();
+        Clear();
+    }
+
 
 
 
@@ -392,6 +413,10 @@ public class MazeGenerator : EditorWindow
         if (GUILayout.Button("Optimize"))
         {
             Optimize();
+        }
+        if (GUILayout.Button("Clear Memory"))
+        {
+            ClearMemory();
         }
 
 
