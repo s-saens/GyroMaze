@@ -6,10 +6,10 @@ public class CameraController : MonoBehaviour
 {
     public ZoomEvent zoomEvent;
 
+    public Transform camPivot;
     public Transform cam;
     public Transform ball;
 
-    public float camPositionY = 4;
     public float minCamPositionY = 3;
     public float maxCamPositionY = 70;
     public float lerpTime = 0.2f;
@@ -30,17 +30,14 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 lastPos = cam.position;
-        Vector3 targetPos = new Vector3(ball.position.x, ball.position.y + camPositionY, ball.position.z);
-        cam.position = Vector3.Lerp(lastPos, targetPos, lerpTime);
+        Vector3 lastPos = camPivot.position;
+        Vector3 targetPos = ball.position;
+        camPivot.position = Vector3.Lerp(lastPos, targetPos, lerpTime);
     }
 
     private void OnZoom(float amount)
     {
-        float targetPositionY = this.camPositionY - amount * zoomStrength;
-        if(targetPositionY > minCamPositionY && targetPositionY < maxCamPositionY)
-        {
-            camPositionY = targetPositionY;
-        }
+        float targetPositionY = this.cam.position.y - amount * zoomStrength;
+        cam.localPosition = Vector3.up * Mathf.Clamp(targetPositionY, minCamPositionY, maxCamPositionY);
     }
 }

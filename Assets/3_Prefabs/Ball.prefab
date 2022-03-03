@@ -43,23 +43,23 @@ ReflectionProbe:
   serializedVersion: 2
   m_Type: 0
   m_Mode: 1
-  m_RefreshMode: 1
+  m_RefreshMode: 0
   m_TimeSlicingMode: 1
   m_Resolution: 16
   m_UpdateFrequency: 0
   m_BoxSize: {x: 10, y: 10, z: 10}
   m_BoxOffset: {x: 0, y: 0, z: 0}
-  m_NearClip: 0.3
-  m_FarClip: 5
-  m_ShadowDistance: 5
+  m_NearClip: 0.1
+  m_FarClip: 10
+  m_ShadowDistance: 10
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
   m_BlendDistance: 1
-  m_HDR: 1
+  m_HDR: 0
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
   m_UseOcclusionCulling: 1
@@ -326,7 +326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rollEvent: {fileID: 11400000, guid: 9a26222b47aea46a7965a8e1dafe597d, type: 2}
   collideEvent: {fileID: 11400000, guid: 04e79c7ff2a144816b70d6cd8ddbad87, type: 2}
-  pivot: {fileID: 0}
 --- !u!1 &9141814560825735868
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,6 @@ public class Ball : MonoBehaviour
 {
     public RollEvent rollEvent;
     public CollideEvent collideEvent;
-    public Transform pivot;
-
 
     private Rigidbody rigid;
     private Vector3 velocity;
@@ -22,19 +20,19 @@ public class Ball : MonoBehaviour
         velocity = rigid.velocity;
         if(Input.GetKey(KeyCode.W))
         {
-            rigid.AddForce(Vector3.forward);
+            rigid.AddForce(Vector3.forward * 1000);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigid.AddForce(Vector3.back);
+            rigid.AddForce(Vector3.back * 1000);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rigid.AddForce(Vector3.left);
+            rigid.AddForce(Vector3.left * 1000);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigid.AddForce(Vector3.right);
+            rigid.AddForce(Vector3.right * 1000);
         }
     }
 
@@ -67,24 +65,24 @@ public class Ball : MonoBehaviour
     {
         float accuValue = 0.4f;
 
-        if (Mathf.Abs((pivot.right - normal).magnitude) < accuValue)
+        if (Mathf.Abs((Vector3.right - normal).magnitude) < accuValue)
         {
-            normal = pivot.right;
+            normal = Vector3.right;
             return;
         }
-        else if (Mathf.Abs((-pivot.right - normal).magnitude) < accuValue)
+        else if (Mathf.Abs((-Vector3.right - normal).magnitude) < accuValue)
         {
-            normal = -pivot.right;
+            normal = -Vector3.right;
             return;
         }
-        else if(Mathf.Abs((pivot.forward - normal).magnitude) < accuValue)
+        else if(Mathf.Abs((Vector3.forward - normal).magnitude) < accuValue)
         {
-            normal = pivot.forward;
+            normal = Vector3.forward;
             return;
         }
-        else if (Mathf.Abs((-pivot.forward - normal).magnitude) < accuValue)
+        else if (Mathf.Abs((-Vector3.forward - normal).magnitude) < accuValue)
         {
-            normal = -pivot.forward;
+            normal = -Vector3.forward;
             return;
         }
     }
