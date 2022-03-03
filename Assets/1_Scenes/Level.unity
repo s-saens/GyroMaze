@@ -2286,6 +2286,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
+--- !u!1 &243594301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243594302}
+  m_Layer: 0
+  m_Name: CamPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &243594302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243594301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &251863209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4395,6 +4427,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
+--- !u!1 &429085647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429085648}
+  m_Layer: 0
+  m_Name: GravityPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &429085648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429085647}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1043622854}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &432134788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6586,7 +6649,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2006840995}
+  m_Father: {fileID: 1043622854}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 110, y: 45, z: 0}
 --- !u!114 &705507996
@@ -8420,7 +8483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2006840995}
+  m_Father: {fileID: 243594302}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &963194229
@@ -8542,6 +8605,7 @@ GameObject:
   - component: {fileID: 977644172}
   - component: {fileID: 977644171}
   - component: {fileID: 977644173}
+  - component: {fileID: 977644174}
   m_Layer: 5
   m_Name: MapRotateZone
   m_TagString: Untagged
@@ -8617,6 +8681,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
+  zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
+--- !u!114 &977644174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977644168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1e112cde5ad48108ad31fb31eed508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
 --- !u!1001 &980467247
 PrefabInstance:
@@ -9333,7 +9410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043622854}
   m_Layer: 0
-  m_Name: CamPivot(V)
+  m_Name: Pivot(V)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9351,7 +9428,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2006840995}
+  - {fileID: 429085648}
+  - {fileID: 705507995}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16686,39 +16764,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
---- !u!1 &2006840994
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2006840995}
-  m_Layer: 0
-  m_Name: CamPivot(H)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2006840995
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006840994}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 963194228}
-  - {fileID: 705507995}
-  m_Father: {fileID: 1043622854}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2010070561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17822,10 +17867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d2bdc3d65e8486884421dead9bcd82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
-  horizontalPivot: {fileID: 2006840995}
-  verticalPivot: {fileID: 1043622854}
-  cam: {fileID: 963194228}
+  mapPivot: {fileID: 1043622854}
+  gravityPivot: {fileID: 429085648}
   rotationLimit: 70
   rotationSpeed: 1.4
   lockV: 0
@@ -17957,7 +18000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
-  camPivot: {fileID: 1043622854}
+  camPivot: {fileID: 243594302}
   cam: {fileID: 963194228}
   ball: {fileID: 868897198}
   minCamPositionY: 3

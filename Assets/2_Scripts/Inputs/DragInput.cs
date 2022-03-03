@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -28,7 +26,7 @@ public class DragInput : MonoBehaviour, IDragHandler, IBeginDragHandler
 
             if(isPinch)
             {
-                if(Vector3.Dot(t1Tot2, t1.deltaPosition) > 0) // 축소
+                if(Vector3.Dot(t1Tot2, t1.deltaPosition) > 0) // 축소 -> y값 증가
                 {
                     zoomEvent.OnZoom?.Invoke(dotProductDelta/1920); // 음수값 넘겨중
                 }
