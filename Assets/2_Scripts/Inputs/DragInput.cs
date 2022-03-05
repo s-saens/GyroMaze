@@ -22,7 +22,7 @@ public class DragInput : MonoBehaviour, IDragHandler, IBeginDragHandler
 
             Vector3 t1Tot2 = t2.position - t1.position;
             float dotProductDelta = Vector3.Dot(t1.deltaPosition, t2.deltaPosition);
-            bool isPinch = dotProductDelta < 0;
+            bool isPinch = dotProductDelta <= 0;
 
             if(isPinch)
             {
@@ -30,7 +30,7 @@ public class DragInput : MonoBehaviour, IDragHandler, IBeginDragHandler
                 {
                     zoomEvent.OnZoom?.Invoke(dotProductDelta/1920); // 음수값 넘겨중
                 }
-                else // 확대
+                else if (Vector3.Dot(t1Tot2, t1.deltaPosition) < 0) // 확대
                 {
                     zoomEvent.OnZoom?.Invoke(-dotProductDelta/1920);
                 }

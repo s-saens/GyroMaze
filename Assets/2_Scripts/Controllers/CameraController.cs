@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     public Transform camPivot;
     public Transform cam;
-    public Transform ball;
+    public Transform target;
 
     public float minCamPositionY = 3;
     public float maxCamPositionY = 70;
@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         Vector3 lastPos = camPivot.position;
-        Vector3 targetPos = ball.position;
+        Vector3 targetPos = target.position;
         camPivot.position = Vector3.Lerp(lastPos, targetPos, lerpTime);
     }
 

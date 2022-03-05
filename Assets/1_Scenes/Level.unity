@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17501746, g: 0.21894598, b: 0.30121922, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276774, g: 0.21589115, b: 0.2978246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -880,6 +880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e637554d4a9e46248861df182414c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gyroEvent: {fileID: 11400000, guid: 95b65b8e8ddef41af87e9adc9166ce86, type: 2}
+  cam: {fileID: 0}
 --- !u!1001 &55286223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2286,38 +2288,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
---- !u!1 &243594301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 243594302}
-  m_Layer: 0
-  m_Name: CamPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &243594302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243594301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 963194228}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &251863209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4427,37 +4397,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
---- !u!1 &429085647
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 429085648}
-  m_Layer: 0
-  m_Name: GravityPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &429085648
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429085647}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1043622854}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &432134788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4964,7 +4903,7 @@ GameObject:
   - component: {fileID: 521260162}
   - component: {fileID: 521260161}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Inputs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5045,6 +4984,7 @@ RectTransform:
   m_Children:
   - {fileID: 977644169}
   - {fileID: 1499880722}
+  - {fileID: 797434157}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6419,6 +6359,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
+--- !u!1 &691565139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 691565140}
+  m_Layer: 0
+  m_Name: CamPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &691565140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691565139}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &696782423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6593,7 +6565,7 @@ Light:
   m_InnerSpotAngle: 21.802082
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -6644,14 +6616,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.75679785, y: 0.2194982, z: -0.3134759, w: 0.5299156}
-  m_LocalPosition: {x: 0, y: 1000, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1043622854}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 110, y: 45, z: 0}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7461,6 +7433,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
+--- !u!1 &797434156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 797434157}
+  - component: {fileID: 797434158}
+  m_Layer: 0
+  m_Name: GyroInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &797434157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797434156}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 521260164}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797434158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797434156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec29cefb16b945bbbb40172b018f21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gyroEvent: {fileID: 11400000, guid: 95b65b8e8ddef41af87e9adc9166ce86, type: 2}
 --- !u!1001 &807060956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8021,6 +8038,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4552078052876654671, guid: e69536a1cfbd74eaf96d4ef29822cd32,
+        type: 3}
+      propertyPath: rollEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a26222b47aea46a7965a8e1dafe597d,
+        type: 2}
+    - target: {fileID: 4552078052876654671, guid: e69536a1cfbd74eaf96d4ef29822cd32,
+        type: 3}
+      propertyPath: collideEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 04e79c7ff2a144816b70d6cd8ddbad87,
+        type: 2}
     - target: {fileID: 7305436860757237840, guid: e69536a1cfbd74eaf96d4ef29822cd32,
         type: 3}
       propertyPath: m_Name
@@ -8479,11 +8508,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 6.74, z: 0}
+  m_LocalPosition: {x: 0, y: 7.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 243594302}
+  m_Father: {fileID: 691565140}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &963194229
@@ -9400,39 +9429,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6f0450e6d9049e092d38cf207b145b, type: 3}
---- !u!1 &1043622853
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1043622854}
-  m_Layer: 0
-  m_Name: Pivot(V)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1043622854
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043622853}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 429085648}
-  - {fileID: 705507995}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1066409546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17867,12 +17863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d2bdc3d65e8486884421dead9bcd82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapPivot: {fileID: 1043622854}
-  gravityPivot: {fileID: 429085648}
-  rotationLimit: 70
-  rotationSpeed: 1.4
-  lockV: 0
-  lockH: 0
+  gyroEvent: {fileID: 11400000, guid: 95b65b8e8ddef41af87e9adc9166ce86, type: 2}
+  lightTransform: {fileID: 705507995}
 --- !u!114 &1801466602986158200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18000,9 +17992,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
-  camPivot: {fileID: 243594302}
+  camPivot: {fileID: 691565140}
   cam: {fileID: 963194228}
-  ball: {fileID: 868897198}
+  target: {fileID: 868897198}
   minCamPositionY: 3
   maxCamPositionY: 70
   lerpTime: 1
@@ -18094,7 +18086,7 @@ GameObject:
   - component: {fileID: 12218329151101595}
   - component: {fileID: 1490825653589599525}
   m_Layer: 0
-  m_Name: MapRotateController
+  m_Name: GyroRotateController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
