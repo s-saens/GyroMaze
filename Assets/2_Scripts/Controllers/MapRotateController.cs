@@ -5,10 +5,6 @@ public class MapRotateController : MonoBehaviour
     public GyroEvent gyroEvent;
     public Transform lightTransform;
 
-    private Quaternion rot = new Quaternion(0,0,1,0);
-    public float x=0;
-    public float y=1;
-    public float z=0;
 
     public void OnEnable()
     {
