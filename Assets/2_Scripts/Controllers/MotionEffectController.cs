@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MEController : MonoBehaviour
+public class MotionEffectController : MonoBehaviour
 {
     public AudioSource rollSound;
     public AudioSource collideSound;
