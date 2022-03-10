@@ -279,7 +279,7 @@ public class MazeGenerator : EditorWindow
 
     private void OptimizeHorizontal()
     {
-        for (int i = 0; i < size.y; ++i)
+        for (int i = 0; i <= size.y; ++i)
         {
             int activeCount = 0;
             GameObject lastWall = null;
@@ -317,7 +317,7 @@ public class MazeGenerator : EditorWindow
     }
     private void OptimizeVertical()
     {
-        for (int i = 0; i < size.x; ++i)
+        for (int i = 0; i <= size.x; ++i)
         {
             int activeCount = 0;
             GameObject lastWall = null;
