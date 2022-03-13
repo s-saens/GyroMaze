@@ -80,11 +80,11 @@ public class ChapterSwipeView : MonoBehaviour
     {
         if (IndexOnFirst(deltaX))
         {
-            deltaX *= Mathf.Pow(0.5f, contentsParent.position.x / originalSize);
+            deltaX *= Mathf.Pow(0.4f, contentsParent.position.x / originalSize);
         }
         if(IndexOnLast(deltaX))
         {
-            deltaX *= Mathf.Pow(0.5f, (contentsParent.position.x - LastIndexPositionX) / originalSize);
+            deltaX *= Mathf.Pow(0.4f, (contentsParent.position.x - LastIndexPositionX) / originalSize);
         }
         contentsParent.Translate(Vector2.right * deltaX, Space.Self);
         UpdateIndex();
@@ -135,11 +135,11 @@ public class ChapterSwipeView : MonoBehaviour
 
     private IEnumerator SwipeEndCoroutine(float deltaX)
     {
-        for (float i = stopTime; i >= 0; i -= Time.deltaTime)
+        for (float i=stopTime * Mathf.Sqrt(Mathf.Abs(deltaX))/originalSize; i >= 0; i -= Time.deltaTime)
         {
             if (IndexOnFirst(deltaX) || IndexOnLast(deltaX))
             {
-                break;
+                i *= 0.4f;
             }
             MoveContents(deltaX * i);
             yield return 0;
