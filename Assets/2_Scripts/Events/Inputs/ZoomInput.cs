@@ -16,6 +16,7 @@ public class ZoomInput : MonoBehaviour
         if(Input.touchCount != 2)
         {
             touchStarted = false;
+            lastDistance = 0;
             return;
         }
 
@@ -32,13 +33,15 @@ public class ZoomInput : MonoBehaviour
 
         float deltaDistance = nowDistance - lastDistance;
 
-        if(deltaDistance > 0) // 두 점 사이가 멀어짐 : 축소
+        if(deltaDistance > 0.001f) // 두 점 사이가 멀어짐 : 축소
         {
             zoomEvent.OnZoom.Invoke(deltaDistance);
         }
-        else if(deltaDistance < 0) // 두 점 사이가 가까워짐 : 확대
+        else if(deltaDistance < 0.001f) // 두 점 사이가 가까워짐 : 확대
         {
             zoomEvent.OnZoom.Invoke(deltaDistance);
         }
+
+        lastDistance = nowDistance;
     }
 }
