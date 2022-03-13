@@ -679,7 +679,7 @@ MonoBehaviour:
   maxDeltaX: 100
   originalSize: 500
   smallSize: 400
-  stopTime: 20
+  stopTime: 300
   magnetLerpTime: 0.5
   slider: {fileID: 1745732130}
   contentPrefab: {fileID: 3102440120941692866, guid: e1844b5cd1a3f42d1b55ebd871500329,

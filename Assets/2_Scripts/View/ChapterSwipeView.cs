@@ -135,7 +135,7 @@ public class ChapterSwipeView : MonoBehaviour
 
     private IEnumerator SwipeEndCoroutine(float deltaX)
     {
-        for (float i=stopTime * Mathf.Sqrt(Mathf.Abs(deltaX))/originalSize; i >= 0; i -= Time.deltaTime)
+        for (float i=stopTime * Mathf.Log10(Mathf.Abs(deltaX))/originalSize; i >= 0; i -= Time.deltaTime)
         {
             if (IndexOnFirst(deltaX) || IndexOnLast(deltaX))
             {
