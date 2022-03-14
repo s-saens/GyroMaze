@@ -12,21 +12,7 @@ public class ChapterSelectData : ScriptableObject
     public float stopTime = 200;
     public float magnetLerpTime = 0.5f;
 
-
     // Reactive
-    public Action<int> OnChangeNowIndex;
-    private int nowIndex = 0;
-    public int NowIndex
-    {
-        get
-        {
-            return nowIndex;
-        }
-        set
-        {
-            nowIndex = value;
-            OnChangeNowIndex?.Invoke(nowIndex);
-        }
-    }
+    public Property<int> nowIndex;
 
 }

@@ -36,7 +36,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void OnEnable()
     {
-        data.OnChangeNowIndex += OnChangeNowIndex;
+        data.nowIndex.onChange += OnChangeNowIndex;
 
         swipeEvent.OnSwipe += OnSwipe;
         swipeEvent.OnSwipeEnd += OnSwipeEnd;
@@ -46,7 +46,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void OnDisable()
     {
-        data.OnChangeNowIndex -= OnChangeNowIndex;
+        data.nowIndex.onChange -= OnChangeNowIndex;
 
         swipeEvent.OnSwipe -= OnSwipe;
         swipeEvent.OnSwipeEnd -= OnSwipeEnd;
@@ -78,7 +78,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void OnClick(int index)
     {
-        if(index == data.NowIndex)
+        if(index == data.nowIndex.value)
         {
             // TODO: Move to Level Select Window
         }
@@ -100,7 +100,7 @@ public class ChapterSelectController : MonoBehaviour
     {
         get
         {
-            return -data.NowIndex * data.originalSize;
+            return -data.nowIndex.value * data.originalSize;
         }
     }
     private int LastIndexPositionX
@@ -133,7 +133,7 @@ public class ChapterSelectController : MonoBehaviour
 
             UpdateScale(index);
         }
-        MoveToIndex(data.NowIndex);
+        MoveToIndex(data.nowIndex.value);
     }
 
     private void InitializeSlider()
@@ -145,11 +145,11 @@ public class ChapterSelectController : MonoBehaviour
 
     private bool IndexOnFirst(float deltaX)
     {
-        return (data.NowIndex <= 0 && deltaX >= 0);
+        return (data.nowIndex.value <= 0 && deltaX >= 0);
     }
     private bool IndexOnLast(float deltaX)
     {
-        return (data.NowIndex >= data.chapterCount - 1 && deltaX <= 0);
+        return (data.nowIndex.value >= data.chapterCount - 1 && deltaX <= 0);
     }
     private void MoveContents(float deltaX)
     {
@@ -168,9 +168,9 @@ public class ChapterSelectController : MonoBehaviour
 
     private void UpdateIndex()
     {
-        data.NowIndex = -(int)((buttonsParent.transform.localPosition.x - (data.originalSize * 0.5f)) / data.originalSize);
-        if (data.NowIndex < 0) data.NowIndex = 0;
-        if (data.NowIndex >= data.chapterCount) data.NowIndex = data.chapterCount - 1;
+        data.nowIndex.value = -(int)((buttonsParent.transform.localPosition.x - (data.originalSize * 0.5f)) / data.originalSize);
+        if (data.nowIndex.value < 0) data.nowIndex.value = 0;
+        if (data.nowIndex.value >= data.chapterCount) data.nowIndex.value = data.chapterCount - 1;
     }
 
     private void UpdateAllScale()
@@ -195,7 +195,7 @@ public class ChapterSelectController : MonoBehaviour
     {
         CancelAllCoroutines();
 
-        data.NowIndex = index;
+        data.nowIndex.value = index;
         magnetCoroutine = MagnetPosition();
         StartCoroutine(magnetCoroutine);
     }
