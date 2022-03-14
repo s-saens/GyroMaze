@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1effab79e064d308bd6b4e32b1f734, type: 3}
   m_Name: ChapterSelectData
   m_EditorClassIdentifier: 
-  chapterCount: 5
+  chapterCount: 50
   visibleChapterCount: 3
-  nowIndex: 2
   maxDeltaX: 100
   originalSize: 500
-  smallSize: 400
-  stopTime: 200
+  minSize: 400
+  stopTime: 30
   magnetLerpTime: 0.5

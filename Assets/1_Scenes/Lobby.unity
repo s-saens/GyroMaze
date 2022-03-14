@@ -273,6 +273,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131832810}
   m_CullTransparentMesh: 1
+--- !u!1 &155662549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 155662550}
+  - component: {fileID: 155662551}
+  m_Layer: 0
+  m_Name: ChapterSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &155662550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155662549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 202575306}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &155662551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155662549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6f1fe1dec1c4e70a4abda15b5d04e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
+  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
+  slideEvent: {fileID: 11400000, guid: d0d223e8fd45440d083ff1cf738f2bf8, type: 2}
+  clickEvent: {fileID: 11400000, guid: 4f0cd5e47b13f49baac74d4b32aebdde, type: 2}
+  chapterView: {fileID: 1345171310}
+  slider: {fileID: 1745732132}
+  buttonPrefab: {fileID: 3102440120941692866, guid: e1844b5cd1a3f42d1b55ebd871500329,
+    type: 3}
+  buttonsParent: {fileID: 1546203231}
 --- !u!1 &202575305
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +335,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 202575306}
-  - component: {fileID: 202575307}
   m_Layer: 0
   m_Name: CONTROLLERS
   m_TagString: Untagged
@@ -301,26 +353,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 155662550}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &202575307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202575305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6f1fe1dec1c4e70a4abda15b5d04e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
-  slideEvent: {fileID: 11400000, guid: d0d223e8fd45440d083ff1cf738f2bf8, type: 2}
-  clickEvent: {fileID: 11400000, guid: 4f0cd5e47b13f49baac74d4b32aebdde, type: 2}
-  chapterView: {fileID: 1345171310}
 --- !u!1 &262941067
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +634,6 @@ GameObject:
   - component: {fileID: 1345171309}
   - component: {fileID: 1345171308}
   - component: {fileID: 1345171310}
-  - component: {fileID: 1345171311}
   m_Layer: 5
   m_Name: Chapter Swipe View
   m_TagString: Untagged
@@ -672,25 +708,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f7883873b5d4220b3188d93d9a06d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
-  slideEvent: {fileID: 11400000, guid: d0d223e8fd45440d083ff1cf738f2bf8, type: 2}
-  clickEvent: {fileID: 11400000, guid: 4f0cd5e47b13f49baac74d4b32aebdde, type: 2}
-  slider: {fileID: 1745732132}
-  buttonPrefab: {fileID: 3102440120941692866, guid: e1844b5cd1a3f42d1b55ebd871500329,
-    type: 3}
-  buttonsParent: {fileID: 1546203231}
---- !u!114 &1345171311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345171306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2e0496ff03d478fbb4802831a2f19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
@@ -808,7 +825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546203231}
   m_Layer: 5
-  m_Name: Contents
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,19 +1190,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1345171306}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &1796169758 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4088104064668648607, guid: 65e280b111e9642239b327a2e46583e2,
