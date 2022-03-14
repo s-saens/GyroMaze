@@ -13,6 +13,6 @@ public class ChapterSelectData : ScriptableObject
     public float magnetLerpTime = 0.5f;
 
     // Reactive
-    public Property<int> nowIndex;
+    public Property<int> nowIndex = new Property<int>();
 
 }

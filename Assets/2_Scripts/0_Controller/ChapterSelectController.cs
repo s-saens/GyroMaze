@@ -27,9 +27,12 @@ public class ChapterSelectController : MonoBehaviour
     private IEnumerator swipeEndCoroutine;
     private IEnumerator magnetCoroutine;
 
+    private bool isSwiping = false;
+
 
     private void Start()
     {
+        InitializeProperties();
         InitializeButtons();
         InitializeSlider();
     }
@@ -57,7 +60,7 @@ public class ChapterSelectController : MonoBehaviour
     // Events
     private void OnSwipe(float deltaX)
     {
-        slideEvent.OnSlide -= OnChangeNowIndex;
+        isSwiping = true;
 
         CancelAllCoroutines();
         MoveContents(deltaX);
@@ -65,7 +68,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void OnSwipeEnd(float deltaX)
     {
-        slideEvent.OnSlide += OnChangeNowIndex;
+        isSwiping = false;
 
         swipeEndCoroutine = SwipeEndCoroutine(deltaX);
         StartCoroutine(swipeEndCoroutine);
@@ -111,8 +114,12 @@ public class ChapterSelectController : MonoBehaviour
         }
     }
 
+    private void InitializeProperties()
+    {
+        data.nowIndex.value = 0;
+    }
 
-    public void InitializeButtons()
+    private void InitializeButtons()
     {
         for (int i = 0; i < data.chapterCount; ++i)
         {
@@ -193,6 +200,8 @@ public class ChapterSelectController : MonoBehaviour
 
     public void MoveToIndex(int index)
     {
+        if(isSwiping) return;
+        
         CancelAllCoroutines();
 
         data.nowIndex.value = index;
