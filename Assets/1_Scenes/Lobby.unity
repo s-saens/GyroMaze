@@ -318,6 +318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
+  slideEvent: {fileID: 11400000, guid: d0d223e8fd45440d083ff1cf738f2bf8, type: 2}
+  clickEvent: {fileID: 11400000, guid: 4f0cd5e47b13f49baac74d4b32aebdde, type: 2}
   chapterView: {fileID: 1345171310}
 --- !u!1 &262941067
 GameObject:
@@ -595,7 +597,6 @@ GameObject:
   - component: {fileID: 1345171309}
   - component: {fileID: 1345171308}
   - component: {fileID: 1345171310}
-  - component: {fileID: 1345171311}
   m_Layer: 5
   m_Name: Chapter Swipe View
   m_TagString: Untagged
@@ -672,32 +673,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f7883873b5d4220b3188d93d9a06d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
-  chapterCount: 10
-  visibleChapterCount: 3
-  nowIndex: 0
-  maxDeltaX: 100
-  originalSize: 500
-  smallSize: 400
-  stopTime: 300
-  magnetLerpTime: 0.5
-  slider: {fileID: 1745732130}
-  contentPrefab: {fileID: 3102440120941692866, guid: e1844b5cd1a3f42d1b55ebd871500329,
-    type: 3}
-  contentsParent: {fileID: 1546203231}
---- !u!114 &1345171311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345171306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2e0496ff03d478fbb4802831a2f19f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
+  data: {fileID: 0}
+  slideEvent: {fileID: 0}
+  clickEvent: {fileID: 0}
+  slider: {fileID: 1745732132}
+  buttonPrefab: {fileID: 0}
+  buttonsParent: {fileID: 0}
 --- !u!1 &1381873721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1078,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745732131}
   - component: {fileID: 1745732132}
+  - component: {fileID: 1745732133}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1172,8 +1154,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1569738813}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 20
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1190,6 +1172,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1745732133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745732130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b114bd8f4f93845899f6ae208518ebe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideEvent: {fileID: 11400000, guid: d0d223e8fd45440d083ff1cf738f2bf8, type: 2}
+  slider: {fileID: 0}
 --- !u!224 &1796169758 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4088104064668648607, guid: 65e280b111e9642239b327a2e46583e2,
