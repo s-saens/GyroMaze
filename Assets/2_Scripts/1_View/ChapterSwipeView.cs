@@ -17,7 +17,7 @@ public class ChapterSwipeView : MonoBehaviour
     public Slider slider;
     public GameObject buttonPrefab;
     public RectTransform buttonsParent;
-    private List<GameObject> buttons;
+    private List<GameObject> buttons = new List<GameObject>();
     private IEnumerator swipeEndCoroutine;
     private IEnumerator magnetCoroutine;
 
@@ -37,13 +37,14 @@ public class ChapterSwipeView : MonoBehaviour
     }
 
 
-    private void InitializeButtons()
+    public void InitializeButtons()
     {
         for (int i = 0; i < data.chapterCount; ++i)
         {
             GameObject go = Instantiate(buttonPrefab, buttonsParent);
             go.transform.localPosition = new Vector3(data.originalSize * i, 0, 0);
             go.name = $"Chapter{i + 1}";
+            buttons.Add(go);
 
             // Button
             Button chapterButton = go.GetComponent<Button>();
@@ -53,11 +54,11 @@ public class ChapterSwipeView : MonoBehaviour
             TMP_Text chapterText = go.transform.GetChild(0).GetComponent<TMP_Text>();
             chapterText.text = $"{i + 1}";
 
-            buttons.Add(go);
 
             UpdateScale(i);
             UpdateActivation(i);
         }
+        MoveToIndex(data.nowIndex);
     }
 
     private void InitializeSlider()
@@ -93,6 +94,7 @@ public class ChapterSwipeView : MonoBehaviour
         }
         buttonsParent.Translate(Vector2.right * deltaX, Space.Self);
         UpdateIndex();
+        UpdateAllScaleAndActivation();
     }
 
     private void UpdateIndex()
@@ -100,8 +102,10 @@ public class ChapterSwipeView : MonoBehaviour
         data.nowIndex = -(int)((buttonsParent.transform.localPosition.x - (data.originalSize * 0.5f)) / data.originalSize);
         if (data.nowIndex < 0) data.nowIndex = 0;
         if (data.nowIndex >= data.chapterCount) data.nowIndex = data.chapterCount - 1;
+    }
 
-
+    private void UpdateAllScaleAndActivation()
+    {
         for (int i = data.nowIndex - (data.visibleChapterCount / 2) - 1; i <= data.nowIndex + (data.visibleChapterCount / 2) + 1; ++i)
         {
             if (i >= 0 && i < data.chapterCount)
@@ -163,11 +167,10 @@ public class ChapterSwipeView : MonoBehaviour
 
     private IEnumerator MagnetPosition()
     {
-        while (true)
+        while (Mathf.Abs(buttonsParent.localPosition.x - NowIndexPositionX) > 0.0001f)
         {
             buttonsParent.localPosition = Vector2.right * Mathf.Lerp(buttonsParent.localPosition.x, NowIndexPositionX, data.magnetLerpTime);
-            UpdateIndex();
-
+            UpdateAllScaleAndActivation();
             yield return 0;
         }
     }

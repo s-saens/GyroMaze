@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChapterSwipeInput : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ChapterSelectInput : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public ChapterSwipeEvent swipeEvent;
 

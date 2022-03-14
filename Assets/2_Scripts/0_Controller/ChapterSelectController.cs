@@ -15,7 +15,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void Start()
     {
-        // chapterView.InitializeButtons();
+        chapterView.InitializeButtons();
     }
 
     private void OnEnable()

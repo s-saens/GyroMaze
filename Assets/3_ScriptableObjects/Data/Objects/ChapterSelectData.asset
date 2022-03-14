@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapterCount: 5
   visibleChapterCount: 3
-  nowIndex: 0
+  nowIndex: 2
   maxDeltaX: 100
   originalSize: 500
   smallSize: 400
-  stopTime: 0.6
+  stopTime: 200
   magnetLerpTime: 0.5
