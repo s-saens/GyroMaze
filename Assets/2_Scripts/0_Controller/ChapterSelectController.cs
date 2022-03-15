@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,8 +28,6 @@ public class ChapterSelectController : MonoBehaviour
     private IEnumerator swipeEndCoroutine;
     private IEnumerator magnetCoroutine;
 
-    private bool isSwiping = false;
-
 
     private void Start()
     {
@@ -41,6 +40,7 @@ public class ChapterSelectController : MonoBehaviour
     {
         data.nowIndex.onChange += OnChangeNowIndex;
 
+        swipeEvent.OnTouchDown += OnTouchDown;
         swipeEvent.OnSwipe += OnSwipe;
         swipeEvent.OnSwipeEnd += OnSwipeEnd;
         slideEvent.OnSlide += OnSlide;
@@ -51,6 +51,7 @@ public class ChapterSelectController : MonoBehaviour
     {
         data.nowIndex.onChange -= OnChangeNowIndex;
 
+        swipeEvent.OnTouchDown -= OnTouchDown;
         swipeEvent.OnSwipe -= OnSwipe;
         swipeEvent.OnSwipeEnd -= OnSwipeEnd;
         slideEvent.OnSlide -= OnSlide;
@@ -58,18 +59,22 @@ public class ChapterSelectController : MonoBehaviour
     }
 
     // Events
+    private void OnTouchDown()
+    {
+        CancelAllCoroutines();
+        magnetCoroutine = MagnetPosition();
+        StartCoroutine(magnetCoroutine);
+        Debug.Log("DOWN");
+    }
+
     private void OnSwipe(float deltaX)
     {
-        isSwiping = true;
-
         CancelAllCoroutines();
         MoveContents(deltaX);
     }
 
     private void OnSwipeEnd(float deltaX)
     {
-        isSwiping = false;
-
         swipeEndCoroutine = SwipeEndCoroutine(deltaX);
         StartCoroutine(swipeEndCoroutine);
     }
@@ -95,7 +100,14 @@ public class ChapterSelectController : MonoBehaviour
     // Change Data
     private void OnChangeNowIndex(int index)
     {
+        slideEvent.OnSlide -= OnSlide;
         slider.value = index;
+        slideEvent.OnSlide += OnSlide;
+    }
+    private IEnumerator DoAfterFrame(Action action)
+    {
+        yield return 0;
+        action?.Invoke();
     }
 
 
@@ -199,9 +211,7 @@ public class ChapterSelectController : MonoBehaviour
     }
 
     public void MoveToIndex(int index)
-    {
-        if(isSwiping) return;
-        
+    {   
         CancelAllCoroutines();
 
         data.nowIndex.value = index;

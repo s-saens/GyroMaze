@@ -1,15 +1,22 @@
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class ChapterSwipeView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ChapterSwipeView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public ChapterSwipeEvent swipeEvent;
 
     private float firstX;
 
+    public void OnInitializePotentialDrag(PointerEventData e)
+    {
+        swipeEvent.OnTouchDown?.Invoke();
+    }
+
     public void OnBeginDrag(PointerEventData e)
     {
+        Debug.Log("DRAG START!");
         firstX = e.position.x;
     }
 
