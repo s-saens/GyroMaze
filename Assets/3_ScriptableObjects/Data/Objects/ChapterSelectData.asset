@@ -17,5 +17,5 @@ MonoBehaviour:
   maxDeltaX: 100
   originalSize: 500
   minSize: 400
-  stopTime: 30
+  stopTime: 300
   magnetLerpTime: 0.5

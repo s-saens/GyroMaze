@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 
@@ -16,6 +17,9 @@ public class ChapterSelectController : MonoBehaviour
     public ChapterSlideEvent slideEvent;
     public ChapterClickEvent clickEvent;
 
+    public EventSystem eventSystem;
+
+    // Views
     public ChapterSwipeView chapterView;
 
 
@@ -143,7 +147,10 @@ public class ChapterSelectController : MonoBehaviour
 
             // Button
             Button chapterButton = go.GetComponent<Button>();
-            chapterButton.onClick.AddListener(() => clickEvent.OnClick?.Invoke(index));
+            chapterButton.onClick.AddListener(() => {
+                eventSystem.SetSelectedGameObject(null);
+                clickEvent.OnClick?.Invoke(index);
+            });
 
             // Text
             TMP_Text chapterText = go.transform.GetChild(0).GetComponent<TMP_Text>();

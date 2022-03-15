@@ -321,6 +321,7 @@ MonoBehaviour:
   swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
   slideEvent: {fileID: 11400000, guid: d0d223e8fd45440d083ff1cf738f2bf8, type: 2}
   clickEvent: {fileID: 11400000, guid: 4f0cd5e47b13f49baac74d4b32aebdde, type: 2}
+  eventSystem: {fileID: 1381873723}
   chapterView: {fileID: 1345171310}
   slider: {fileID: 1745732132}
   buttonPrefab: {fileID: 3102440120941692866, guid: e1844b5cd1a3f42d1b55ebd871500329,
