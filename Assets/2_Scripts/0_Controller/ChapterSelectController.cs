@@ -64,7 +64,6 @@ public class ChapterSelectController : MonoBehaviour
         CancelAllCoroutines();
         magnetCoroutine = MagnetPosition();
         StartCoroutine(magnetCoroutine);
-        Debug.Log("DOWN");
     }
 
     private void OnSwipe(float deltaX)

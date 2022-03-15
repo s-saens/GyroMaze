@@ -16,7 +16,6 @@ public class ChapterSwipeView : MonoBehaviour, IInitializePotentialDragHandler, 
 
     public void OnBeginDrag(PointerEventData e)
     {
-        Debug.Log("DRAG START!");
         firstX = e.position.x;
     }
 
