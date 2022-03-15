@@ -210,8 +210,8 @@ public class ChapterSelectController : MonoBehaviour
     {
         RectTransform rt = (RectTransform)buttons[index].transform;
 
-        float power = Mathf.Abs(buttons[index].transform.position.x - (buttonsParent.rect.xMax)) / data.originalSize;
-        float size = data.originalSize * Mathf.Pow(0.6f, power);
+        float l = (Mathf.Abs(buttons[index].transform.position.x - (Screen.width * 0.5f)) / data.originalSize) + 1.2f;
+        float size = data.originalSize / l;
 
         rt.sizeDelta = size < data.minSize ? Vector2.one * size : Vector2.one * data.minSize;
     }
