@@ -3,30 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class ChapterSwipeView : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ChapterSwipeView : MonoBehaviour
 {
-    public ChapterSwipeEvent swipeEvent;
-
-    private float firstX;
-
-    public void OnInitializePotentialDrag(PointerEventData e)
-    {
-        swipeEvent.OnTouchDown?.Invoke();
-    }
-
-    public void OnBeginDrag(PointerEventData e)
-    {
-        firstX = e.position.x;
-    }
-
-    public void OnDrag(PointerEventData e)
-    {
-        swipeEvent.OnSwipe?.Invoke(e.delta.x);
-    }
-
-    public void OnEndDrag(PointerEventData e)
-    {
-        swipeEvent.OnSwipeEnd?.Invoke(e.delta.x);
-    }
-
+    
 }

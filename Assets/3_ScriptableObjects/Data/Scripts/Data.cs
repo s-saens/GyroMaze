@@ -1,18 +1,18 @@
 using UnityEngine;
 using System;
 
-public class Property<T>
+public class Data<T>
 {
-    private T Value;
+    private T v;
     public T value
     {
         get
         {
-            return this.Value;
+            return this.v;
         }
         set
         {
-            this.Value = value;
+            this.v = value;
             this.onChange?.Invoke(value);
         }
     }

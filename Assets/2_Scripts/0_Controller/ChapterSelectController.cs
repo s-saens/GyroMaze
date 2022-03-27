@@ -10,7 +10,8 @@ using TMPro;
 public class ChapterSelectController : MonoBehaviour
 {
     // Data
-    public ChapterSelectData data;
+    public ChapterSelectViewData viewData;
+    public GlobalData globalData;
 
     // Events
     public ChapterSwipeEvent swipeEvent;
@@ -42,7 +43,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void OnEnable()
     {
-        data.nowIndex.onChange += OnChangeNowIndex;
+        globalData.chapterIndex.onChange += OnChangeNowIndex;
 
         swipeEvent.OnTouchDown += OnTouchDown;
         swipeEvent.OnSwipe += OnSwipe;
@@ -53,7 +54,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void OnDisable()
     {
-        data.nowIndex.onChange -= OnChangeNowIndex;
+        globalData.chapterIndex.onChange -= OnChangeNowIndex;
 
         swipeEvent.OnTouchDown -= OnTouchDown;
         swipeEvent.OnSwipe -= OnSwipe;
@@ -89,7 +90,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private void OnClick(int index)
     {
-        if(index == data.nowIndex.value)
+        if(index == globalData.chapterIndex.value)
         {
             // TODO: Move to Level Select Window
         }
@@ -118,30 +119,30 @@ public class ChapterSelectController : MonoBehaviour
     {
         get
         {
-            return -data.nowIndex.value * data.originalSize;
+            return -globalData.chapterIndex.value * viewData.originalSize;
         }
     }
     private int LastIndexPositionX
     {
         get
         {
-            return -(data.chapterCount - 1) * data.originalSize;
+            return -(viewData.chapterCount - 1) * viewData.originalSize;
         }
     }
 
     private void InitializeProperties()
     {
-        data.nowIndex.value = 0;
+        globalData.chapterIndex.value = 0;
     }
 
     private void InitializeButtons()
     {
-        for (int i = 0; i < data.chapterCount; ++i)
+        for (int i = 0; i < viewData.chapterCount; ++i)
         {
             int index = i;
 
             GameObject go = Instantiate(buttonPrefab, buttonsParent);
-            go.transform.localPosition = new Vector3(data.originalSize * index, 0, 0);
+            go.transform.localPosition = new Vector3(viewData.originalSize * index, 0, 0);
             go.name = $"Chapter{i + 1}";
             buttons.Add(go);
 
@@ -158,33 +159,33 @@ public class ChapterSelectController : MonoBehaviour
 
             UpdateScale(index);
         }
-        MoveToIndex(data.nowIndex.value);
+        MoveToIndex(globalData.chapterIndex.value);
     }
 
     private void InitializeSlider()
     {
         slider.minValue = 0;
-        slider.maxValue = data.chapterCount - 1;
+        slider.maxValue = viewData.chapterCount - 1;
         slider.onValueChanged.AddListener((value) => slideEvent.OnSlide?.Invoke((int)value));
     }
 
     private bool IndexOnFirst(float deltaX)
     {
-        return (data.nowIndex.value <= 0 && deltaX >= 0);
+        return (globalData.chapterIndex.value <= 0 && deltaX >= 0);
     }
     private bool IndexOnLast(float deltaX)
     {
-        return (data.nowIndex.value >= data.chapterCount - 1 && deltaX <= 0);
+        return (globalData.chapterIndex.value >= viewData.chapterCount - 1 && deltaX <= 0);
     }
     private void MoveContents(float deltaX)
     {
         if (IndexOnFirst(deltaX))
         {
-            deltaX *= Mathf.Pow(0.4f, Mathf.Abs(buttonsParent.position.x) / data.originalSize);
+            deltaX *= Mathf.Pow(0.4f, Mathf.Abs(buttonsParent.position.x) / viewData.originalSize);
         }
         if (IndexOnLast(deltaX))
         {
-            deltaX *= Mathf.Pow(0.4f, Mathf.Abs(buttonsParent.position.x - LastIndexPositionX) / data.originalSize);
+            deltaX *= Mathf.Pow(0.4f, Mathf.Abs(buttonsParent.position.x - LastIndexPositionX) / viewData.originalSize);
         }
         buttonsParent.Translate(Vector3.right * deltaX, Space.Self);
         UpdateIndex();
@@ -193,14 +194,14 @@ public class ChapterSelectController : MonoBehaviour
 
     private void UpdateIndex()
     {
-        data.nowIndex.value = -(int)((buttonsParent.transform.localPosition.x - (data.originalSize * 0.5f)) / data.originalSize);
-        if (data.nowIndex.value < 0) data.nowIndex.value = 0;
-        if (data.nowIndex.value >= data.chapterCount) data.nowIndex.value = data.chapterCount - 1;
+        globalData.chapterIndex.value = -(int)((buttonsParent.transform.localPosition.x - (viewData.originalSize * 0.5f)) / viewData.originalSize);
+        if (globalData.chapterIndex.value < 0) globalData.chapterIndex.value = 0;
+        if (globalData.chapterIndex.value >= viewData.chapterCount) globalData.chapterIndex.value = viewData.chapterCount - 1;
     }
 
     private void UpdateAllScale()
     {
-        for (int i = 0; i < data.chapterCount; ++i)
+        for (int i = 0; i < viewData.chapterCount; ++i)
         {
             UpdateScale(i);
         }
@@ -210,17 +211,17 @@ public class ChapterSelectController : MonoBehaviour
     {
         RectTransform rt = (RectTransform)buttons[index].transform;
 
-        float l = (Mathf.Abs(buttons[index].transform.position.x - (Screen.width * 0.5f)) / data.originalSize) + 1.2f;
-        float size = data.originalSize / l;
+        float l = (Mathf.Abs(buttons[index].transform.position.x - (Screen.width * 0.5f)) / viewData.originalSize) + 1.2f;
+        float size = viewData.originalSize / l;
 
-        rt.sizeDelta = size < data.minSize ? Vector2.one * size : Vector2.one * data.minSize;
+        rt.sizeDelta = size < viewData.minSize ? Vector2.one * size : Vector2.one * viewData.minSize;
     }
 
     public void MoveToIndex(int index)
     {   
         CancelAllCoroutines();
 
-        data.nowIndex.value = index;
+        globalData.chapterIndex.value = index;
         magnetCoroutine = MagnetPosition();
         StartCoroutine(magnetCoroutine);
     }
@@ -228,7 +229,7 @@ public class ChapterSelectController : MonoBehaviour
 
     private IEnumerator SwipeEndCoroutine(float deltaX)
     {
-        for (float i = data.stopTime * Mathf.Log10(Mathf.Abs(deltaX)) / data.originalSize; i >= 0; i -= Time.deltaTime)
+        for (float i = viewData.stopTime * Mathf.Log10(Mathf.Abs(deltaX)) / viewData.originalSize; i >= 0; i -= Time.deltaTime)
         {
             if (IndexOnFirst(deltaX) || IndexOnLast(deltaX))
             {
@@ -244,7 +245,7 @@ public class ChapterSelectController : MonoBehaviour
     {
         while (Mathf.Abs(buttonsParent.localPosition.x - NowIndexPositionX) > 0.0001f)
         {
-            buttonsParent.localPosition = Vector2.right * Mathf.Lerp(buttonsParent.localPosition.x, NowIndexPositionX, data.magnetLerpTime);
+            buttonsParent.localPosition = Vector2.right * Mathf.Lerp(buttonsParent.localPosition.x, NowIndexPositionX, viewData.magnetLerpTime * Time.deltaTime);
             UpdateAllScale();
             yield return 0;
         }
