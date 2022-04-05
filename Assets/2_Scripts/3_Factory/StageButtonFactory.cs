@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using TMPro;
 
-public class LevelButtonFactory : MonoBehaviour
+public class StageButtonFactory : MonoBehaviour
 {
-    
+
 }

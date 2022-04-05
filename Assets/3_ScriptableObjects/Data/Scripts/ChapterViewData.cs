@@ -1,8 +1,8 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "ChapterSelectData", menuName = "Data/ChapterSelectData")]
-public class ChapterSelectViewData : ScriptableObject
+[CreateAssetMenu(fileName = "ChapterViewData", menuName = "Data/ChapterViewData")]
+public class ChapterViewData : ScriptableObject
 {
     public int chapterCount = 5;
     public int visibleChapterCount = 3;

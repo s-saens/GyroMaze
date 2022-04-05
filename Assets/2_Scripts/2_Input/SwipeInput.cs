@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class ChapterSwipeInput : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class SwipeInput : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public ChapterSwipeEvent swipeEvent;
+    public SwipeEvent swipeEvent;
 
     private float firstX;
 
