@@ -37,9 +37,18 @@ public class CameraController : MonoBehaviour
         camPivot.position = Vector3.Lerp(lastPos, targetPos, lerpTime);
     }
 
-    private void OnZoom(float amount)
+    private void OnZoom(float amount) // amount < 0 : 확대
     {
-        float targetPositionY = this.cam.position.y - amount * zoomStrength;
-        cam.localPosition = Vector3.up * Mathf.Clamp(targetPositionY, minCamPositionY, maxCamPositionY);
+        float targetPositionY = this.cam.position.y + amount * zoomStrength;
+
+        if(targetPositionY < minCamPositionY) // 더 확대할 수 없는 경우인데 확대하려는 경우
+        {
+            targetPositionY = minCamPositionY;
+        }
+        if(targetPositionY > maxCamPositionY) // 더 축소할 수 없는 경우인데 축소하려는 경우
+        {
+            targetPositionY = maxCamPositionY;
+        }
+        cam.localPosition = Vector3.up * targetPositionY;
     }
 }

@@ -37,7 +37,7 @@ public class ZoomInput : MonoBehaviour
         {
             zoomEvent.OnZoom.Invoke(deltaDistance);
         }
-        else if(deltaDistance < 0.001f) // 두 점 사이가 가까워짐 : 확대
+        else if(deltaDistance < -0.001f) // 두 점 사이가 가까워짐 : 확대
         {
             zoomEvent.OnZoom.Invoke(deltaDistance);
         }
