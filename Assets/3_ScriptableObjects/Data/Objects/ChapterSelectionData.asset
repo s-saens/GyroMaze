@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab1effab79e064d308bd6b4e32b1f734, type: 3}
-  m_Name: ChapterViewData
+  m_Name: ChapterSelectionData
   m_EditorClassIdentifier: 
   chapterCount: 50
   visibleChapterCount: 3

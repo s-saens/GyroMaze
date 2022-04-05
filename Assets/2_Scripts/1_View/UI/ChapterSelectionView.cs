@@ -5,15 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class ChapterView : MonoBehaviour
+public class ChapterSelectionView : MonoBehaviour
 {
     // Data
-    public ChapterViewData viewData;
+    public ChapterSelectionData viewData;
     public GlobalData globalData;
 
     // Events
-    public ChapterSlideEvent slideEvent;
-    public ChapterClickEvent clickEvent;
+    public SlideEvent slideEvent;
+    public ClickEvent clickEvent;
 
     // Views
     public Slider slider;

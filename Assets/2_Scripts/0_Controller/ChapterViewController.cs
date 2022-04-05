@@ -5,20 +5,20 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 
-public class ChapterViewController : MonoBehaviour
+public class ChapterSelectionController : MonoBehaviour
 {
     // Data
-    public ChapterViewData viewData;
+    public ChapterSelectionData viewData;
     public GlobalData globalData;
 
     // Events
     public SwipeEvent swipeEvent;
-    public ChapterSlideEvent slideEvent;
-    public ChapterClickEvent clickEvent;
+    public SlideEvent slideEvent;
+    public ClickEvent clickEvent;
     public EventSystem eventSystem;
 
     // Views
-    public ChapterView chapterSwipeView;
+    public ChapterSelectionView chapterSwipeView;
 
 
     // Register Events

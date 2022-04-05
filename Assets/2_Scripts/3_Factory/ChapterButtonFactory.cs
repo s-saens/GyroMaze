@@ -7,7 +7,6 @@ public class ChapterButtonFactory : MonoBehaviour
 {
     // Making Data
     public GameObject buttonPrefab;
-    public RectTransform buttonsParent;
 
     public List<Button> MakeButtons(int chapterCount, float originalSize)
     {
@@ -16,7 +15,7 @@ public class ChapterButtonFactory : MonoBehaviour
         {
             int index = i;
 
-            GameObject go = Instantiate(buttonPrefab, buttonsParent);
+            GameObject go = Instantiate(buttonPrefab, this.transform);
             go.transform.localPosition = new Vector3(originalSize * index, 0, 0);
             go.name = $"Chapter{i + 1}";
             buttons.Add(go.GetComponent<Button>());
