@@ -323,7 +323,7 @@ MonoBehaviour:
   slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
   clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
   eventSystem: {fileID: 1381873723}
-  chapterSwipeView: {fileID: 1546908993}
+  chapterSwipeView: {fileID: 0}
 --- !u!1 &163443931
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +333,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163443932}
-  - component: {fileID: 163443933}
   m_Layer: 5
   m_Name: Buttons Container
   m_TagString: Untagged
@@ -362,18 +361,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -240}
   m_SizeDelta: {x: -360, y: 920}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &163443933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163443931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26bd466733d26493792a89073685566f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &202575305
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bd466733d26493792a89073685566f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 0}
 --- !u!1 &920295148
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,6 +715,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewData: {fileID: 0}
   globalData: {fileID: 0}
+  slideEvent: {fileID: 0}
+  clickEvent: {fileID: 0}
+  slider: {fileID: 0}
+  buttonsParent: {fileID: 0}
+  chapterButtonFactory: {fileID: 0}
 --- !u!1 &1282640829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,11 +1093,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
   globalData: {fileID: 11400000, guid: 88e516ae1baaa432f8dc9efe11a292ea, type: 2}
-  slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
-  clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
-  slider: {fileID: 1745732132}
-  buttonsParent: {fileID: 1546203231}
-  chapterButtonFactory: {fileID: 1546203232}
 --- !u!1 &1569738812
 GameObject:
   m_ObjectHideFlags: 0
