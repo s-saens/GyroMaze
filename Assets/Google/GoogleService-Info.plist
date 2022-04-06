@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>41156280988-0ueor8d62234hneirsrvnobu43o5ec4e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.41156280988-0ueor8d62234hneirsrvnobu43o5ec4e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDixSMVzqncu3Ycp0UvwUJ2UPOMYCyuCmo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>41156280988</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.saens.gyromaze</string>
+	<key>PROJECT_ID</key>
+	<string>gyromaze-b2586</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gyromaze-b2586.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:41156280988:ios:8386bbf5704f7990406359</string>
+	<key>DATABASE_URL</key>
+	<string>https://gyromaze-b2586-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
