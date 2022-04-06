@@ -24,7 +24,7 @@ public class ChapterSelectionController : MonoBehaviour
     // Register Events
     private void OnEnable()
     {
-        globalData.chapterIndex.onChange += OnChangeNowIndex;
+        globalData.chapterIndex.onChange += OnChangeChapterIndex;
 
         swipeEvent.OnTouchDown += OnTouchDown;
         swipeEvent.OnSwipe += OnSwipe;
@@ -35,7 +35,7 @@ public class ChapterSelectionController : MonoBehaviour
 
     private void OnDisable()
     {
-        globalData.chapterIndex.onChange -= OnChangeNowIndex;
+        globalData.chapterIndex.onChange -= OnChangeChapterIndex;
 
         swipeEvent.OnTouchDown -= OnTouchDown;
         swipeEvent.OnSwipe -= OnSwipe;
@@ -80,7 +80,7 @@ public class ChapterSelectionController : MonoBehaviour
     }
 
     // Change Data
-    private void OnChangeNowIndex(int index)
+    private void OnChangeChapterIndex(int index)
     {
         slideEvent.OnSlide -= OnSlide;
         chapterSwipeView.SetSliderHandle(index);
