@@ -1,9 +1,10 @@
 #if UNITY_EDITOR
+using System.IO;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Animations;
 
-public class AnimClipAdder
+public class AnimationClipManager
 {
     [MenuItem("Assets/Animation/Create Anim Clip", false, 1)]
     static void Create()
@@ -16,7 +17,7 @@ public class AnimClipAdder
             return;
         }
 
-        var animClip = new AnimationClip() {name = AnimClipNameSetter.clipName};
+        var animClip = new AnimationClip() {name = AnimationClipNameSetter.clipName};
         AssetDatabase.AddObjectToAsset(animClip, animController);
 
         string animClipPath = AssetDatabase.GetAssetPath(animClip);
@@ -42,9 +43,20 @@ public class AnimClipAdder
         // See line 25
         AssetDatabase.SaveAssets();
     }
+
+    [MenuItem("Assets/Animation/Rename Anim Clip", false, 3)]
     static void Rename()
     {
         var animClip = Selection.activeObject;
+
+        if (animClip.GetType() != typeof(AnimationClip))
+        {
+            Debug.LogWarning("Could not rename because the selected object is not an animator clip.");
+            return;
+        }
+
+        animClip.name = AnimationClipNameSetter.clipName;
+        AssetDatabase.SaveAssets();
     }
 }
 #endif

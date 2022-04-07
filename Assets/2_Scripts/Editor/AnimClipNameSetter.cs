@@ -2,15 +2,15 @@
 using UnityEngine;
 using UnityEditor;
 
-public class AnimClipNameSetter : EditorWindow
+public class AnimationClipNameSetter : EditorWindow
 {
     public static string clipName = "clip name";
 
     [MenuItem("SAENS/Animation Clip Name Setter")]
     private static void ShowWindow()
     {
-        var window = GetWindow<AnimClipNameSetter>();
-        window.titleContent = new GUIContent("AnimClipNameSetter");
+        var window = GetWindow<AnimationClipNameSetter>();
+        window.titleContent = new GUIContent("Animation Clip Name Setter");
         window.Show();
     }
 
