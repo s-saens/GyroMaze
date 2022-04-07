@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Animations;
@@ -19,7 +20,6 @@ public class AnimClipAdder
         AssetDatabase.AddObjectToAsset(animClip, animController);
 
         string animClipPath = AssetDatabase.GetAssetPath(animClip);
-        AssetDatabase.ImportAsset(animClipPath);
 
         // This script changes the "*.controller" asset file
         // so until it is saved, the changes won't be displayed on the editor view.
@@ -42,4 +42,9 @@ public class AnimClipAdder
         // See line 25
         AssetDatabase.SaveAssets();
     }
+    static void Rename()
+    {
+        var animClip = Selection.activeObject;
+    }
 }
+#endif

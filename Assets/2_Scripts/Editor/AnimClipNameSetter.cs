@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -20,3 +21,4 @@ public class AnimClipNameSetter : EditorWindow
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif
