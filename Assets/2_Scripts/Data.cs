@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System.Globalization;
 using UnityEngine;
 using System;
 
@@ -17,4 +19,10 @@ public class Data<T>
         }
     }
     public Action<T> onChange;
+
+    public Data() {}
+    public Data(T val)
+    {
+        this.v = val;
+    }
 }

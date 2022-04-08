@@ -1102,7 +1102,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 977376508}
-  - component: {fileID: 977376509}
   m_Layer: 5
   m_Name: Stages
   m_TagString: Untagged
@@ -1132,25 +1131,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &977376509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977376507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 713df83f7837d48da87fe1a1e16ed254, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewData: {fileID: 0}
-  globalData: {fileID: 0}
-  slideEvent: {fileID: 0}
-  clickEvent: {fileID: 0}
-  slider: {fileID: 0}
-  buttonsParent: {fileID: 0}
-  chapterButtonFactory: {fileID: 0}
 --- !u!1001 &1087400227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2018,6 +1998,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4353575626034687293, guid: 10cc55e2c2bd24f2f86bd1e99e9ac9cd,
+        type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10cc55e2c2bd24f2f86bd1e99e9ac9cd, type: 3}
 --- !u!224 &1253803353 stripped
@@ -2644,11 +2629,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1546908991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ccb3cc490bbe482f98553a9169d52d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 713df83f7837d48da87fe1a1e16ed254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
   globalData: {fileID: 11400000, guid: 88e516ae1baaa432f8dc9efe11a292ea, type: 2}
+  slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
+  clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
+  slider: {fileID: 1745732132}
+  buttonsParent: {fileID: 1546203231}
+  chapterButtonFactory: {fileID: 1546203232}
 --- !u!1 &1569738812
 GameObject:
   m_ObjectHideFlags: 0
