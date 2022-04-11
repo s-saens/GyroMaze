@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4353575626034687292}
   - component: {fileID: 4353575626034687295}
   - component: {fileID: 1367473156098585769}
-  - component: {fileID: 4353575626034687293}
+  - component: {fileID: 5530620336926801849}
+  - component: {fileID: 2482149163773350441}
   - component: {fileID: 7425713196738771113}
-  - component: {fileID: 5933156254056450455}
   m_Layer: 5
   m_Name: StageButton
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &4353575626034687293
+--- !u!114 &5530620336926801849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +121,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2482149163773350441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353575626034687291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51f4bf33b54743629b98f5d70d1bb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 4353575627275380126}
+  image: {fileID: 1367473156098585769}
+  circleFull: {fileID: 2800000, guid: a0e7e5c16f2dc4e16994fd4927f65e8b, type: 3}
+  circleEmpty: {fileID: 2800000, guid: c5d03543fd58a434a872a328ff959278, type: 3}
+  circleLock: {fileID: 2800000, guid: 25031d60d220245518a2a8c902394a66, type: 3}
 --- !u!95 &7425713196738771113
 Animator:
   serializedVersion: 4
@@ -141,23 +158,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5933156254056450455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4353575626034687291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51f4bf33b54743629b98f5d70d1bb80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 1367473156098585769}
-  levelText: {fileID: 4353575627275380126}
-  circleFull: {fileID: 2800000, guid: a0e7e5c16f2dc4e16994fd4927f65e8b, type: 3}
-  circleEmpty: {fileID: 2800000, guid: c5d03543fd58a434a872a328ff959278, type: 3}
-  circleLock: {fileID: 2800000, guid: 25031d60d220245518a2a8c902394a66, type: 3}
 --- !u!1 &4353575627275380124
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4353575627275380125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -233,8 +233,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292560210
-  m_fontColor: {r: 0.32156864, g: 0.27058825, b: 0.8588236, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -8,6 +8,21 @@ using UnityEngine.EventSystems;
 public class StageSelectionView : MonoBehaviour
 {
     // Data
-    public ChapterSelectionData viewData;
     public GlobalData globalData;
+
+    // Factory
+    public StageButtonFactory factory;
+
+    // Views
+    public List<StageButton> buttons;
+
+    private void Start()
+    {
+        buttons = factory.MakeButtons(20);
+    }
+
+    public void UpdateButtons()
+    {
+        
+    }
 }

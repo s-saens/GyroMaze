@@ -10,22 +10,15 @@ public enum StageButtonState
     CLOSED
 }
 
-public class StageButtonView : MonoBehaviour
+public class StageButton : MonoBehaviour
 {
-    public RawImage image;
     public TMP_Text levelText;
-
+    public RawImage image;
     public Texture circleFull;
     public Texture circleEmpty;
     public Texture circleLock;
 
     public Data<int> state = new Data<int>(0);
-
-    private void Start()
-    {
-        image = this.GetComponent<RawImage>();
-        state.value = 0;
-    }
 
     private void OnEnable()
     {
