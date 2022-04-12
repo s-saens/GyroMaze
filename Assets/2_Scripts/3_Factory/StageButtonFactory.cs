@@ -17,7 +17,11 @@ public class StageButtonFactory : MonoBehaviour
 
             GameObject go = Instantiate(buttonPrefab, this.transform);
             go.name = $"Level {index+1}";
-            buttons.Add(go.GetComponent<StageButton>());
+
+            StageButton b = go.GetComponent<StageButton>();
+            b.buttonId = index;
+            buttons.Add(b);
+            
 
             TMP_Text levelText = go.GetComponentInChildren<TMP_Text>();
             levelText.text = $"{index+1}";

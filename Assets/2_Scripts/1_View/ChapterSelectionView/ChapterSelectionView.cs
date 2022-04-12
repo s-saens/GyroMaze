@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 
 public class ChapterSelectionView : MonoBehaviour
@@ -19,7 +18,7 @@ public class ChapterSelectionView : MonoBehaviour
     public Slider slider;
     public RectTransform buttonsParent;
 
-    private List<Button> buttons = new List<Button>();
+    private List<ChapterButton> buttons = new List<ChapterButton>();
     private IEnumerator swipeEndCoroutine;
     private IEnumerator magnetCoroutine;
 

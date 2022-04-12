@@ -10,27 +10,14 @@ public enum StageButtonState
     CLOSED
 }
 
-public class StageButton : MonoBehaviour
+public class StageButton : _EventButton
 {
-    public TMP_Text levelText;
-    public RawImage image;
-    public Texture circleFull;
-    public Texture circleEmpty;
-    public Texture circleLock;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private Sprite circleFull;
+    [SerializeField] private Sprite circleEmpty;
+    [SerializeField] private Sprite circleLock;
 
-    public Data<int> state = new Data<int>(0);
-
-    private void OnEnable()
-    {
-        state.onChange += OnChangeState;
-    }
-
-    private void OnDisable()
-    {
-        state.onChange -= OnChangeState;
-    }
-
-    private void OnChangeState(int value)
+    public void ChangeState(int value)
     {
         switch((StageButtonState)value)
         {
@@ -40,16 +27,15 @@ public class StageButton : MonoBehaviour
         }
         levelText.text = value.ToString();
     }
-
     private void SetLocked()
     {
-        image.texture = circleLock;
+        image.sprite = circleLock;
 
         levelText.gameObject.SetActive(false);
     }
     private void SetOpened()
     {
-        image.texture = circleEmpty;
+        image.sprite = circleEmpty;
 
         levelText.gameObject.SetActive(true);
 
@@ -59,7 +45,7 @@ public class StageButton : MonoBehaviour
     }
     private void SetClosed()
     {
-        image.texture = circleFull;
+        image.sprite = circleFull;
 
         levelText.gameObject.SetActive(true);
 
