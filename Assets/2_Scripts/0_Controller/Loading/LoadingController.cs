@@ -1,28 +1,28 @@
-using UnityEngine;
+// using UnityEngine;
 
-using Firebase.Auth;
+// using Firebase.Auth;
 
-public class LoadingController : MonoBehaviour
-{
-    // Events
-    public ClickEvent loginClick;
+// public class LoadingController : MonoBehaviour
+// {
+//     // Events
+//     public ClickEvent loginClick;
 
-    private void OnEnable()
-    {
-        loginClick.OnClick += OnClickLogin;
-    }
-    private void OnDisable()
-    {
-        loginClick.OnClick -= OnClickLogin;
-    }
+//     private void OnEnable()
+//     {
+//         loginClick.OnClick += OnClickLogin;
+//     }
+//     private void OnDisable()
+//     {
+//         loginClick.OnClick -= OnClickLogin;
+//     }
     
-    private void OnClickLogin(int value)
-    {
-        if(value == 0) GoogleLogin();
-    }
-    private void GoogleLogin()
-    {
+//     private void OnClickLogin(int value)
+//     {
+//         if(value == 0) GoogleLogin();
+//     }
+//     private void GoogleLogin()
+//     {
 
-    }
+//     }
 
-}
+// }

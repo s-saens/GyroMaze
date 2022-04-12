@@ -8,18 +8,17 @@ using TMPro;
 public class ChapterSelectionController : MonoBehaviour
 {
     // Data
-    public ChapterSelectionData viewData;
-    public GlobalData globalData;
+    [SerializeField] private ChapterSelectionData viewData;
+    [SerializeField] private GlobalData globalData;
 
     // Events
-    public SwipeEvent swipeEvent;
-    public SlideEvent slideEvent;
-    public ClickEvent clickEvent;
-    public EventSystem eventSystem;
+    [SerializeField] private SwipeEvent swipeEvent;
+    [SerializeField] private SlideEvent slideEvent;
+    [SerializeField] private ClickEvent clickEvent;
+    [SerializeField] private EventSystem eventSystem;
 
     // Views
-    public ChapterSelectionView chapterSwipeView;
-
+    [SerializeField] private ChapterSelectionView chapterSwipeView;
 
     // Register Events
     private void OnEnable()

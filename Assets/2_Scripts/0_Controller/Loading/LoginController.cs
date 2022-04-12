@@ -1,39 +1,38 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using Firebase.Auth;
+// using UnityEngine;
+// using UnityEngine.SceneManagement;
+// using Firebase.Auth;
 
-public class LoginController : MonoBehaviour
-{
-    [SerializeField] private ClickEvent clickEvent;
+// using GooglePlayGames;
+// using GooglePlayGames.BasicApi;
+// using UnityEngine.SocialPlatforms;
+// using System.Threading.Tasks;
 
-    private FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-    private string googleIdToken;
-    private string googleAccessToken;
+// public class LoginController : MonoBehaviour
+// {
+//     [SerializeField] private ClickEvent clickEvent;
 
-    private void OnEnable()
-    {
-        clickEvent.OnClick += Login;
-    }
-    private void OnDisable()
-    {
-        clickEvent.OnClick += Login;
-    }
+//     private FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+//     private string googleIdToken;
+//     private string googleAccessToken;
 
-    private void Login(int value)
-    {
-        if(value == 0) LoginGoogle();
-    }
+//     private void OnEnable()
+//     {
+//         clickEvent.OnClick += Login;
+//     }
+//     private void OnDisable()
+//     {
+//         clickEvent.OnClick += Login;
+//     }
 
-    public void LoginGoogle()
-    {
-        Credential credential = GoogleAuthProvider.GetCredential(googleIdToken, googleAccessToken);
-        auth.SignInWithCredentialAsync(credential).ContinueWith(task=>
-        {
-            if(task.IsCanceled) { Debug.LogError("[SignIn] Canceled"); return; }
-            if(task.IsCanceled) { Debug.LogError("[SignIn] Error encountered"); return; }
-        });
+//     private void Login(int value)
+//     {
+//         if(value == 0) LoginGoogle();
+//     }
 
-        Debug.Log("[SignIn] Successful!");
-        SceneManager.LoadScene(1);
-    }
-}
+
+//     public void LoginGoogle()
+//     {
+//         Debug.Log("[SignIn] Successful!");
+//         SceneManager.LoadScene(1);
+//     }
+// }
