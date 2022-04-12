@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 
-#if UNITY_EDITOR
-
 [CustomEditor(typeof(_EventButton), true)]
 public class EventButtonEditor : Editor
 {
@@ -13,7 +11,6 @@ public class EventButtonEditor : Editor
         _EventButton t = (_EventButton)target;
     }
 }
-#endif
 
 public class _EventButton : Button
 {
