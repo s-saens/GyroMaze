@@ -1,47 +1,37 @@
 {
-  "project_info": {
-    "project_number": "41156280988",
-    "firebase_url": "https://gyromaze-b2586-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "gyromaze-b2586",
-    "storage_bucket": "gyromaze-b2586.appspot.com"
-  },
   "client": [
     {
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "41156280988-0ueor8d62234hneirsrvnobu43o5ec4e.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyDixSMVzqncu3Ycp0UvwUJ2UPOMYCyuCmo"
+        }
+      ], 
       "client_info": {
-        "mobilesdk_app_id": "1:41156280988:android:bdc3d4dcf1f6b122406359",
+        "mobilesdk_app_id": "1:41156280988:ios:8386bbf5704f7990406359", 
         "android_client_info": {
           "package_name": "com.saens.gyromaze"
         }
-      },
-      "oauth_client": [
-        {
-          "client_id": "41156280988-3osb3ld59nc51coe8g96fs0jrbaqejv2.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCbajAKBaaXNg5hQTxcakgEKB93NRfg3_A"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "41156280988-3osb3ld59nc51coe8g96fs0jrbaqejv2.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "41156280988-0ueor8d62234hneirsrvnobu43o5ec4e.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.saens.gyromaze"
-              }
-            }
-          ]
-        }
       }
     }
-  ],
-  "configuration_version": "1"
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "gyromaze-b2586.appspot.com", 
+    "project_id": "gyromaze-b2586", 
+    "firebase_url": "https://gyromaze-b2586-default-rtdb.asia-southeast1.firebasedatabase.app", 
+    "project_number": "41156280988"
+  }
 }
