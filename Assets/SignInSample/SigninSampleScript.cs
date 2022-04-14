@@ -25,7 +25,7 @@ namespace SignInSample {
 
     public Text statusText;
 
-    public string webClientId = "630965815426-go9stbqquhg1vsa37017ss6c1huqonub.apps.googleusercontent.com";
+    public string webClientId = "<your client id here>";
 
     private GoogleSignInConfiguration configuration;
 
