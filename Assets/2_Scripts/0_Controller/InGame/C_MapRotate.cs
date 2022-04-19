@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MapRotateController : MonoBehaviour
+public class C_MapRotate : MonoBehaviour
 {
     public GyroEvent gyroEvent;
     public Transform lightTransform;

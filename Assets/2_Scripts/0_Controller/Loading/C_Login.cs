@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Google;
 
-public class LoginController : MonoBehaviour
+public class C_Login : MonoBehaviour
 {
     [SerializeField] private ClickEvent clickEvent;
     private GoogleSignInConfiguration configuration;
@@ -22,7 +21,7 @@ public class LoginController : MonoBehaviour
 
     private void Login(int value)
     {
-        LoadingIndicatorController.Instance.ShowIndicator();
+        C_Indicator.Instance.ShowIndicator();
         loginType = value;
         switch(value)
         {
@@ -76,15 +75,15 @@ public class LoginController : MonoBehaviour
 
     internal void OnLoginFinished(Task<GoogleSignInUser> task)
     {
+        C_Indicator.Instance.ShowIndicator();
+
         if (task.IsFaulted)
         {
-            using (IEnumerator<System.Exception> enumerator =
-                    task.Exception.InnerExceptions.GetEnumerator())
+            using (IEnumerator<System.Exception> enumerator = task.Exception.InnerExceptions.GetEnumerator())
             {
                 if (enumerator.MoveNext())
                 {
-                    GoogleSignIn.SignInException error =
-                            (GoogleSignIn.SignInException)enumerator.Current;
+                    GoogleSignIn.SignInException error = (GoogleSignIn.SignInException)enumerator.Current;
                     Debug.LogWarning("Got Error: " + error.Status + " " + error.Message);
                 }
                 else
@@ -102,7 +101,7 @@ public class LoginController : MonoBehaviour
             Debug.Log("Welcome: " + task.Result.DisplayName + "!");
             UserData.SetCredential(task.Result.IdToken, null);
             PlayerPrefs.SetInt(ConstData.KEY_LOGIN_TYPE, loginType);
-            SceneManager.LoadScene(1);
+            C_Scene.Instance.LoadScene(SceneEnum.Lobby);
         }
     }
 }

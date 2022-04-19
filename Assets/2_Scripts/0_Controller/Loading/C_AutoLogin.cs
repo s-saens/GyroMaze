@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AutoLoginController : MonoBehaviour
+public class C_AutoLogin : MonoBehaviour
 {
     [SerializeField] private ClickEvent clickEvent;
     private void Start()

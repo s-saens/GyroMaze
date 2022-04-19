@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class C_Camera : MonoBehaviour
 {
     public ZoomEvent zoomEvent;
 

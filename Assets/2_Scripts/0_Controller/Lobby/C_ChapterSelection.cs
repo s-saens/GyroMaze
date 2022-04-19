@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 
-public class ChapterSelectionController : MonoBehaviour
+public class C_ChapterSelection : MonoBehaviour
 {
     // Data
     [SerializeField] private ChapterSelectionData viewData;
