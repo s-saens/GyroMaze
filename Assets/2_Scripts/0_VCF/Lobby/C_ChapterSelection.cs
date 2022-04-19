@@ -11,7 +11,7 @@ public class C_ChapterSelection : MonoBehaviour
     [SerializeField] private ChapterSelectionData viewData;
     [SerializeField] private GlobalData globalData;
 
-    // Events
+    // Events : Operation
     [SerializeField] private SwipeEvent swipeEvent;
     [SerializeField] private SlideEvent slideEvent;
     [SerializeField] private ClickEvent clickEvent;
@@ -29,7 +29,6 @@ public class C_ChapterSelection : MonoBehaviour
         swipeEvent.OnSwipe += OnSwipe;
         swipeEvent.OnSwipeEnd += OnSwipeEnd;
         slideEvent.OnSlide += OnSlide;
-        clickEvent.OnClick += OnClick;
     }
 
     private void OnDisable()
@@ -40,7 +39,6 @@ public class C_ChapterSelection : MonoBehaviour
         swipeEvent.OnSwipe -= OnSwipe;
         swipeEvent.OnSwipeEnd -= OnSwipeEnd;
         slideEvent.OnSlide -= OnSlide;
-        clickEvent.OnClick -= OnClick;
     }
 
 
@@ -63,19 +61,6 @@ public class C_ChapterSelection : MonoBehaviour
     private void OnSlide(int value)
     {
         chapterSwipeView.MoveToIndex(value);
-    }
-
-    private void OnClick(int index)
-    {
-        eventSystem.SetSelectedGameObject(null);
-        if(index == globalData.chapterIndex.value)
-        {
-            // TODO: Move to Level Select Window
-        }
-        else
-        {
-            chapterSwipeView.MoveToIndex(index);
-        }
     }
 
     // Change Data
