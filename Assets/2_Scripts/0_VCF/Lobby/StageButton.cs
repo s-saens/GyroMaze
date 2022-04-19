@@ -12,6 +12,7 @@ public enum StageButtonState
 
 public class StageButton : _EventButton
 {
+    // State Changing
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private Sprite circleFull;
     [SerializeField] private Sprite circleEmpty;

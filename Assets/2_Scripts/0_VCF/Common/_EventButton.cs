@@ -1,5 +1,18 @@
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(_EventButton), true)]
+public class EventButtonEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        _EventButton t = (_EventButton)target;
+    }
+}
+#endif
 
 public class _EventButton : Button
 {
@@ -15,6 +28,12 @@ public class _EventButton : Button
     private void InitButton()
     {
         onClick.AddListener(()=>clickEvent.OnClick?.Invoke(buttonId));
+    }
+
+    public void SetClickEvent(ClickEvent ce)
+    {
+        clickEvent = ce;
+        InitButton();
     }
 
 }

@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 155662550}
   - component: {fileID: 155662551}
   m_Layer: 0
-  m_Name: ChapterView
+  m_Name: ChapterSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
   clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
   eventSystem: {fileID: 1381873723}
-  chapterSwipeView: {fileID: 0}
+  chapterSwipeView: {fileID: 1546908993}
 --- !u!1 &163443931
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +391,7 @@ Transform:
   m_Children:
   - {fileID: 155662550}
   - {fileID: 358154977}
+  - {fileID: 2128929615}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -558,8 +559,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 358154977}
+  - component: {fileID: 358154978}
   m_Layer: 0
-  m_Name: StageView
+  m_Name: StageSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,6 +582,18 @@ Transform:
   m_Father: {fileID: 202575306}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358154978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358154976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8312d844459594831bc6be3846395ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &487508471
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bd466733d26493792a89073685566f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickEvent: {fileID: 11400000, guid: 8317f6d21181a43409e9f909e2ab750d, type: 2}
   buttonPrefab: {fileID: 4353575626034687291, guid: 10cc55e2c2bd24f2f86bd1e99e9ac9cd,
     type: 3}
 --- !u!114 &487508474
@@ -840,7 +855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &977376508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -913,7 +928,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1197,6 +1212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a425be8235d5743f4a14a018de2b394f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
   buttonPrefab: {fileID: 3102440120941692866, guid: e1844b5cd1a3f42d1b55ebd871500329,
     type: 3}
 --- !u!1 &1546908991
@@ -1215,7 +1231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1546908992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1291,7 +1307,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1576,7 +1592,7 @@ GameObject:
   - component: {fileID: 1836850948}
   - component: {fileID: 1836850951}
   - component: {fileID: 1836850950}
-  - component: {fileID: 1836850949}
+  - component: {fileID: 1836850952}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -1604,50 +1620,6 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1836850949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836850947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1836850950}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1836850950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1686,6 +1658,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836850947}
   m_CullTransparentMesh: 1
+--- !u!114 &1836850952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836850947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f54da7c811b44359764f94525f4a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1836850950}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  buttonId: 0
+  clickEvent: {fileID: 11400000, guid: 6e7ba197615d9435db49153ff97fb3c4, type: 2}
+--- !u!1 &2128929614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128929615}
+  - component: {fileID: 2128929616}
+  m_Layer: 0
+  m_Name: WindowMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2128929615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128929614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 202575306}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2128929616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128929614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c082cbe12424eb49c90e89857321e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapterButtonClickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa,
+    type: 2}
+  stageButtonClickEvent: {fileID: 11400000, guid: 8317f6d21181a43409e9f909e2ab750d,
+    type: 2}
+  backButtonClickEvent: {fileID: 11400000, guid: 6e7ba197615d9435db49153ff97fb3c4,
+    type: 2}
+  chapterSelectionView: {fileID: 1546908991}
+  stageSelectionView: {fileID: 977376507}
 --- !u!1001 &4088104065289462913
 PrefabInstance:
   m_ObjectHideFlags: 0

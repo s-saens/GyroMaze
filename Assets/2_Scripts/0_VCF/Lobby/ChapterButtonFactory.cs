@@ -5,6 +5,8 @@ using TMPro;
 
 public class ChapterButtonFactory : MonoBehaviour
 {
+    [SerializeField] private ClickEvent clickEvent;
+
     // Making Data
     public GameObject buttonPrefab;
 
@@ -21,6 +23,8 @@ public class ChapterButtonFactory : MonoBehaviour
             ChapterButton b = go.GetComponent<ChapterButton>();
             b.buttonId = i;
             buttons.Add(b);
+            
+            b.SetClickEvent(clickEvent);
 
             // Text
             TMP_Text chapterText = go.transform.GetChild(0).GetComponent<TMP_Text>();

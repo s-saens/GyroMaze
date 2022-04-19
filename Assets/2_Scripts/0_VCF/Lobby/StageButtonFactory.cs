@@ -5,6 +5,7 @@ using TMPro;
 
 public class StageButtonFactory : MonoBehaviour
 {
+    [SerializeField] private ClickEvent clickEvent;
     // Making Data
     public GameObject buttonPrefab;
 
@@ -21,8 +22,9 @@ public class StageButtonFactory : MonoBehaviour
             StageButton b = go.GetComponent<StageButton>();
             b.buttonId = index;
             buttons.Add(b);
-            
 
+            b.SetClickEvent(clickEvent);
+            
             TMP_Text levelText = go.GetComponentInChildren<TMP_Text>();
             levelText.text = $"{index+1}";
         }

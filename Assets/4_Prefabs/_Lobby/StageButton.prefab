@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4353575626034687295}
   - component: {fileID: 1367473156098585769}
   - component: {fileID: 7425713196738771113}
-  - component: {fileID: 1597314983859709734}
+  - component: {fileID: -5089082460871490899}
   m_Layer: 5
   m_Name: StageButton
   m_TagString: Untagged
@@ -96,7 +96,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1597314983859709734
+--- !u!114 &-5089082460871490899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4353575626034687291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34f54da7c811b44359764f94525f4a06, type: 3}
+  m_Script: {fileID: 11500000, guid: c51f4bf33b54743629b98f5d70d1bb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -141,7 +141,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   buttonId: 0
-  clickEvent: {fileID: 0}
+  clickEvent: {fileID: 11400000, guid: 8317f6d21181a43409e9f909e2ab750d, type: 2}
+  levelText: {fileID: 4353575627275380126}
+  circleFull: {fileID: 21300000, guid: a0e7e5c16f2dc4e16994fd4927f65e8b, type: 3}
+  circleEmpty: {fileID: 21300000, guid: c5d03543fd58a434a872a328ff959278, type: 3}
+  circleLock: {fileID: 21300000, guid: 25031d60d220245518a2a8c902394a66, type: 3}
 --- !u!1 &4353575627275380124
 GameObject:
   m_ObjectHideFlags: 0
