@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RF9R2007TKL",
         "name": "com.saens.gyromaze",
-        "processId": 18823,
+        "processId": 28795,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,43 +11,49 @@
         {
             "deviceId": "RF9R2007TKL",
             "name": "com.sec.android.app.launcher",
-            "processId": 2291,
+            "processId": 2109,
             "exited": false
         },
         {
             "deviceId": "RF9R2007TKL",
             "name": "com.saens.gyromaze",
-            "processId": 18342,
+            "processId": 24814,
             "exited": true
         },
         {
             "deviceId": "RF9R2007TKL",
             "name": "com.saens.gyromaze",
-            "processId": 23651,
+            "processId": 26911,
+            "exited": true
+        },
+        {
+            "deviceId": "RF9R2007TKL",
+            "name": "com.saens.gyromaze",
+            "processId": 1070,
+            "exited": true
+        },
+        {
+            "deviceId": "RF9R2007TKL",
+            "name": "com.saens.gyromaze",
+            "processId": 8551,
+            "exited": true
+        },
+        {
+            "deviceId": "RF9R2007TKL",
+            "name": "com.saens.gyromaze",
+            "processId": 16853,
             "exited": true
         },
         {
             "deviceId": "RF9R2007TKL",
             "name": "com.google.android.gms.ui",
-            "processId": 28563,
-            "exited": true
+            "processId": 1349,
+            "exited": false
         },
         {
             "deviceId": "RF9R2007TKL",
             "name": "com.saens.gyromaze",
-            "processId": 28168,
-            "exited": true
-        },
-        {
-            "deviceId": "RF9R2007TKL",
-            "name": "com.saens.gyromaze",
-            "processId": 16295,
-            "exited": true
-        },
-        {
-            "deviceId": "RF9R2007TKL",
-            "name": "com.saens.gyromaze",
-            "processId": 18823,
+            "processId": 28795,
             "exited": false
         }
     ],

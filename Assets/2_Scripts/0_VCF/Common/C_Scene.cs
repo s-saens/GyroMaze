@@ -5,17 +5,16 @@ using UnityEngine.SceneManagement;
 
 public enum SceneEnum
 {
-    Loading = 0,
+    Login = 0,
     Lobby,
     Level,
 }
 
 public class C_Scene : _SingletonMono<C_Scene>
 {
-    [SerializeField] private ClickEvent clickEvent;
-
     public void LoadScene(SceneEnum se)
     {
+        Debug.Log("LOADING~");
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)se, LoadSceneMode.Single);
         IEnumerator sceneMove = SceneMoveCoroutine(loadOperation);
         StartCoroutine(sceneMove);

@@ -16,4 +16,10 @@ public class _SingletonMono<T> : MonoBehaviour where T : _SingletonMono<T>
             return instance;
         }
     }
+
+    private void Awake()
+    {
+        instance = this.GetComponent<T>();
+        DontDestroyOnLoad(instance.gameObject);
+    }
 }

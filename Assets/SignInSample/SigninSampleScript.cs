@@ -91,7 +91,7 @@ namespace SignInSample
             else
             {
                 AddStatusText("Welcome: " + task.Result.DisplayName + "!");
-                UserData.SetCredential(task.Result.IdToken, null);
+
             }
         }
 

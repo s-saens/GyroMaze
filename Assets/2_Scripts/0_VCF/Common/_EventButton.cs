@@ -27,7 +27,9 @@ public class _EventButton : Button
 
     private void InitButton()
     {
-        onClick.AddListener(()=>clickEvent.OnClick?.Invoke(buttonId));
+        onClick.AddListener(()=> {
+            clickEvent.OnClick?.Invoke(buttonId);
+        });
     }
 
     public void SetClickEvent(ClickEvent ce)

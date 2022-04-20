@@ -1,6 +1,3 @@
-using System.Runtime.CompilerServices;
-using System.Globalization;
-using UnityEngine;
 using System;
 
 public class Data<T>

@@ -20,9 +20,4 @@ public class StageSelectionView : MonoBehaviour
     {
         buttons = factory.MakeButtons(20);
     }
-
-    public void UpdateButtons()
-    {
-        
-    }
 }
