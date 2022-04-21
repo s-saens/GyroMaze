@@ -18,15 +18,15 @@ public class StageButton : _EventButton
     [SerializeField] private Sprite circleEmpty;
     [SerializeField] private Sprite circleLock;
 
-    public void ChangeState(int value)
+    public void SetState(StageButtonState value)
     {
-        switch((StageButtonState)value)
+        switch(value)
         {
             case StageButtonState.LOCKED : SetLocked(); break;
             case StageButtonState.OPENED : SetOpened(); break;
             case StageButtonState.CLOSED: SetClosed(); break;
         }
-        levelText.text = value.ToString();
+        levelText.text = (buttonId + 1).ToString();
     }
     private void SetLocked()
     {

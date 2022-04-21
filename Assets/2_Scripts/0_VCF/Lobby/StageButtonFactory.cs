@@ -20,6 +20,7 @@ public class StageButtonFactory : MonoBehaviour
             go.name = $"Level {index+1}";
 
             StageButton b = go.GetComponent<StageButton>();
+
             b.buttonId = index;
             buttons.Add(b);
 

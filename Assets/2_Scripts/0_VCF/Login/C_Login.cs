@@ -22,6 +22,8 @@ public class C_Login : MonoBehaviour
     private FirebaseAuth authInstance;
     private FirebaseDatabase databaseInstance;
 
+    private const string testAccountIdToken = "la6z9gjPwOZwKflp7ThN1amlJhk1";
+
     private void Awake()
     {
         authInstance = FirebaseAuth.DefaultInstance;
@@ -63,6 +65,9 @@ public class C_Login : MonoBehaviour
 
     private void LoginGoogle()
     {
+#if UNITY_EDITOR
+        SetAuthCredential(testAccountIdToken, null);
+#else
         GoogleSignIn.Configuration = configuration;
         GoogleSignIn.Configuration.UseGameSignIn = false;
         GoogleSignIn.Configuration.RequestIdToken = true;
@@ -70,6 +75,7 @@ public class C_Login : MonoBehaviour
         Debug.Log("Google Login...");
 
         GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnLoginFinished).LogExceptionIfFaulted();
+#endif
     }
 
     private void LoginGoogleGames()
