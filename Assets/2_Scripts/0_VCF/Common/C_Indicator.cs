@@ -7,6 +7,7 @@ public class C_Indicator : _SingletonMono<C_Indicator>
 
     public void ShowIndicator()
     {
+        indicator.gameObject.SetActive(true);
         indicator.SetBool("On", true);
     }
     public void HideIndicator()
