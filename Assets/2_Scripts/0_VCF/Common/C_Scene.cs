@@ -22,11 +22,11 @@ public class C_Scene : _SingletonMono<C_Scene>
 
     IEnumerator SceneMoveCoroutine(AsyncOperation loadOperation)
     {
-        C_Indicator.Instance.ShowIndicator("Scene Load");
+        C_Indicator.Instance.ShowIndicator();
         while(!loadOperation.isDone)
         {
             yield return 0;
         }
-        C_Indicator.Instance.HideIndicator("Scene Load");
+        C_Indicator.Instance.HideIndicator();
     }
 }

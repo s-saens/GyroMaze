@@ -3,20 +3,14 @@ using UnityEngine;
 
 public class C_Indicator : _SingletonMono<C_Indicator>
 {
+    [SerializeField] private Animator indicator;
+
     public void ShowIndicator()
     {
-        Debug.Log($"Show Indicator");
-    }
-    public void ShowIndicator(string type)
-    {
-        Debug.Log($"Show Indicator[{type}]");
+        indicator.SetBool("On", true);
     }
     public void HideIndicator()
     {
-        Debug.Log($"Hide Indicator");
-    }
-    public void HideIndicator(string type)
-    {
-        Debug.Log($"Hide Indicator[{type}]");
+        indicator.SetBool("On", false);
     }
 }
