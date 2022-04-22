@@ -21,12 +21,12 @@ public class SwipeInput : MonoBehaviour, IInitializePotentialDragHandler, IBegin
 
     public void OnDrag(PointerEventData e)
     {
-        swipeEvent.OnSwipe?.Invoke(e.delta.x);
+        swipeEvent.OnSwipe?.Invoke(e.delta.x * Time.deltaTime * 60);
     }
 
     public void OnEndDrag(PointerEventData e)
     {
-        swipeEvent.OnSwipeEnd?.Invoke(e.delta.x);
+        swipeEvent.OnSwipeEnd?.Invoke(e.delta.x * Time.deltaTime * 60);
     }
 
 }

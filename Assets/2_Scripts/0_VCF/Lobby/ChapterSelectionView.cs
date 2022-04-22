@@ -26,7 +26,9 @@ public class ChapterSelectionView : MonoBehaviour
 
 
 
+
     // Call From Controller
+    public bool isMoving;
     public void Swipe(float deltaX)
     {
         CancelAllCoroutines();
@@ -134,7 +136,7 @@ public class ChapterSelectionView : MonoBehaviour
     {
         RectTransform rt = (RectTransform)buttons[index].transform;
 
-        float l = (Mathf.Abs(buttons[index].transform.position.x - (Screen.width * 0.5f)) / viewData.originalSize) + 1.2f;
+        float l = (Mathf.Abs(buttons[index].transform.position.x - (Screen.width * 0.5f)) / viewData.originalSize) + 1.4f;
         float size = viewData.originalSize / l;
 
         rt.sizeDelta = size < viewData.minSize ? Vector2.one * size : Vector2.one * viewData.minSize;
@@ -147,11 +149,16 @@ public class ChapterSelectionView : MonoBehaviour
         GlobalData.chapterIndex.value = index;
         magnetCoroutine = MagnetPositionCoroutine();
         StartCoroutine(magnetCoroutine);
+        
     }
 
 
     private IEnumerator SwipeEndCoroutine(float deltaX)
     {
+        isMoving = true;
+        if (deltaX > 100) deltaX = 100 + deltaX / 2;
+        else if (deltaX < -100) deltaX = -100 + deltaX / 2;
+        else deltaX *= 2;
         for (float i = viewData.stopTime * Mathf.Log10(Mathf.Abs(deltaX)) / viewData.originalSize; i >= 0; i -= Time.deltaTime)
         {
             if (IndexOnFirst(deltaX) || IndexOnLast(deltaX))
@@ -172,6 +179,7 @@ public class ChapterSelectionView : MonoBehaviour
             UpdateAllScale();
             yield return 0;
         }
+        yield return 0;
     }
 
     private void CancelAllCoroutines()

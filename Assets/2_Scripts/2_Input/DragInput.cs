@@ -13,6 +13,6 @@ public class DragInput : MonoBehaviour
         Touch t = Input.touches[0];
         Vector2 draggingVector = t.deltaPosition;
 
-        dragEvent.OnDrag?.Invoke(draggingVector);
+        dragEvent.OnDrag?.Invoke(draggingVector * Time.deltaTime * 60);
     }
 }

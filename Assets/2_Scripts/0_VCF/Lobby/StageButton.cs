@@ -31,6 +31,7 @@ public class StageButton : _EventButton
     private void SetLocked()
     {
         image.sprite = circleLock;
+        this.onClick.RemoveAllListeners();
 
         levelText.gameObject.SetActive(false);
     }

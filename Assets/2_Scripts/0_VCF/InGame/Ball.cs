@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionStay(Collision coll)
     {
-        rollEvent.OnRoll?.Invoke(rigid.velocity.magnitude);
+        rollEvent.OnRoll?.Invoke(rigid.velocity.magnitude * Time.deltaTime * 60);
     }
     private void OnCollisionExit(Collision coll)
     {

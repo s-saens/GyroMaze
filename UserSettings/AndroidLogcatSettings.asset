@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RF9R2007TKL",
         "name": "com.saens.gyromaze",
-        "processId": 2334,
+        "processId": 4186,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,18 +13,6 @@
             "name": "com.sec.android.app.launcher",
             "processId": 2109,
             "exited": false
-        },
-        {
-            "deviceId": "RF9R2007TKL",
-            "name": "com.saens.gyromaze",
-            "processId": 5001,
-            "exited": true
-        },
-        {
-            "deviceId": "RF9R2007TKL",
-            "name": "com.saens.gyromaze",
-            "processId": 19715,
-            "exited": true
         },
         {
             "deviceId": "RF9R2007TKL",
@@ -48,6 +36,18 @@
             "deviceId": "RF9R2007TKL",
             "name": "com.saens.gyromaze",
             "processId": 2334,
+            "exited": true
+        },
+        {
+            "deviceId": "RF9R2007TKL",
+            "name": "com.saens.gyromaze",
+            "processId": 23825,
+            "exited": true
+        },
+        {
+            "deviceId": "RF9R2007TKL",
+            "name": "com.saens.gyromaze",
+            "processId": 4186,
             "exited": false
         }
     ],
