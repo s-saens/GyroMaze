@@ -12,9 +12,6 @@ public class C_Login : MonoBehaviour
     // Events
     [SerializeField] private ClickEvent clickEvent;
 
-    // Data
-    [SerializeField] private UserData userData;
-
     // Login
     private int loginType = 0;
     public string clientId = "630965815426-go9stbqquhg1vsa37017ss6c1huqonub.apps.googleusercontent.com";
@@ -178,6 +175,6 @@ public class C_Login : MonoBehaviour
 
     private void SetUserData(User user, FirebaseUser fUser)
     {
-        userData.Set(user, fUser);
+        UserData.Set(user, fUser);
     }
 }

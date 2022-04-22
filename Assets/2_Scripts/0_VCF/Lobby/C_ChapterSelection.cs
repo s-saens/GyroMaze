@@ -9,7 +9,6 @@ public class C_ChapterSelection : MonoBehaviour
 {
     // Data
     [SerializeField] private ChapterSelectionData viewData;
-    [SerializeField] private GlobalData globalData;
 
     // Events : Operation
     [SerializeField] private SwipeEvent swipeEvent;
@@ -23,7 +22,7 @@ public class C_ChapterSelection : MonoBehaviour
     // Register Events
     private void OnEnable()
     {
-        globalData.chapterIndex.onChange += OnChangeChapterIndex;
+        GlobalData.chapterIndex.onChange += OnChangeChapterIndex;
 
         swipeEvent.OnTouchDown += OnTouchDown;
         swipeEvent.OnSwipe += OnSwipe;
@@ -33,7 +32,7 @@ public class C_ChapterSelection : MonoBehaviour
 
     private void OnDisable()
     {
-        globalData.chapterIndex.onChange -= OnChangeChapterIndex;
+        GlobalData.chapterIndex.onChange -= OnChangeChapterIndex;
 
         swipeEvent.OnTouchDown -= OnTouchDown;
         swipeEvent.OnSwipe -= OnSwipe;

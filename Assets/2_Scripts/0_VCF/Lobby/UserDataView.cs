@@ -7,24 +7,23 @@ using TMPro;
 
 public class UserDataView : MonoBehaviour
 {
-    [SerializeField] private UserData userData;
     [SerializeField] private TMP_Text userNameText;
     [SerializeField] private RawImage image;
 
     private void Start()
     {
-        SetNameText(userData.displayName.value);
-        SetProfileImage(userData.imgUrl.value);
+        SetNameText(UserData.displayName.value);
+        SetProfileImage(UserData.imgUrl.value);
     }
     private void OnEnable()
     {
-        userData.displayName.onChange += SetNameText;
-        userData.imgUrl.onChange += SetProfileImage;
+        UserData.displayName.onChange += SetNameText;
+        UserData.imgUrl.onChange += SetProfileImage;
     }
     private void OnDisable()
     {
-        userData.displayName.onChange -= SetNameText;
-        userData.imgUrl.onChange -= SetProfileImage;
+        UserData.displayName.onChange -= SetNameText;
+        UserData.imgUrl.onChange -= SetProfileImage;
     }
 
     private void SetNameText(string name)
@@ -35,13 +34,14 @@ public class UserDataView : MonoBehaviour
     private IEnumerator getTextureCoroutine;
     private void SetProfileImage(Uri imgUrl)
     {
-        if(getTextureCoroutine != null)
-        {
-            StopCoroutine(getTextureCoroutine);
-        }
+        if(imgUrl == null) return;
+
+        if(getTextureCoroutine != null) StopCoroutine(getTextureCoroutine);
+
         getTextureCoroutine = GetTexture(imgUrl);
         StartCoroutine(getTextureCoroutine);
     }
+
     private IEnumerator GetTexture(Uri imgUrl)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imgUrl);

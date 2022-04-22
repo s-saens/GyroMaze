@@ -8,8 +8,6 @@ using UnityEngine.EventSystems;
 public class StageSelectionView : MonoBehaviour
 {
     // Data
-    [SerializeField] private UserData userData;
-    [SerializeField] private GlobalData globalData;
 
     // Factory
     [SerializeField] private StageButtonFactory factory;
@@ -34,12 +32,12 @@ public class StageSelectionView : MonoBehaviour
         {
             StageButton b = buttons[i];
 
-            if (globalData.chapterIndex.value > userData.chapter.value - 1) b.SetState(StageButtonState.LOCKED);
-            else if (globalData.chapterIndex.value < userData.chapter.value - 1) b.SetState(StageButtonState.CLOSED);
+            if (GlobalData.chapterIndex.value > UserData.chapter.value - 1) b.SetState(StageButtonState.LOCKED);
+            else if (GlobalData.chapterIndex.value < UserData.chapter.value - 1) b.SetState(StageButtonState.CLOSED);
             else
             {
-                if (i == userData.stage.value - 1) b.SetState(StageButtonState.OPENED);
-                else if (i < userData.stage.value - 1) b.SetState(StageButtonState.CLOSED);
+                if (i == UserData.stage.value - 1) b.SetState(StageButtonState.OPENED);
+                else if (i < UserData.stage.value - 1) b.SetState(StageButtonState.CLOSED);
                 else b.SetState(StageButtonState.LOCKED);
             }
         }

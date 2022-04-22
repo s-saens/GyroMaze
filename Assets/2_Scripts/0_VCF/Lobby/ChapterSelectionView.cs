@@ -8,7 +8,6 @@ public class ChapterSelectionView : MonoBehaviour
 {
     // Data
     public ChapterSelectionData viewData;
-    public GlobalData globalData;
 
     // Events
     public SlideEvent slideEvent;
@@ -80,7 +79,7 @@ public class ChapterSelectionView : MonoBehaviour
     {
         get
         {
-            return -globalData.chapterIndex.value * viewData.originalSize;
+            return -GlobalData.chapterIndex.value * viewData.originalSize;
         }
     }
     private int LastIndexPositionX
@@ -107,20 +106,20 @@ public class ChapterSelectionView : MonoBehaviour
     }
     private bool IndexOnFirst(float deltaX)
     {
-        return (globalData.chapterIndex.value <= 0 && deltaX >= 0);
+        return (GlobalData.chapterIndex.value <= 0 && deltaX >= 0);
     }
     private bool IndexOnLast(float deltaX)
     {
-        return (globalData.chapterIndex.value >= viewData.chapterCount - 1 && deltaX <= 0);
+        return (GlobalData.chapterIndex.value >= viewData.chapterCount - 1 && deltaX <= 0);
     }
 
 
 
     private void UpdateIndex()
     {
-        globalData.chapterIndex.value = -(int)((buttonsParent.transform.localPosition.x - (viewData.originalSize * 0.5f)) / viewData.originalSize);
-        if (globalData.chapterIndex.value < 0) globalData.chapterIndex.value = 0;
-        if (globalData.chapterIndex.value >= viewData.chapterCount) globalData.chapterIndex.value = viewData.chapterCount - 1;
+        GlobalData.chapterIndex.value = -(int)((buttonsParent.transform.localPosition.x - (viewData.originalSize * 0.5f)) / viewData.originalSize);
+        if (GlobalData.chapterIndex.value < 0) GlobalData.chapterIndex.value = 0;
+        if (GlobalData.chapterIndex.value >= viewData.chapterCount) GlobalData.chapterIndex.value = viewData.chapterCount - 1;
     }
 
     private void UpdateAllScale()
@@ -145,7 +144,7 @@ public class ChapterSelectionView : MonoBehaviour
     {
         CancelAllCoroutines();
 
-        globalData.chapterIndex.value = index;
+        GlobalData.chapterIndex.value = index;
         magnetCoroutine = MagnetPositionCoroutine();
         StartCoroutine(magnetCoroutine);
     }
