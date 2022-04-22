@@ -18,14 +18,9 @@ public class StageSelectionView : MonoBehaviour
     private void Start()
     {
         buttons = factory.MakeButtons(20);
-        OnEnable();
-    }
-
-    private void OnEnable()
-    {
         UpdateButtons();
     }
-
+    
     public void UpdateButtons()
     {
         for(int i=0 ; i<buttons.Count ; ++i)

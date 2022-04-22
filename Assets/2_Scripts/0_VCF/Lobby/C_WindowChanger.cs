@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class C_WindowChanger : MonoBehaviour
 {
@@ -8,8 +9,11 @@ public class C_WindowChanger : MonoBehaviour
     [SerializeField] private ClickEvent backButtonClickEvent;
 
 
-    [SerializeField] private GameObject chapterSelectionView;
-    [SerializeField] private GameObject stageSelectionView;
+    [SerializeField] private ChapterSelectionView chapterSelectionView;
+    [SerializeField] private StageSelectionView stageSelectionView;
+
+    [SerializeField] private EventSystem eventSystem;
+
 
     private void OnEnable()
     {
@@ -27,8 +31,11 @@ public class C_WindowChanger : MonoBehaviour
 
     private void OnChpaterButton(int value)
     {
-        chapterSelectionView.SetActive(false);
-        stageSelectionView.SetActive(true);
+        eventSystem.SetSelectedGameObject(null);
+        GlobalData.chapterIndex.value = value;
+        chapterSelectionView.gameObject.SetActive(false);
+        stageSelectionView.gameObject.SetActive(true);
+        stageSelectionView.UpdateButtons();
     }
 
     private void OnStageButton(int value)
@@ -38,8 +45,8 @@ public class C_WindowChanger : MonoBehaviour
 
     private void OnBackButton(int value)
     {
-        chapterSelectionView.SetActive(true);
-        stageSelectionView.SetActive(false);
+        chapterSelectionView.gameObject.SetActive(true);
+        stageSelectionView.gameObject.SetActive(false);
     }
 
 }

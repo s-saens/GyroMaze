@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using TMPro;
 
 
 public class C_ChapterSelection : MonoBehaviour
@@ -14,7 +10,6 @@ public class C_ChapterSelection : MonoBehaviour
     [SerializeField] private SwipeEvent swipeEvent;
     [SerializeField] private SlideEvent slideEvent;
     [SerializeField] private ClickEvent clickEvent;
-    [SerializeField] private EventSystem eventSystem;
 
     // Views
     [SerializeField] private ChapterSelectionView chapterSwipeView;

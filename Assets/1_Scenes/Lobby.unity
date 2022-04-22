@@ -318,11 +318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
-  globalData: {fileID: 11400000, guid: 88e516ae1baaa432f8dc9efe11a292ea, type: 2}
   swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
   slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
   clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
-  eventSystem: {fileID: 1381873723}
   chapterSwipeView: {fileID: 1546908993}
 --- !u!1 &163443931
 GameObject:
@@ -892,8 +890,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccb3cc490bbe482f98553a9169d52d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userData: {fileID: 11400000, guid: 125fa4f6a8ffe4584bb6bea199e99e35, type: 2}
-  globalData: {fileID: 11400000, guid: 88e516ae1baaa432f8dc9efe11a292ea, type: 2}
   factory: {fileID: 487508473}
   buttons: []
 --- !u!1 &1282640829
@@ -1269,7 +1265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
-  globalData: {fileID: 11400000, guid: 88e516ae1baaa432f8dc9efe11a292ea, type: 2}
   slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
   clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
   slider: {fileID: 1745732132}
@@ -1640,8 +1635,9 @@ MonoBehaviour:
     type: 2}
   backButtonClickEvent: {fileID: 11400000, guid: 6e7ba197615d9435db49153ff97fb3c4,
     type: 2}
-  chapterSelectionView: {fileID: 1546908991}
-  stageSelectionView: {fileID: 977376507}
+  chapterSelectionView: {fileID: 1546908993}
+  stageSelectionView: {fileID: 977376509}
+  eventSystem: {fileID: 1381873723}
 --- !u!1001 &4088104065289462913
 PrefabInstance:
   m_ObjectHideFlags: 0
