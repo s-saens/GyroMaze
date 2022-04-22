@@ -25,6 +25,6 @@ public class GyroInput : MonoBehaviour
         {
             return;
         }
-        gyroEvent.OnGyroAttitude.Invoke(gyro);
+        gyroEvent.OnGyroAttitude?.Invoke(gyro);
     }
 }

@@ -23,23 +23,24 @@ public class ZoomInput : MonoBehaviour
         Touch t1 = Input.touches[0];
         Touch t2 = Input.touches[1];
 
+        float nowDistance = Vector2.Distance(t1.position, t2.position) / 1920;
+
         if(!touchStarted)
         {
-            lastDistance = Vector2.Distance(t1.position, t2.position) / 1920;
+            lastDistance = nowDistance;
             touchStarted = true;
+            return;
         }
-
-        float nowDistance = Vector2.Distance(t1.position, t2.position) / 1920;
 
         float deltaDistance = nowDistance - lastDistance;
 
         if(deltaDistance > 0.001f) // 두 점 사이가 멀어짐 : 축소
         {
-            zoomEvent.OnZoom.Invoke(deltaDistance);
+            zoomEvent.OnZoom?.Invoke(deltaDistance);
         }
         else if(deltaDistance < -0.001f) // 두 점 사이가 가까워짐 : 확대
         {
-            zoomEvent.OnZoom.Invoke(deltaDistance);
+            zoomEvent.OnZoom?.Invoke(deltaDistance);
         }
 
         lastDistance = nowDistance;
