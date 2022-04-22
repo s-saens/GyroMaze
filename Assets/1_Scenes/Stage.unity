@@ -972,8 +972,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 963194228}
   - {fileID: 1049795344}
+  - {fileID: 963194228}
   - {fileID: 82316025}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -2757,12 +2757,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 7.36, z: 0}
+  m_LocalPosition: {x: 0, y: 7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 366413481}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -3057,7 +3057,7 @@ PrefabInstance:
     - target: {fileID: 4088104064668648607, guid: 65e280b111e9642239b327a2e46583e2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4088104064668648607, guid: 65e280b111e9642239b327a2e46583e2,
         type: 3}
@@ -5058,11 +5058,11 @@ MonoBehaviour:
   zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
   cam: {fileID: 963194228}
   target: {fileID: 868897198}
-  minCamPositionY: 3
-  camPositionY: 5
+  minCamPositionY: 5
+  camPositionY: 7.5
   maxCamPositionY: 10
-  lerpTime: 1
-  zoomStrength: 5
+  lerpTime: 0.75
+  zoomStrength: 7.5
 --- !u!4 &3784299502188223976
 Transform:
   m_ObjectHideFlags: 0
