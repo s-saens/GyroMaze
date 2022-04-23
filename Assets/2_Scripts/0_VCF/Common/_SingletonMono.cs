@@ -9,9 +9,7 @@ public class _SingletonMono<T> : MonoBehaviour where T : _SingletonMono<T>
         {
             if(instance == null)
             {
-                instance = FindObjectOfType<T>();
                 if (instance == null) Debug.LogError("SINGLETON OBJECT DOES NOT EXIST.");
-                DontDestroyOnLoad(instance.gameObject);
             }
             return instance;
         }
@@ -20,6 +18,5 @@ public class _SingletonMono<T> : MonoBehaviour where T : _SingletonMono<T>
     private void Awake()
     {
         instance = this.GetComponent<T>();
-        DontDestroyOnLoad(instance.gameObject);
     }
 }
