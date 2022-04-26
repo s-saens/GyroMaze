@@ -47,7 +47,7 @@ public class Node
 }
 
 
-public class MazeGenerator : EditorWindow
+public class MazeGeneratorWindow : EditorWindow
 {
     // Inputs
     private Vector2Int size = new Vector2Int(1, 1);
@@ -369,7 +369,7 @@ public class MazeGenerator : EditorWindow
     public static void ShowWindow()
     {
         //Show existing window instance. If one doesn't exist, make one.
-        EditorWindow.GetWindow(typeof(MazeGenerator));
+        EditorWindow.GetWindow(typeof(MazeGeneratorWindow));
     }
 
     void OnGUI()
