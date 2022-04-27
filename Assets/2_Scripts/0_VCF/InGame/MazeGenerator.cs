@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,8 +29,6 @@ public class MazeGenerator
 {
     private int[] dx = new int[4] { 0, 0, -1, 1 };
     private int[] dy = new int[4] { -1, 1, 0, 0 };
-    private int[] dxw = new int[4] { 0, 0, 1, 0 };
-    private int[] dyw = new int[4] { 1, 0, 0, 0 };
 
     Maze maze;
     int maxDistance = 0;
@@ -40,42 +37,37 @@ public class MazeGenerator
     {
         maze = new Maze(sizeX, sizeY);
 
-        DFS(startX, startY, 1, -1);
-        Debug.Log(maze);
+        DFS(startX, startY, 1);
 
         return maze;
     }
 
-    private void DFS(int x, int y, int dist, int lastDir)
+    private void DFS(int x, int y, int dist)
     {
-        if (x < 0 || x >= maze.sizeX || y < 0 || y >= maze.sizeY || maze.distances[y, x] > 0) return;
-
         maze.distances[y, x] = dist;
         maxDistance = Mathf.Max(maxDistance, dist);
 
-        // 벽 파괴
-        if (lastDir >= 0)
-        {
-            if(lastDir == 0) maze.horizontalWalls[y + 1, x] = false;
-            else if(lastDir == 1) maze.horizontalWalls[y, x] = false;
-            else if(lastDir == 2) maze.verticalWalls[y, x+1] = false;
-            else if(lastDir == 3) maze.verticalWalls[y, x] = false;
-
-            Debug.Log("!");
-        }
-
         List<int> directionToGo = new List<int>() {0, 1, 2, 3};
-
-        while(directionToGo.Count > 0)
+        int cnt = 4;
+        while(cnt > 0)
         {
-            int index = Random.Range(0, directionToGo.Count);
+            int index = Random.Range(0, cnt);
             int dir = directionToGo[index];
             directionToGo.RemoveAt(index);
-            
+            cnt--;
+
             int nx = x + dx[dir];
             int ny = y + dy[dir];
 
-            DFS(nx, ny, dist+1, dir);
+            if (nx < 0 || nx >= maze.sizeX || ny < 0 || ny >= maze.sizeY || maze.distances[ny, nx] > 0) continue;
+
+            // 벽 파괴
+            if (dir == 0) {maze.horizontalWalls[y, x] = false;}
+            else if (dir == 1) {maze.horizontalWalls[y + 1, x] = false;}
+            else if (dir == 2) {maze.verticalWalls[y, x] = false;}
+            else if (dir == 3) {maze.verticalWalls[y, x + 1] = false;}
+
+            DFS(nx, ny, dist+1);
         }
     }
 }

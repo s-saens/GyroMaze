@@ -1,5 +1,3 @@
-using System.Runtime.CompilerServices;
-using System.Reflection.Emit;
 using UnityEngine;
 using Newtonsoft.Json;
 
@@ -20,7 +18,7 @@ public class MazeFactory : MonoBehaviour
     private void Start() // TEST CODE
     {
         MazeGenerator gen = new MazeGenerator();
-        Maze m = gen.MakeMazeDFS(5, 5, 2, 2);
+        Maze m = gen.MakeMazeDFS(100, 100, 1, 1);
 
         MakeMaze(m);
     }
@@ -38,7 +36,7 @@ public class MazeFactory : MonoBehaviour
 
     private void Make()
     {
-        // MakeFloor();
+        MakeFloor();
         MakeCeiling();
 
         MakeHorizontalWalls();

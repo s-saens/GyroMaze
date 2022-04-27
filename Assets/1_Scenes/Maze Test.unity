@@ -159,7 +159,7 @@ MonoBehaviour:
   ceilingPrefab: {fileID: 937324120177417701, guid: 85af22861cc974d01912153de8fb8b30,
     type: 3}
   spaceSize: 1
-  wallThickness: 0.1
+  wallThickness: 0.3
   wallHeight: 1
   panelThickness: 0.1
 --- !u!4 &894840118
