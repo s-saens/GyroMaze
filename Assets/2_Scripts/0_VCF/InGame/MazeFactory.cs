@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Reflection.Emit;
 using UnityEngine;
 using Newtonsoft.Json;
@@ -10,7 +11,7 @@ public class MazeFactory : MonoBehaviour
 
     [SerializeField] private float spaceSize = 1; // World 내에서 한 칸의 길이
     [SerializeField] private float wallThickness = 0.1f; // 벽의 두께 = x scale(세로벽 기준)
-    [SerializeField] private float wallHeight = 0.1f; // 벽의 높이 = y scale
+    [SerializeField] private float wallHeight = 1f; // 벽의 높이 = y scale
 
     [SerializeField] private float panelThickness = 0.1f; // floor, ceiling의 두께 = y scale
 
@@ -18,22 +19,10 @@ public class MazeFactory : MonoBehaviour
 
     private void Start() // TEST CODE
     {
-        Maze m = new Maze();
+        MazeGenerator gen = new MazeGenerator();
+        Maze m = gen.MakeMazeDFS(5, 5, 2, 2);
 
-        maze.X = 4;
-        maze.Y = 4;
-        maze.horizontalWalls = new bool[5][] {  new bool[4] {true, true, true, true },
-                                                new bool[4] {false, true, false, false },
-                                                new bool[4] {true, false, true, false },
-                                                new bool[4] {false, true, false, false },
-                                                new bool[4] {true, true, true, true } };
-
-        maze.verticalWalls = new bool[4][] {    new bool[5] {true, true, false, false, true },
-                                                new bool[5] {true, false, false, true, true },
-                                                new bool[5] {true, false, true, true, true },
-                                                new bool[5] {true, false, true, false, true } };
-
-                                                MakeMaze(m);
+        MakeMaze(m);
     }
 
     public void MakeMaze(Maze m)
@@ -49,47 +38,64 @@ public class MazeFactory : MonoBehaviour
 
     private void Make()
     {
-        MakeFloor();
+        // MakeFloor();
+        MakeCeiling();
+
         MakeHorizontalWalls();
         MakeVerticalWalls();
+
+        MakeStartPoint();
+        MakeEndPoint();
     }
 
     private void MakeFloor()
     {
         GameObject floor = Instantiate(floorPrefab, this.transform);
-        float sizeX = spaceSize * maze.X + wallThickness;
-        float sizeZ = spaceSize * maze.Y + wallThickness;
+        float sizeX = spaceSize * maze.sizeX + wallThickness;
+        float sizeZ = spaceSize * maze.sizeY + wallThickness;
         floor.transform.localScale = new Vector3(sizeX, panelThickness, sizeZ);
+        float posX = spaceSize * maze.sizeX * 0.5f;
+        float posZ = spaceSize * maze.sizeY * 0.5f;
+        floor.transform.localPosition = new Vector3(posX, -(wallHeight+panelThickness) * 0.5f, posZ);
     }
     private void MakeCeiling()
     {
         GameObject ceiling = Instantiate(ceilingPrefab, this.transform);
-        float sizeX = spaceSize * maze.X + wallThickness;
-        float sizeZ = spaceSize * maze.Y + wallThickness;
+        float sizeX = spaceSize * maze.sizeX + wallThickness;
+        float sizeZ = spaceSize * maze.sizeY + wallThickness;
         ceiling.transform.localScale = new Vector3(sizeX, panelThickness, sizeZ);
+        float posX = spaceSize * maze.sizeX * 0.5f;
+        float posZ = spaceSize * maze.sizeY * 0.5f;
+        ceiling.transform.localPosition = new Vector3(posX, (wallHeight+ panelThickness) * 0.5f, posZ);
     }
 
     private void MakeHorizontalWalls()
     {
         // 행 고정 후 x좌표 순회
-        for(int y = 0 ; y < maze.Y + 1 ; ++y)
+        for(int y = 0 ; y < maze.sizeY + 1 ; ++y)
         {
             int seq = 0;
-            for(int x = 0 ; x < maze.X ; ++x)
+            for(int x = 0 ; x < maze.sizeX ; ++x)
             {
-                bool isWall = maze.horizontalWalls[y][x];
+                bool isWall = maze.horizontalWalls[y,x];
 
-                if(isWall)
+                if(isWall && x < maze.sizeX - 1)
                 {
                     seq++;
                 }
                 else
                 {
-                    if (seq > 0 || x == maze.X - 1)
+                    if (seq > 0 || x == maze.sizeX - 1)
                     {
                         GameObject wall = Instantiate(wallPrefab, this.transform);
 
                         // Set Scale
+                        if (x == maze.sizeX - 1 && isWall)
+                        {
+                            x++;
+                            seq++;
+                        }
+
                         float wallLength = spaceSize * seq + wallThickness;
                         wall.transform.localScale = new Vector3(wallLength, wallHeight, wallThickness);
 
@@ -107,24 +113,30 @@ public class MazeFactory : MonoBehaviour
     private void MakeVerticalWalls()
     {
         // 열 고정 후 y좌표 순회 (World에서는 z좌표임)
-        for(int x = 0 ; x < maze.X + 1 ; ++x)
+        for(int x = 0 ; x < maze.sizeX + 1 ; ++x)
         {
             int seq = 0;
-            for(int y = 0 ; y < maze.Y ; ++y)
+            for(int y = 0 ; y < maze.sizeY ; ++y)
             {
-                bool isWall = maze.horizontalWalls[y][x];
+                bool isWall = maze.verticalWalls[y,x];
 
-                if (isWall)
+                if (isWall && y < maze.sizeY - 1)
                 {
                     seq++;
                 }
                 else
                 {
-                    if (seq > 0 || x == maze.X - 1)
+                    if (seq > 0 || y == maze.sizeY - 1)
                     {
                         GameObject wall = Instantiate(wallPrefab, this.transform);
 
                         // Set Scale
+                        if (y == maze.sizeY - 1 && isWall)
+                        {
+                            y++;
+                            seq++;
+                        }
+
                         float wallLength = spaceSize * seq + wallThickness;
                         wall.transform.localScale = new Vector3(wallThickness, wallHeight, wallLength);
 
@@ -138,6 +150,13 @@ public class MazeFactory : MonoBehaviour
                 }
             }
         }
+    }
+    private void MakeStartPoint()
+    {
+
+    }
+    private void MakeEndPoint()
+    {
 
     }
 }
