@@ -9,6 +9,7 @@ public class Maze
     public int[,] distances; // [Y][X]
     public int startX, startY;
     public int endX, endY;
+    public int maxDistance = 0;
 
     public Maze(int sizeX, int sizeY)
     {
@@ -30,8 +31,7 @@ public class MazeGenerator
     private int[] dx = new int[4] { 0, 0, -1, 1 };
     private int[] dy = new int[4] { -1, 1, 0, 0 };
 
-    Maze maze;
-    int maxDistance = 0;
+    private Maze maze;
 
     public Maze MakeMazeDFS(int sizeX, int sizeY, int startX, int startY)
     {
@@ -45,7 +45,12 @@ public class MazeGenerator
     private void DFS(int x, int y, int dist)
     {
         maze.distances[y, x] = dist;
-        maxDistance = Mathf.Max(maxDistance, dist);
+        if(dist >= maze.maxDistance)
+        {
+            maze.maxDistance = dist;
+            maze.endX = x;
+            maze.endY = y;
+        }
 
         List<int> directionToGo = new List<int>() {0, 1, 2, 3};
         int cnt = 4;

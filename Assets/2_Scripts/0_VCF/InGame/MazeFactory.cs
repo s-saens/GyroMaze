@@ -9,19 +9,11 @@ public class MazeFactory : MonoBehaviour
 
     [SerializeField] private float spaceSize = 1; // World 내에서 한 칸의 길이
     [SerializeField] private float wallThickness = 0.1f; // 벽의 두께 = x scale(세로벽 기준)
-    [SerializeField] private float wallHeight = 1f; // 벽의 높이 = y scale
+    [SerializeField] private float wallHeight = 2f; // 벽의 높이 = y scale
 
     [SerializeField] private float panelThickness = 0.1f; // floor, ceiling의 두께 = y scale
 
     private Maze maze;
-
-    private void Start() // TEST CODE
-    {
-        MazeGenerator gen = new MazeGenerator();
-        Maze m = gen.MakeMazeDFS(100, 100, 1, 1);
-
-        MakeMaze(m);
-    }
 
     public void MakeMaze(Maze m)
     {

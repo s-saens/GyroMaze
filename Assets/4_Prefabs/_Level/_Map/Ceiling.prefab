@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1793287312510755644}
   - component: {fileID: 3145295260135727859}
   m_Layer: 0
-  m_Name: Glass
+  m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
