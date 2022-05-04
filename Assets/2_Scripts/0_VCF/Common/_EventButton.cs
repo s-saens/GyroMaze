@@ -31,11 +31,4 @@ public class _EventButton : Button
             clickEvent.OnClick?.Invoke(buttonId);
         });
     }
-
-    public void SetClickEvent(ClickEvent ce)
-    {
-        clickEvent = ce;
-        InitButton();
-    }
-
 }

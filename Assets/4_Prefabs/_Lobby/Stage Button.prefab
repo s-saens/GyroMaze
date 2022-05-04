@@ -68,8 +68,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d369e5393fbfe440598fa319db84c0ae, type: 2}
+  m_sharedMaterial: {fileID: 4355659802319571872, guid: d369e5393fbfe440598fa319db84c0ae,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 447.55
+  m_fontSize: 333.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -147,9 +148,9 @@ GameObject:
   - component: {fileID: 3102440120941692895}
   - component: {fileID: 3102440120941692894}
   - component: {fileID: 3102440120941692864}
-  - component: {fileID: 8229817736027779538}
+  - component: {fileID: 1011148931139046810}
   m_Layer: 5
-  m_Name: Chapter Button
+  m_Name: Stage Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +235,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8229817736027779538
+--- !u!114 &1011148931139046810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3102440120941692866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8248e1623fff4c57840297469df2331, type: 3}
+  m_Script: {fileID: 11500000, guid: 34f54da7c811b44359764f94525f4a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -253,7 +254,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 3
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}

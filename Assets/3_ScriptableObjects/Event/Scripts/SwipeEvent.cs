@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "ChapterSwipeEvent", menuName = "Events/ChapterSwipeEvent")]
+[CreateAssetMenu(fileName = "StageSwipeEvent", menuName = "Events/StageSwipeEvent")]
 public class SwipeEvent : ScriptableObject
 {
     public Action OnTouchDown;

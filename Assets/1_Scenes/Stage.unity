@@ -209,9 +209,11 @@ MonoBehaviour:
   ceilingPrefab: {fileID: 937324120177417701, guid: 85af22861cc974d01912153de8fb8b30,
     type: 3}
   spaceSize: 1
-  wallThickness: 0.1
+  wallThickness: 0.2
   wallHeight: 1.5
   panelThickness: 3
+  ball: {fileID: 2023787923}
+  endFlag: {fileID: 0}
 --- !u!1 &265457594
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +482,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &521260164
 RectTransform:
@@ -733,7 +735,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 868897197}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2023787923}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4da8666a1f79346e8aca72b5be237529, type: 3}
@@ -1289,6 +1291,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backEvent: {fileID: 11400000, guid: 6e7ba197615d9435db49153ff97fb3c4, type: 2}
+--- !u!1 &2023787923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7305436860757237840, guid: e69536a1cfbd74eaf96d4ef29822cd32,
+    type: 3}
+  m_PrefabInstance: {fileID: 868897197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &12218329151101595
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,7 +1374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &3038738708908143504
 MonoBehaviour:
   m_ObjectHideFlags: 0
