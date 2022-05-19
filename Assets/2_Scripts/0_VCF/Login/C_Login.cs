@@ -16,15 +16,13 @@ public class C_Login : MonoBehaviour
     private int loginType = 0;
     public string clientId = "630965815426-go9stbqquhg1vsa37017ss6c1huqonub.apps.googleusercontent.com";
     private GoogleSignInConfiguration configuration;
-    private FirebaseAuth authInstance;
-    private FirebaseDatabase databaseInstance;
 
     private const string testAccountIdToken = "la6z9gjPwOZwKflp7ThN1amlJhk1";
 
     private void Awake()
     {
-        authInstance = FirebaseAuth.DefaultInstance;
-        databaseInstance = FirebaseDatabase.GetInstance("https://gyromaze-a8ee3-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseInstances.auth = FirebaseAuth.DefaultInstance;
+        FirebaseInstances.db = FirebaseDatabase.GetInstance("https://gyromaze-a8ee3-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
         configuration = new GoogleSignInConfiguration
         {
@@ -114,7 +112,7 @@ public class C_Login : MonoBehaviour
 
         Debug.Log("Setting Credetial");
 
-        authInstance.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
+        FirebaseInstances.auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
         {
             if(task.IsCompleted)
             {
@@ -129,7 +127,7 @@ public class C_Login : MonoBehaviour
 
     private void SearchUserFromDatabase(FirebaseUser fUser)
     {
-        DatabaseReference userDataRef = databaseInstance.GetReference("user").Child(fUser.UserId);
+        DatabaseReference userDataRef = FirebaseInstances.db.GetReference("user").Child(fUser.UserId);
 
         Debug.Log("Searching User From Database");
 

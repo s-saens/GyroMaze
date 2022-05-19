@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1effab79e064d308bd6b4e32b1f734, type: 3}
   m_Name: StageSelectionData
   m_EditorClassIdentifier: 
-  chapterCount: 500
-  visibleChapterCount: 3
+  stageCount: 500
+  visibleStageCount: 3
   maxDeltaX: 100
   originalSize: 500
   minSize: 300

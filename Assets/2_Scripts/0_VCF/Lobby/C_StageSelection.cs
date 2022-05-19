@@ -17,7 +17,7 @@ public class C_StageSelection : MonoBehaviour
     // Register Events
     private void OnEnable()
     {
-        GlobalData.stageIndex.onChange += OnChangeStageIndex;
+        GameData.stageIndex.onChange += OnChangeStageIndex;
 
         swipeEvent.OnTouchDown += OnTouchDown;
         swipeEvent.OnSwipe += OnSwipe;
@@ -28,7 +28,7 @@ public class C_StageSelection : MonoBehaviour
 
     private void OnDisable()
     {
-        GlobalData.stageIndex.onChange -= OnChangeStageIndex;
+        GameData.stageIndex.onChange -= OnChangeStageIndex;
 
         swipeEvent.OnTouchDown -= OnTouchDown;
         swipeEvent.OnSwipe -= OnSwipe;
