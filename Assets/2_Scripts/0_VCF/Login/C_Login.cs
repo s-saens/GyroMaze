@@ -64,11 +64,20 @@ public class C_Login : MonoBehaviour
         
 #if UNITY_EDITOR
         Debug.Log("Test Login...");
-        Test_SearchUserOnDatabase("TESTACCOUNT");
+        TestLogin("TESTACCOUNT");
 #else
         Debug.Log("Google Login...");
         GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnLoginFinished).LogExceptionIfFaulted();
 #endif
+    }
+
+    private void TestLogin(string uid)
+    {
+        UserData.SetFirebaseUser_Test(uid, "TestAccount");
+        DatabaseUpdater.UpdateUser(() =>
+        {
+            C_Scene.Instance.LoadScene(SceneEnum.Lobby);
+        });
     }
 
     private void LoginGoogleGames()
@@ -101,8 +110,8 @@ public class C_Login : MonoBehaviour
             PlayerPrefs.SetInt(ConstData.KEY_LOGIN_TYPE, loginType);
             return;
         }
-
         Debug.LogWarning("Login Failed");
+
         C_Indicator.Instance.HideIndicator();
     }
 
@@ -116,7 +125,11 @@ public class C_Login : MonoBehaviour
         {
             if(task.IsCompleted)
             {
-                SearchUserFromDatabase(task.Result);
+                UserData.SetFirebaseUser(task.Result);
+
+                DatabaseUpdater.UpdateUser(() => {
+                    C_Scene.Instance.LoadScene(SceneEnum.Lobby);
+                });
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
@@ -124,108 +137,4 @@ public class C_Login : MonoBehaviour
             C_Indicator.Instance.HideIndicator();
         }).LogExceptionIfFaulted();
     }
-
-    private void SearchUserFromDatabase(FirebaseUser fUser)
-    {
-        DatabaseReference userDataRef = FirebaseInstances.db.GetReference("user").Child(fUser.UserId);
-        
-        Debug.Log($"Searching User From Database : {fUser.UserId}");
-
-        userDataRef.GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsCompleted)
-            {
-                if (task.Result.Value == null)
-                {
-                    AddUserOnDatabase(fUser, userDataRef);
-                    return;
-                }
-                User user = JsonConvert.DeserializeObject<User>(task.Result.GetRawJsonValue());
-                SetUserData(user, fUser);
-                C_Scene.Instance.LoadScene(SceneEnum.Lobby);
-                return;
-            }
-
-            Debug.LogWarning("Searching User From Database Failed");
-
-            C_Indicator.Instance.HideIndicator();
-        }).LogExceptionIfFaulted();
-    }
-
-    private void AddUserOnDatabase(FirebaseUser fUser, DatabaseReference userDataRef)
-    {
-        Debug.Log("Adding User On Database");
-
-        User user = new User(fUser.DisplayName);
-        string userJson = JsonConvert.SerializeObject(user);
-
-        userDataRef.SetRawJsonValueAsync(userJson).ContinueWithOnMainThread(task =>
-        {
-            if(task.IsCompleted)
-            {
-                SetUserData(user, fUser);
-                C_Scene.Instance.LoadScene(SceneEnum.Lobby);
-                return;
-            }
-            Debug.LogWarning("Adding User On Database Failed");
-        }).LogExceptionIfFaulted();
-    }
-
-    private void SetUserData(User user, FirebaseUser fUser)
-    {
-        UserData.Set(user, fUser);
-    }
-
-
-#region TEST ACCOUNT
-    private void Test_SearchUserOnDatabase(string uid)
-    {
-        DatabaseReference userDataRef = FirebaseInstances.db.GetReference("user").Child(uid);
-
-        userDataRef.GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsCompleted)
-            {
-                if (task.Result.Value == null)
-                {
-                    Test_AddUserOnDatabase(uid, userDataRef);
-                    return;
-                }
-                User user = JsonConvert.DeserializeObject<User>(task.Result.GetRawJsonValue());
-                Test_SetUserData(user);
-                C_Scene.Instance.LoadScene(SceneEnum.Lobby);
-                return;
-            }
-
-            Debug.LogWarning("Searching User From Database Failed");
-
-            C_Indicator.Instance.HideIndicator();
-        }).LogExceptionIfFaulted();
-    }
-
-    private void Test_AddUserOnDatabase(string uid, DatabaseReference userDataRef)
-    {
-        Debug.Log("Adding User On Database");
-
-        User user = new User("Test");
-        string userJson = JsonConvert.SerializeObject(user);
-
-        userDataRef.SetRawJsonValueAsync(userJson).ContinueWithOnMainThread(task =>
-        {
-            if (task.IsCompleted)
-            {
-                Test_SetUserData(user);
-                C_Scene.Instance.LoadScene(SceneEnum.Lobby);
-                return;
-            }
-            Debug.LogWarning("Adding User On Database Failed");
-        }).LogExceptionIfFaulted();
-    }
-
-    private void Test_SetUserData(User user)
-    {
-        UserData.Set(user);
-    }
-#endregion
-
 }

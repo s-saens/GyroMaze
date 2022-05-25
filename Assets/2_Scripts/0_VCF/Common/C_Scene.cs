@@ -12,15 +12,15 @@ public enum SceneEnum
 
 public class C_Scene : _SingletonMono<C_Scene>
 {
-    public void LoadScene(SceneEnum se)
+    public void LoadScene(SceneEnum se, bool indicator = true)
     {
         Debug.Log("LOADING~");
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)se, LoadSceneMode.Single);
-        IEnumerator sceneMove = SceneMoveCoroutine(loadOperation);
+        IEnumerator sceneMove = SceneMoveCoroutine(loadOperation, indicator);
         StartCoroutine(sceneMove);
     }
 
-    IEnumerator SceneMoveCoroutine(AsyncOperation loadOperation)
+    IEnumerator SceneMoveCoroutine(AsyncOperation loadOperation, bool indicator = true)
     {
         C_Indicator.Instance.ShowIndicator();
         while(!loadOperation.isDone)
