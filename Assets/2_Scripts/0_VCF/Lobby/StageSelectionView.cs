@@ -61,13 +61,14 @@ public class StageSelectionView : MonoBehaviour
     }
     private void InitializeButtons()
     {
-        buttons = stageButtonFactory.MakeButtons(viewData.stageCount, viewData.originalSize);
+        buttons = stageButtonFactory.MakeButtons(UserData.stage.value, viewData.originalSize);
+        slider.gameObject.SetActive(UserData.stage.value > 1);
         UpdateAllScale();
     }
     private void InitializeSlider()
     {
         slider.minValue = 0;
-        slider.maxValue = viewData.stageCount - 1;
+        slider.maxValue = UserData.stage.value - 1;
         slider.onValueChanged.AddListener((value) => slideEvent.OnSlide?.Invoke((int)value));
         slider.value = GameData.stageIndex.value;
     }
@@ -84,7 +85,7 @@ public class StageSelectionView : MonoBehaviour
     {
         get
         {
-            return -(viewData.stageCount - 1) * viewData.originalSize;
+            return -(UserData.stage.value - 1) * viewData.originalSize;
         }
     }
 
@@ -108,7 +109,7 @@ public class StageSelectionView : MonoBehaviour
     }
     private bool IndexOnLast(float deltaX)
     {
-        return (GameData.stageIndex.value >= viewData.stageCount - 1 && deltaX <= 0);
+        return (GameData.stageIndex.value >= UserData.stage.value - 1 && deltaX <= 0);
     }
 
 
@@ -117,12 +118,12 @@ public class StageSelectionView : MonoBehaviour
     {
         GameData.stageIndex.value = -(int)((buttonsParent.transform.localPosition.x - (viewData.originalSize * 0.5f)) / viewData.originalSize);
         if (GameData.stageIndex.value < 0) GameData.stageIndex.value = 0;
-        if (GameData.stageIndex.value >= viewData.stageCount) GameData.stageIndex.value = viewData.stageCount - 1;
+        if (GameData.stageIndex.value >= UserData.stage.value) GameData.stageIndex.value = UserData.stage.value - 1;
     }
 
     private void UpdateAllScale()
     {
-        for (int i = 0; i < viewData.stageCount; ++i)
+        for (int i = 0; i < UserData.stage.value; ++i)
         {
             UpdateScale(i);
         }
