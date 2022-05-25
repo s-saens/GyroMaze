@@ -30,4 +30,11 @@ public static class UserData
 
         imgUrl.value = fUser.PhotoUrl;
     }
+    public static void Set(User user)
+    {
+        displayName.value = user.name;
+        stage.value = user.stage;
+
+        imgUrl.value = null;
+    }
 }

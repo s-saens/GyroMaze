@@ -17,8 +17,6 @@ public class C_Login : MonoBehaviour
     public string clientId = "630965815426-go9stbqquhg1vsa37017ss6c1huqonub.apps.googleusercontent.com";
     private GoogleSignInConfiguration configuration;
 
-    private const string testAccountIdToken = "la6z9gjPwOZwKflp7ThN1amlJhk1";
-
     private void Awake()
     {
         FirebaseInstances.auth = FirebaseAuth.DefaultInstance;
@@ -60,15 +58,15 @@ public class C_Login : MonoBehaviour
 
     private void LoginGoogle()
     {
-#if UNITY_EDITOR
-        SetAuthCredential(testAccountIdToken, null);
-#else
         GoogleSignIn.Configuration = configuration;
         GoogleSignIn.Configuration.UseGameSignIn = false;
         GoogleSignIn.Configuration.RequestIdToken = true;
-
+        
+#if UNITY_EDITOR
+        Debug.Log("Test Login...");
+        Test_SearchUserOnDatabase("TESTACCOUNT");
+#else
         Debug.Log("Google Login...");
-
         GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnLoginFinished).LogExceptionIfFaulted();
 #endif
     }
@@ -103,6 +101,8 @@ public class C_Login : MonoBehaviour
             PlayerPrefs.SetInt(ConstData.KEY_LOGIN_TYPE, loginType);
             return;
         }
+
+        Debug.LogWarning("Login Failed");
         C_Indicator.Instance.HideIndicator();
     }
 
@@ -110,7 +110,7 @@ public class C_Login : MonoBehaviour
     {
         Credential credential = GoogleAuthProvider.GetCredential(googleIdToken, googleAccessToken);
 
-        Debug.Log("Setting Credetial");
+        Debug.Log($"Setting Credetial : {googleIdToken}");
 
         FirebaseInstances.auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
         {
@@ -128,8 +128,8 @@ public class C_Login : MonoBehaviour
     private void SearchUserFromDatabase(FirebaseUser fUser)
     {
         DatabaseReference userDataRef = FirebaseInstances.db.GetReference("user").Child(fUser.UserId);
-
-        Debug.Log("Searching User From Database");
+        
+        Debug.Log($"Searching User From Database : {fUser.UserId}");
 
         userDataRef.GetValueAsync().ContinueWithOnMainThread(task =>
         {
@@ -175,4 +175,57 @@ public class C_Login : MonoBehaviour
     {
         UserData.Set(user, fUser);
     }
+
+
+#region TEST ACCOUNT
+    private void Test_SearchUserOnDatabase(string uid)
+    {
+        DatabaseReference userDataRef = FirebaseInstances.db.GetReference("user").Child(uid);
+
+        userDataRef.GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                if (task.Result.Value == null)
+                {
+                    Test_AddUserOnDatabase(uid, userDataRef);
+                    return;
+                }
+                User user = JsonConvert.DeserializeObject<User>(task.Result.GetRawJsonValue());
+                Test_SetUserData(user);
+                C_Scene.Instance.LoadScene(SceneEnum.Lobby);
+                return;
+            }
+
+            Debug.LogWarning("Searching User From Database Failed");
+
+            C_Indicator.Instance.HideIndicator();
+        }).LogExceptionIfFaulted();
+    }
+
+    private void Test_AddUserOnDatabase(string uid, DatabaseReference userDataRef)
+    {
+        Debug.Log("Adding User On Database");
+
+        User user = new User("Test");
+        string userJson = JsonConvert.SerializeObject(user);
+
+        userDataRef.SetRawJsonValueAsync(userJson).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                Test_SetUserData(user);
+                C_Scene.Instance.LoadScene(SceneEnum.Lobby);
+                return;
+            }
+            Debug.LogWarning("Adding User On Database Failed");
+        }).LogExceptionIfFaulted();
+    }
+
+    private void Test_SetUserData(User user)
+    {
+        UserData.Set(user);
+    }
+#endregion
+
 }
