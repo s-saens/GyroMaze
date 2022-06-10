@@ -1,26 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-public class Maze
-{
-    public int sizeX, sizeY;
-    public bool[,] horizontalWalls; // [Y+1][X]
-    public bool[,] verticalWalls; // [Y][X+1]
-    public int startX, startY;
-    public int endX, endY;
-
-    public Maze(int sizeX, int sizeY)
-    {
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
-
-        horizontalWalls = new bool[sizeY + 1, sizeX];
-        verticalWalls = new bool[sizeY, sizeX + 1];
-
-        for(int y=0 ; y<sizeY + 1 ; ++y) for(int x=0 ; x<sizeX ; ++x) horizontalWalls[y, x] = true;
-        for(int y=0 ; y<sizeY ; ++y) for(int x=0 ; x<sizeX + 1 ; ++x) verticalWalls[y, x] = true;
-    }
-}
+using System.Collections.Generic;
 
 public class MazeGenerator
 {
@@ -70,7 +49,7 @@ public class MazeGenerator
             int ny = y + dy[dir];
 
             if (nx < 0 || nx >= maze.sizeX || ny < 0 || ny >= maze.sizeY) continue;
-            if (distances[y,x] > 0) continue;
+            if (distances[ny,nx] > 0) continue;
 
             // 벽 파괴
             if (dir == 0) {maze.horizontalWalls[y, x] = false;}

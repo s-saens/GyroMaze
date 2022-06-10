@@ -1,5 +1,5 @@
 using UnityEngine;
-// TODO: Make Indicator
+using Firebase.Database;
 
 public class C_Indicator : _SingletonMono<C_Indicator>
 {

@@ -1,14 +1,17 @@
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
+using Firebase.Database;
 using Newtonsoft.Json;
 
 public class MazeGeneratorWindow : EditorWindow
 {
     private Vector2Int size;
-    private int count;
+    private Vector2Int range; // both inclusive
+    private Maze[] mazes;
     
     private MazeGenerator mg = new MazeGenerator();
+    private MazeUploader mu = new MazeUploader();
 
     // Add menu item named "My Window" to the Window menu
     [MenuItem("SAENS/MazeGeneratorWindow")]
@@ -27,23 +30,34 @@ public class MazeGeneratorWindow : EditorWindow
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
 
-        count = EditorGUILayout.IntField("Count to make", count);
+        range = EditorGUILayout.Vector2IntField("range", range);
 
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
 
-        if (GUILayout.Button("Generate"))
-        {
-            Maze[] mazes = new Maze[count];
-            for(int i=0 ; i<count ; ++i)
-            {
-                mazes[i] = mg.MakeMazeDFS(size.x, size.y, 0, 0);
-            }
-            string json = JsonConvert.SerializeObject(mazes);
-            Debug.Log(json);
-        }
+        if (GUILayout.Button("Generate")) GenerateMaze();
+        if (GUILayout.Button("Upload")) UploadMaze();
 
         EditorGUILayout.EndHorizontal();
+    }
+
+    private void GenerateMaze()
+    {
+        int count = range.x - range.y + 1;
+
+        mazes = new Maze[count];
+        for (int i = 0; i < count; ++i)
+        {
+            mazes[i] = mg.MakeMazeDFS(size.x, size.y, size.x/2, size.y/2);
+        }
+    }
+
+    private void UploadMaze()
+    {
+        for(int i=range.x ; i<=range.y ; ++i)
+        {
+            mu.Upload(i, mazes[i]);
+        }
     }
 }
 #endif
