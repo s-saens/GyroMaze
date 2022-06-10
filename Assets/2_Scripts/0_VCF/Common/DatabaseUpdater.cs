@@ -12,7 +12,7 @@ public static class DatabaseUpdater
 
     public static void FetchUser(string uid)
     {
-        userDataRef = FirebaseInstances.db.GetReference("user").Child(uid);
+        userDataRef = DBRef.user.Child(uid);
     }
 
     public static void UpdateUser(Action callback)

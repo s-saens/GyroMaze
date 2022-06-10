@@ -9,6 +9,9 @@ using Newtonsoft.Json;
 
 public class C_Login : MonoBehaviour
 {
+    // Initiator
+    FirebaseInit fi = new FirebaseInit();
+
     // Events
     [SerializeField] private ClickEvent clickEvent;
 
@@ -19,9 +22,7 @@ public class C_Login : MonoBehaviour
 
     private void Awake()
     {
-        FirebaseInstances.auth = FirebaseAuth.DefaultInstance;
-        FirebaseInstances.db = FirebaseDatabase.GetInstance("https://gyromaze-a8ee3-default-rtdb.asia-southeast1.firebasedatabase.app/");
-
+        fi.Init();
         configuration = new GoogleSignInConfiguration
         {
             WebClientId = clientId,

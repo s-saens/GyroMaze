@@ -12,6 +12,7 @@ public class MazeGeneratorWindow : EditorWindow
     
     private MazeGenerator mg = new MazeGenerator();
     private MazeUploader mu = new MazeUploader();
+    private FirebaseInit fi = new FirebaseInit();
 
     // Add menu item named "My Window" to the Window menu
     [MenuItem("SAENS/MazeGeneratorWindow")]
@@ -49,14 +50,16 @@ public class MazeGeneratorWindow : EditorWindow
         for (int i = 0; i < count; ++i)
         {
             mazes[i] = mg.MakeMazeDFS(size.x, size.y, size.x/2, size.y/2);
+            Debug.Log(JsonConvert.SerializeObject(mazes));
         }
     }
 
     private void UploadMaze()
     {
+        fi.Init();
         for(int i=range.x ; i<=range.y ; ++i)
         {
-            mu.Upload(i, mazes[i]);
+            mu.Upload(i, mazes[i-range.x]);
         }
     }
 }
