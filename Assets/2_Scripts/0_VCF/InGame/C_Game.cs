@@ -9,7 +9,6 @@ public class C_Game : MonoBehaviour
 {
     [SerializeField] Ball ball;
 
-    [SerializeField] private int stage;
     [SerializeField] private MazeFactory mazeFactory;
 
 
@@ -23,16 +22,19 @@ public class C_Game : MonoBehaviour
 #if UNITY_EDITOR
         FirebaseInit fi = new FirebaseInit();
         fi.Init();
-        C_Indicator.Instance.ShowIndicator();
 #endif
-        DatabaseReference mazeReference = DBRef.maze.Child(stage.ToString());
+        if(!C_Indicator.Instance.IsOn)
+        {
+            C_Indicator.Instance.ShowIndicator();
+        }
+        DatabaseReference mazeReference = DBRef.maze.Child(GameData.stageIndex.value.ToString());
         Task t = mazeReference.GetValueAsync().ContinueWithOnMainThread((task) =>
         {
             if (task.IsCompleted)
             {
                 if (task.Result.Value == null)
                 {
-                    Debug.LogError($"THERE IS NO MAZE OF STAGE {stage} ON DATABASE");
+                    Debug.LogError($"THERE IS NO MAZE OF STAGE {GameData.stageIndex.value} ON DATABASE");
                     return;
                 }
                 Maze maze = JsonConvert.DeserializeObject<Maze>(task.Result.GetRawJsonValue());

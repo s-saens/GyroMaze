@@ -60,6 +60,7 @@ public class C_StageSelection : MonoBehaviour
     }
     private void OnClickStage(int id)
     {
+        GameData.stageIndex.value = id;
         C_Scene.Instance.LoadScene(SceneEnum.Level);
     }
 
