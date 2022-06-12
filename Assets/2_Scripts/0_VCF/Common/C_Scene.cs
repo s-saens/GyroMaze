@@ -27,6 +27,5 @@ public class C_Scene : _SingletonMono<C_Scene>
         {
             yield return 0;
         }
-        C_Indicator.Instance.HideIndicator();
     }
 }

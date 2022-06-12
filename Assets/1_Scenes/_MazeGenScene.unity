@@ -786,6 +786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 868897201}
+  stage: 21
+  mazeFetcher: {fileID: 0}
   mazeFactory: {fileID: 259990606}
 --- !u!1 &963194225
 GameObject:
