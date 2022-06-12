@@ -75,7 +75,7 @@ public class C_Login : MonoBehaviour
     private void TestLogin(string uid)
     {
         UserData.SetFirebaseUser_Test(uid, "TestAccount");
-        DatabaseUpdater.UpdateUser(() =>
+        UserDBUpdater.UpdateUser(() =>
         {
             C_Scene.Instance.LoadScene(SceneEnum.Lobby);
         });
@@ -128,7 +128,7 @@ public class C_Login : MonoBehaviour
             {
                 UserData.SetFirebaseUser(task.Result);
 
-                DatabaseUpdater.UpdateUser(() => {
+                UserDBUpdater.UpdateUser(() => {
                     C_Scene.Instance.LoadScene(SceneEnum.Lobby);
                 });
                 return;

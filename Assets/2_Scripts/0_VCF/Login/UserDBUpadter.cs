@@ -6,7 +6,7 @@ using Firebase.Database;
 using Firebase.Auth;
 using Newtonsoft.Json;
 
-public static class DatabaseUpdater
+public static class UserDBUpdater
 {
     private static DatabaseReference userDataRef;
 
