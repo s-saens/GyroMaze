@@ -44,7 +44,7 @@ public class MazeGeneratorWindow : EditorWindow
 
     private void GenerateMaze()
     {
-        int count = range.x - range.y + 1;
+        int count = range.y - range.x + 1;
 
         mazes = new Maze[count];
         for (int i = 0; i < count; ++i)
