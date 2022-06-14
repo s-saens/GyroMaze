@@ -9,7 +9,7 @@ public class _SingletonMono<T> : MonoBehaviour where T : _SingletonMono<T>
         {
             if(instance == null)
             {
-                if (instance == null) Debug.LogError("SINGLETON OBJECT DOES NOT EXIST.");
+                if (instance == null) Debug.LogError("Singleton instance does not exist. Check if the SingletonFactory object is in the scene.");
             }
             return instance;
         }
