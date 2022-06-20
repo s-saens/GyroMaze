@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3102440120941692895}
   - component: {fileID: 3102440120941692894}
   - component: {fileID: 3102440120941692864}
-  - component: {fileID: 4218657191986791305}
+  - component: {fileID: 2056990455411145030}
   m_Layer: 5
   m_Name: Stage Button
   m_TagString: Untagged
@@ -235,7 +235,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4218657191986791305
+--- !u!114 &2056990455411145030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,7 +244,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3102440120941692866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fbd5307785ab42ee8931d0f2e46a4e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 66d5269dc7e8f4d4db4a5ab4beef41d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageIndex: 0
+  parameter: 0
+  buttonEvent: {fileID: 11400000, guid: 5416ed506dbcf4c16b32da85539232b8, type: 2}

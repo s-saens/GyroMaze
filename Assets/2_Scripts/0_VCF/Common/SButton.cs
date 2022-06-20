@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Animator animator;
 
@@ -24,33 +24,42 @@ public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IP
         animator = this.GetComponent<Animator>();
     }
 
-    private bool isDown;
-    private bool isEnter;
+    private bool isDown = false;
+    private bool isEnter = false;
     public void OnPointerDown(PointerEventData e)
     {
-        animator.SetTrigger(down);
-        isDown = true;
+        if(!isDown)
+        {
+            animator.SetTrigger(down);
+            isDown = true;
+        }
     }
     public void OnPointerUp(PointerEventData e)
     {
         if(isEnter)
         {
             animator.SetTrigger(enter);
-            buttonEvent.OnClick?.Invoke(parameter);
         }
-
-        else animator.SetTrigger(normal);
+        else
+        {
+            animator.SetTrigger(normal);
+        }
         isDown = false;
     }
     public void OnPointerEnter(PointerEventData e)
     {
-        if(isDown) animator.SetTrigger(enter);
-        else animator.SetTrigger(down);
         isEnter = true;
+        if(isDown) animator.SetTrigger(down);
+        else animator.SetTrigger(enter);
     }
     public void OnPointerExit(PointerEventData e)
     {
-        animator.SetTrigger(normal);
         isEnter = false;
+        if(!isDown) animator.SetTrigger(normal);
+    }
+
+    public void OnPointerClick(PointerEventData e)
+    {
+        buttonEvent.OnClick?.Invoke(parameter);
     }
 }

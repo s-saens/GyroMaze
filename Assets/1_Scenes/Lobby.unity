@@ -282,7 +282,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 155662550}
-  - component: {fileID: 155662551}
   m_Layer: 0
   m_Name: StageSelection
   m_TagString: Untagged
@@ -305,23 +304,6 @@ Transform:
   m_Father: {fileID: 202575306}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &155662551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155662549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6f1fe1dec1c4e70a4abda15b5d04e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
-  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
-  slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
-  clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
-  stageSwipeView: {fileID: 1546908993}
 --- !u!1 &202575305
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +769,6 @@ GameObject:
   - component: {fileID: 1381873724}
   - component: {fileID: 1381873723}
   - component: {fileID: 1381873722}
-  - component: {fileID: 1381873725}
   m_Layer: 0
   m_Name: INPUTS
   m_TagString: Untagged
@@ -844,19 +825,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1381873725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381873721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ceb1acd6b4b45f18cddd04af35f509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backEvent: {fileID: 11400000, guid: 6e7ba197615d9435db49153ff97fb3c4, type: 2}
 --- !u!1 &1506666925
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a425be8235d5743f4a14a018de2b394f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
   buttonPrefab: {fileID: 3102440120941692866, guid: e1844b5cd1a3f42d1b55ebd871500329,
     type: 3}
 --- !u!1 &1546908991
@@ -956,6 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546908992}
   - component: {fileID: 1546908993}
+  - component: {fileID: 1546908994}
   m_Layer: 5
   m_Name: Stages
   m_TagString: Untagged
@@ -999,11 +967,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
   slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
-  clickEvent: {fileID: 11400000, guid: f3b78ef85112949a6abac29c0a2991aa, type: 2}
   slider: {fileID: 1745732132}
   buttonsParent: {fileID: 1546203231}
   stageButtonFactory: {fileID: 1546203232}
   isMoving: 0
+--- !u!114 &1546908994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546908991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6f1fe1dec1c4e70a4abda15b5d04e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
+  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
+  slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
+  buttonEvent: {fileID: 11400000, guid: 5416ed506dbcf4c16b32da85539232b8, type: 2}
+  stageSwipeView: {fileID: 1546908993}
 --- !u!1 &1569738812
 GameObject:
   m_ObjectHideFlags: 0
