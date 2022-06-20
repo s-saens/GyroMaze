@@ -7,16 +7,22 @@ using Firebase.Database;
 using Firebase.Extensions;
 using Newtonsoft.Json;
 
+public enum LoginType
+{
+    Google,
+    GoogleGames,
+}
+
 public class C_Login : MonoBehaviour
 {
     // Initiator
     FirebaseInit fi = new FirebaseInit();
 
     // Events
-    [SerializeField] private ClickEvent clickEvent;
+    [SerializeField] private ButtonEvent clickEvent;
 
     // Login
-    private int loginType = 0;
+    private string loginType = "Google";
     public string clientId = "630965815426-go9stbqquhg1vsa37017ss6c1huqonub.apps.googleusercontent.com";
     private GoogleSignInConfiguration configuration;
 
@@ -39,16 +45,15 @@ public class C_Login : MonoBehaviour
         clickEvent.OnClick += Login;
     }
 
-    private void Login(int value)
+    private void Login(string value)
     {
         C_Indicator.Instance.ShowIndicator();
-        loginType = value;
         switch(value)
         {
-            case 0:
+            case "Google":
                 LoginGoogle();
                 break;
-            case 1:
+            case "GoogleGames":
                 LoginGoogleGames();
                 break;
             default:
@@ -108,7 +113,7 @@ public class C_Login : MonoBehaviour
         if(task.IsCompleted)
         {
             SetAuthCredential(task.Result.IdToken, null);
-            PlayerPrefs.SetInt(ConstData.KEY_LOGIN_TYPE, loginType);
+            PlayerPrefs.SetString(ConstData.KEY_LOGIN_TYPE, loginType);
             return;
         }
         Debug.LogWarning("Login Failed");

@@ -5,14 +5,12 @@ using TMPro;
 
 public class StageButtonFactory : MonoBehaviour
 {
-    [SerializeField] private ClickEvent clickEvent;
-
     // Making Data
     public GameObject buttonPrefab;
 
-    public List<_EventButton> MakeButtons(int stageCount, float originalSize)
+    public List<SButton> MakeButtons(int stageCount, float originalSize)
     {
-        List<_EventButton> buttons = new List<_EventButton>();
+        List<SButton> buttons = new List<SButton>();
         for (int i = 0; i < stageCount; ++i)
         {
             int index = i;
@@ -20,8 +18,8 @@ public class StageButtonFactory : MonoBehaviour
             GameObject go = Instantiate(buttonPrefab, this.transform);
             go.transform.localPosition = new Vector3(originalSize * index, 0, 0);
             go.name = $"Stage {i + 1}";
-            _EventButton b = go.GetComponent<_EventButton>();
-            b.buttonId = i;
+            SButton b = go.GetComponent<SButton>();
+            b.parameter = i.ToString();
             buttons.Add(b);
 
             // Text

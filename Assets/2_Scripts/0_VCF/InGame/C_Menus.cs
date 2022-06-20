@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class C_Menus : MonoBehaviour
 {
-    [SerializeField] private ClickEvent backButton;
+    [SerializeField] private ButtonEvent backButton;
 
     private void OnEnable()
     {
@@ -15,7 +15,7 @@ public class C_Menus : MonoBehaviour
         backButton.OnClick -= Back;
     }
 
-    private void Back(int value)
+    private void Back(string value)
     {
         // TODO: Popup 먼저 띄워야 함.
         C_Scene.Instance.LoadScene(SceneEnum.Lobby);

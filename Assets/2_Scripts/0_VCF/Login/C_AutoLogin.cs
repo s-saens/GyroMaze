@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class C_AutoLogin : MonoBehaviour
 {
-    [SerializeField] private ClickEvent clickEvent;
+    [SerializeField] private ButtonEvent buttonEvent;
     
     private void OnEnable()
     {
         if(!PlayerPrefs.HasKey(ConstData.KEY_LOGIN_TYPE)) return;
-        int loginType = PlayerPrefs.GetInt(ConstData.KEY_LOGIN_TYPE);
-        clickEvent.OnClick?.Invoke(loginType);
+        string loginType = PlayerPrefs.GetString(ConstData.KEY_LOGIN_TYPE);
+        buttonEvent.OnClick?.Invoke(loginType);
     }
 }

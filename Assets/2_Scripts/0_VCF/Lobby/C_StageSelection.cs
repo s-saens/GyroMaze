@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 
 public class C_StageSelection : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class C_StageSelection : MonoBehaviour
     // Events : Operation
     [SerializeField] private SwipeEvent swipeEvent;
     [SerializeField] private SlideEvent slideEvent;
-    [SerializeField] private ClickEvent clickEvent;
+    [SerializeField] private ButtonEvent buttonEvent;
 
     // Views
     [SerializeField] private StageSelectionView stageSwipeView;
@@ -23,7 +23,7 @@ public class C_StageSelection : MonoBehaviour
         swipeEvent.OnSwipe += OnSwipe;
         swipeEvent.OnSwipeEnd += OnSwipeEnd;
         slideEvent.OnSlide += OnSlide;
-        clickEvent.OnClick += OnClickStage;
+        buttonEvent.OnClick += OnClickStage;
     }
 
     private void OnDisable()
@@ -34,7 +34,7 @@ public class C_StageSelection : MonoBehaviour
         swipeEvent.OnSwipe -= OnSwipe;
         swipeEvent.OnSwipeEnd -= OnSwipeEnd;
         slideEvent.OnSlide -= OnSlide;
-        clickEvent.OnClick -= OnClickStage;
+        buttonEvent.OnClick -= OnClickStage;
     }
 
 
@@ -58,9 +58,9 @@ public class C_StageSelection : MonoBehaviour
     {
         stageSwipeView.MoveToIndex(value);
     }
-    private void OnClickStage(int id)
+    private void OnClickStage(string id)
     {
-        GameData.stageIndex.value = id;
+        GameData.stageIndex.value = Int32.Parse(id);
         C_Scene.Instance.LoadScene(SceneEnum.Level);
     }
 

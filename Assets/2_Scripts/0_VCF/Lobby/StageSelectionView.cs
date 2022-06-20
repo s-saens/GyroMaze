@@ -11,20 +11,17 @@ public class StageSelectionView : MonoBehaviour
 
     // Events
     public SlideEvent slideEvent;
-    public ClickEvent clickEvent;
 
     // Views
     public Slider slider;
     public RectTransform buttonsParent;
 
-    private List<_EventButton> buttons = new List<_EventButton>();
+    private List<SButton> buttons = new List<SButton>();
     private IEnumerator swipeEndCoroutine;
     private IEnumerator magnetCoroutine;
 
     // Factory
     public StageButtonFactory stageButtonFactory;
-
-
 
 
     // Call From Controller
