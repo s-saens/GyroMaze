@@ -10,7 +10,7 @@ public enum SceneEnum
     Level,
 }
 
-public class C_Scene : _SingletonMono<C_Scene>
+public class C_Scene : SingletonMono<C_Scene>
 {
     public void LoadScene(SceneEnum se, bool indicator = true)
     {
