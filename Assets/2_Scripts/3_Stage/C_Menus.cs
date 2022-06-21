@@ -18,6 +18,6 @@ public class C_Menus : MonoBehaviour
     private void Back(string value)
     {
         // TODO: Popup 먼저 띄워야 함.
-        C_Scene.Instance.LoadScene(SceneEnum.Lobby);
+        SceneController.Instance.LoadScene(SceneEnum.Lobby);
     }
 }

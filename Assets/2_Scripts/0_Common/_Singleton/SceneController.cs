@@ -10,7 +10,7 @@ public enum SceneEnum
     Level,
 }
 
-public class C_Scene : SingletonMono<C_Scene>
+public class SceneController : SingletonMono<SceneController>
 {
     public void LoadScene(SceneEnum se, bool indicator = true)
     {
@@ -22,7 +22,7 @@ public class C_Scene : SingletonMono<C_Scene>
 
     IEnumerator SceneMoveCoroutine(AsyncOperation loadOperation, bool indicator = true)
     {
-        C_Indicator.Instance.ShowIndicator();
+        IndicatorController.Instance.ShowIndicator();
         while(!loadOperation.isDone)
         {
             yield return 0;

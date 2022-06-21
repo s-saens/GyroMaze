@@ -47,7 +47,7 @@ public class C_Login : MonoBehaviour
 
     private void Login(string value)
     {
-        C_Indicator.Instance.ShowIndicator();
+        IndicatorController.Instance.ShowIndicator();
         switch(value)
         {
             case "Google":
@@ -82,7 +82,7 @@ public class C_Login : MonoBehaviour
         UserData.SetFirebaseUser_Test(uid, "TestAccount");
         UserDBUpdater.UpdateUser(() =>
         {
-            C_Scene.Instance.LoadScene(SceneEnum.Lobby);
+            SceneController.Instance.LoadScene(SceneEnum.Lobby);
         });
     }
 
@@ -118,7 +118,7 @@ public class C_Login : MonoBehaviour
         }
         Debug.LogWarning("Login Failed");
 
-        C_Indicator.Instance.HideIndicator();
+        IndicatorController.Instance.HideIndicator();
     }
 
     private void SetAuthCredential(string googleIdToken, string googleAccessToken)
@@ -134,13 +134,13 @@ public class C_Login : MonoBehaviour
                 UserData.SetFirebaseUser(task.Result);
 
                 UserDBUpdater.UpdateUser(() => {
-                    C_Scene.Instance.LoadScene(SceneEnum.Lobby);
+                    SceneController.Instance.LoadScene(SceneEnum.Lobby);
                 });
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
 
-            C_Indicator.Instance.HideIndicator();
+            IndicatorController.Instance.HideIndicator();
         }).LogExceptionIfFaulted();
     }
 }

@@ -38,7 +38,7 @@ public static class UserDBUpdater
 
             Debug.LogWarning("Searching User From Database Failed");
 
-            C_Indicator.Instance.HideIndicator();
+            IndicatorController.Instance.HideIndicator();
         }).LogExceptionIfFaulted();
     }
 
@@ -60,7 +60,7 @@ public static class UserDBUpdater
 
             Debug.LogWarning("Adding User On Database Failed");
 
-            C_Indicator.Instance.HideIndicator();
+            IndicatorController.Instance.HideIndicator();
         }).LogExceptionIfFaulted();
     }
 }

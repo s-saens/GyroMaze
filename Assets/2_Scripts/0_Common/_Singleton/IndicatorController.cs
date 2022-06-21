@@ -1,7 +1,7 @@
 using UnityEngine;
 using Firebase.Database;
 
-public class C_Indicator : SingletonMono<C_Indicator>
+public class IndicatorController : SingletonMono<IndicatorController>
 {
     [SerializeField] private Animator indicator;
     public bool IsOn

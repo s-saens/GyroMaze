@@ -23,9 +23,9 @@ public class C_Game : MonoBehaviour
         FirebaseInit fi = new FirebaseInit();
         fi.Init();
 #endif
-        if(!C_Indicator.Instance.IsOn)
+        if(!IndicatorController.Instance.IsOn)
         {
-            C_Indicator.Instance.ShowIndicator();
+            IndicatorController.Instance.ShowIndicator();
         }
         DatabaseReference mazeReference = DBRef.maze.Child(GameData.stageIndex.value.ToString());
         Task t = mazeReference.GetValueAsync().ContinueWithOnMainThread((task) =>
@@ -39,7 +39,7 @@ public class C_Game : MonoBehaviour
                 }
                 Maze maze = JsonConvert.DeserializeObject<Maze>(task.Result.GetRawJsonValue());
                 mazeFactory.MakeMaze(maze);
-                C_Indicator.Instance.HideIndicator();
+                IndicatorController.Instance.HideIndicator();
             }
         });
         t.LogExceptionIfFaulted();
