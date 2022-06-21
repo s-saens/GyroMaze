@@ -77,7 +77,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 3453677490916277458}
   - component: {fileID: 3453677490916277459}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -468,7 +468,7 @@ PrefabInstance:
     - target: {fileID: 4339133828715588661, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7958292741536065705, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
@@ -591,6 +591,21 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7958292741536065707, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958292741536065707, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958292741536065707, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7958292741536065710, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
       propertyPath: m_Name
@@ -644,7 +659,7 @@ PrefabInstance:
     - target: {fileID: 4339133828715588661, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7958292741536065705, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
@@ -765,6 +780,21 @@ PrefabInstance:
     - target: {fileID: 7958292741536065707, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
       propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958292741536065707, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958292741536065707, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958292741536065707, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7958292741536065710, guid: 31d21334747a146d9a33d3003de33471,
