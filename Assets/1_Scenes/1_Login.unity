@@ -1190,12 +1190,12 @@ PrefabInstance:
     - target: {fileID: 3453677490668941746, guid: 7f65bc38713be4ef88142e1d9477aed2,
         type: 3}
       propertyPath: m_Name
-      value: '[EXIT]'
+      value: '[QUIT]'
       objectReference: {fileID: 0}
-    - target: {fileID: 3453677490668941746, guid: 7f65bc38713be4ef88142e1d9477aed2,
+    - target: {fileID: 3453677490916277457, guid: 7f65bc38713be4ef88142e1d9477aed2,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Name
+      value: ALERT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f65bc38713be4ef88142e1d9477aed2, type: 3}
