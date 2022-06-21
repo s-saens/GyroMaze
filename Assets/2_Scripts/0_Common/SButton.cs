@@ -7,7 +7,7 @@ public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IP
     private Animator animator;
 
     [SerializeField] public string parameter;
-    [SerializeField] private ButtonEvent buttonEvent;
+    [SerializeField] private ButtonEvent[] buttonEvents;
 
     private readonly int normal = Animator.StringToHash("Normal");
     private readonly int enter = Animator.StringToHash("Highlighted");
@@ -60,6 +60,9 @@ public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IP
 
     public void OnPointerClick(PointerEventData e)
     {
-        buttonEvent.OnClick?.Invoke(parameter);
+        foreach(ButtonEvent b in buttonEvents)
+        {
+            b.OnClick?.Invoke(parameter);
+        }
     }
 }

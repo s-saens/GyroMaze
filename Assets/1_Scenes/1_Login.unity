@@ -791,7 +791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter: Google
-  buttonEvent: {fileID: 11400000, guid: 8f981af3ed9ba461ea5eceabfef8766f, type: 2}
+  buttonEvents:
+  - {fileID: 11400000, guid: 8f981af3ed9ba461ea5eceabfef8766f, type: 2}
 --- !u!1 &1152546478
 GameObject:
   m_ObjectHideFlags: 0
