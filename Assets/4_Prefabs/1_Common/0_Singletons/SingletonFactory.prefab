@@ -47,3 +47,4 @@ MonoBehaviour:
   singletonObjects:
   - {fileID: 5719031629969928499, guid: 92ddea9ee186840a7b619fc639b2073d, type: 3}
   - {fileID: 3271860096382042127, guid: 5c007b29ce80b4a899e70c108a5d0f72, type: 3}
+  - {fileID: 3271860096382042127, guid: 16b41ac2f3d9c44678fb66a63d0b0ca2, type: 3}
