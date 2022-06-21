@@ -14,7 +14,6 @@ public class SceneController : SingletonMono<SceneController>
 {
     public void LoadScene(SceneEnum se, bool indicator = true)
     {
-        Debug.Log("LOADING~");
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)se, LoadSceneMode.Single);
         IEnumerator sceneMove = SceneMoveCoroutine(loadOperation, indicator);
         StartCoroutine(sceneMove);
