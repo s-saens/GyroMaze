@@ -47,6 +47,7 @@ public class C_Login : MonoBehaviour
 
     private void Login(string value)
     {
+        loginType = value;
         IndicatorController.Instance.ShowIndicator();
         switch(value)
         {
