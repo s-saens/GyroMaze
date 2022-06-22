@@ -21,5 +21,6 @@ public class SoundController : SingletonMono<SoundController>
     private void SetMasterVolume(float volume)
     {
         mixer.SetFloat("Master", volume);
+        PlayerPrefs.SetFloat(ConstData.KEY_MASTER_VOLUME, volume);
     }
 }

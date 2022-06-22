@@ -8,6 +8,7 @@ public class SoundSliderController : MonoBehaviour
 
     private void OnEnable()
     {
+        slider.value = settingsData.masterVolume.value;
         slider.onValueChanged.AddListener(SetVolume);
         settingsData.masterVolume.onChange += SetSlider;
     }

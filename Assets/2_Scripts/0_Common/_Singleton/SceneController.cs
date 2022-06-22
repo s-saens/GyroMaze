@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public enum SceneEnum
 {
     Login = 0,
-    Lobby,
+    Home,
     Level,
 }
 
