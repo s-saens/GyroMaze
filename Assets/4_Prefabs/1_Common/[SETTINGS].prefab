@@ -375,7 +375,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -391,7 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e419b4d3229c4f9c8c9df1d66164147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsData: {fileID: 11400000, guid: ed3e02cc1110e4bf4b68503df77474c5, type: 2}
   slider: {fileID: 2287200842259921285}
 --- !u!1 &4516044195206557214
 GameObject:

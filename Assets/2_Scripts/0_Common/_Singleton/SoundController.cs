@@ -10,7 +10,7 @@ public class SoundController : SingletonMono<SoundController>
     {
         GameData.Settings.masterVolume.onChange += SetMasterVolume;
 
-        GameData.Settings.masterVolume.value = PlayerPrefs.GetFloat(ConstData.KEY_MASTER_VOLUME, 0);
+        GameData.Settings.masterVolume.value = PlayerPrefs.GetFloat(ConstData.KEY_MASTER_VOLUME, 0.7f);
     }
     private void OnDisable()
     {
@@ -19,7 +19,8 @@ public class SoundController : SingletonMono<SoundController>
 
     private void SetMasterVolume(float volume)
     {
-        mixer.SetFloat("Master", volume);
+        mixer.SetFloat("Master", volume == 0 ? -80 : Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat(ConstData.KEY_MASTER_VOLUME, volume);
+        Debug.Log("SET!");
     }
 }

@@ -8,6 +8,5 @@ public static class GameData
     public static class Settings
     {
         public static Data<float> masterVolume = new Data<float>();
-
     }
 }
