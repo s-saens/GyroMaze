@@ -3,19 +3,18 @@ using UnityEngine.UI;
 
 public class SoundSliderController : MonoBehaviour
 {
-    [SerializeField] private SettingsData settingsData;
     [SerializeField] private Slider slider;
 
     private void OnEnable()
     {
-        slider.value = settingsData.masterVolume.value;
+        slider.value = GameData.Settings.masterVolume.value;
         slider.onValueChanged.AddListener(SetVolume);
-        settingsData.masterVolume.onChange += SetSlider;
+        GameData.Settings.masterVolume.onChange += SetSlider;
     }
 
     private void SetVolume(float volume)
     {
-        settingsData.masterVolume.value = volume;
+        GameData.Settings.masterVolume.value = volume;
     }
 
     private void SetSlider(float volume)
