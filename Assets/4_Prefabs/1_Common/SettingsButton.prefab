@@ -111,4 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter: 
-  buttonEvents: []
+  buttonEvents:
+  - {fileID: 11400000, guid: c532849bcb3eb4be59b8a7eba7db0837, type: 2}
