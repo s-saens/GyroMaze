@@ -13,6 +13,6 @@ public class DragInput : MonoBehaviour
         Touch t = Input.touches[0];
         Vector2 draggingVector = t.deltaPosition;
 
-        dragEvent.callback?.Invoke(JsonConvert.SerializeObject(draggingVector * Time.deltaTime * 60));
+        dragEvent.Invoke(draggingVector * Time.deltaTime * 60);
     }
 }

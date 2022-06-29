@@ -9,7 +9,7 @@ public class BackInput : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            backEvent.callback?.Invoke("");
+            backEvent.Invoke("");
         }
     }
 }

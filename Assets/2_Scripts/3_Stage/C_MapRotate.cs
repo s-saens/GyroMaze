@@ -18,9 +18,9 @@ public class C_MapRotate : MonoBehaviour
     }
 
 
-    private void OnGyroAttitude(string param) // Gyroscope
+    private void OnGyroAttitude(object param) // Gyroscope
     {
-        Gyroscope gyro = JsonConvert.DeserializeObject<Gyroscope>(param);
+        Gyroscope gyro = (Gyroscope)param;
         
         // Set Gravity
         Vector3 gravityVector = new Vector3(gyro.gravity.x, gyro.gravity.z, gyro.gravity.y);

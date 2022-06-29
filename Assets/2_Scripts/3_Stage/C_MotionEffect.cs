@@ -24,22 +24,22 @@ public class C_MotionEffect : MonoBehaviour
 
     }
 
-    private void OnRoll(string param) // float
+    private void OnRoll(object param) // float
     {
-        float velocity = float.Parse(param);
+        float velocity = (float)param;
         
         rollSound.volume = Mathf.Clamp(Mathf.Log10(velocity) * 0.5f, 0, 1);
         rollSound.pitch = 0.5f + velocity * 0.05f;
     }
 
-    private void OnExitFloor(string param) // void
+    private void OnExitFloor(object param) // void
     {
         rollSound.volume = 0;
     }
 
-    private void OnCollide(string param) // float
+    private void OnCollide(object param) // float
     {
-        float normalVelocity = float.Parse(param);
+        float normalVelocity = (float)param;
 
         collideSound.volume = Mathf.Clamp(normalVelocity*0.05f, 0, 1);
         collideSound.pitch = 1f + normalVelocity * 0.05f;

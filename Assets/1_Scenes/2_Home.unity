@@ -1051,7 +1051,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f7883873b5d4220b3188d93d9a06d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
+  swipeStartEvent: {fileID: 0}
+  swipingEvent: {fileID: 0}
+  swipeEndEvent: {fileID: 0}
 --- !u!1 &1381873721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,9 +1280,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewData: {fileID: 11400000, guid: 640510ec6775a4940bd5c68373c62220, type: 2}
-  swipeEvent: {fileID: 11400000, guid: e4c65f9a094ef4be4a2ec06c096c2d41, type: 2}
-  slideEvent: {fileID: 11400000, guid: 5b55f4af62e4a4c54895156d4f5c94d9, type: 2}
-  buttonEvent: {fileID: 11400000, guid: 5416ed506dbcf4c16b32da85539232b8, type: 2}
+  swipeStartEvent: {fileID: 0}
+  swipingEvent: {fileID: 0}
+  swipeEndEvent: {fileID: 0}
+  sliderEvent: {fileID: 0}
+  stageSelectionEvent: {fileID: 0}
   stageSwipeView: {fileID: 1546908993}
 --- !u!1 &1569738812
 GameObject:

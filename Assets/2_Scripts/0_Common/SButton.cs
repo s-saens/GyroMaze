@@ -1,12 +1,12 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Animator animator;
+    public string parameter;
 
-    [SerializeField] public string parameter;
     [SerializeField] private Event[] buttonEvents;
 
     private readonly int normal = Animator.StringToHash("Normal");
@@ -62,7 +62,7 @@ public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IP
     {
         foreach(Event b in buttonEvents)
         {
-            b.callback?.Invoke(parameter);
+            b.Invoke(parameter);
         }
     }
 }

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05cd5fcdd1f364da3851703824c4030f, type: 3}
-  m_Name: QuitButton
+  m_Script: {fileID: 11500000, guid: 87a81b38004374e47b7b10c0506c8791, type: 3}
+  m_Name: EventRetry
   m_EditorClassIdentifier: 

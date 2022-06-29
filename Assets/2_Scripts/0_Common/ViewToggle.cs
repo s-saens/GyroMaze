@@ -40,16 +40,16 @@ public class ViewToggle : MonoBehaviour
         views[1].SetActive(true);
     }
 
-    public void Open(string index) // = Push
+    public void Open(object param) // = Push
     {
-        int i = int.Parse(index);
+        int i = (int)param;
         viewIndexHistory.Push(activeViewIndex);
         views[activeViewIndex].SetActive(false);
         views[i].SetActive(true);
         activeViewIndex = i;
     }
 
-    private void Back(string s = "") // = Pop
+    private void Back(object param) // = Pop
     {
         if(viewIndexHistory.Count <= 0)
         {

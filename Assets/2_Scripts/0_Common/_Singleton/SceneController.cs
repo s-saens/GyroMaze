@@ -12,14 +12,28 @@ public enum SceneEnum
 
 public class SceneController : SingletonMono<SceneController>
 {
-    public void LoadScene(SceneEnum se, bool indicator = true)
+    [SerializeField] private Event sceneLoadEvent;
+
+    private void OnEnable()
     {
+        sceneLoadEvent.callback += LoadScene;
+
+    }
+
+    private void OnDisable()
+    {
+        sceneLoadEvent.callback -= LoadScene;
+    }
+
+    private void LoadScene(object param)
+    {
+        SceneEnum se = (SceneEnum)param;
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync((int)se, LoadSceneMode.Single);
-        IEnumerator sceneMove = SceneMoveCoroutine(loadOperation, indicator);
+        IEnumerator sceneMove = SceneMoveCoroutine(loadOperation);
         StartCoroutine(sceneMove);
     }
 
-    IEnumerator SceneMoveCoroutine(AsyncOperation loadOperation, bool indicator = true)
+    private IEnumerator SceneMoveCoroutine(AsyncOperation loadOperation, bool indicator = true)
     {
         IndicatorController.Instance.ShowIndicator();
         while(!loadOperation.isDone)

@@ -8,6 +8,6 @@ public class C_AutoLogin : MonoBehaviour
     {
         if(!PlayerPrefs.HasKey(ConstData.KEY_LOGIN_TYPE)) return;
         string loginType = PlayerPrefs.GetString(ConstData.KEY_LOGIN_TYPE, "Google");
-        buttonEvent.callback?.Invoke(loginType);
+        buttonEvent.Invoke(loginType);
     }
 }
