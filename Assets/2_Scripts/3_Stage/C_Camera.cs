@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class C_Camera : MonoBehaviour
 {
-    public ZoomEvent zoomEvent;
+    public Event zoomEvent;
 
     public Transform cam;
     public Transform target;
@@ -21,12 +19,12 @@ public class C_Camera : MonoBehaviour
 
     public void OnEnable()
     {
-        zoomEvent.OnZoom += OnZoom;
+        zoomEvent.callback += OnZoom;
     }
 
     public void OnDisable()
     {
-        zoomEvent.OnZoom -= OnZoom;
+        zoomEvent.callback -= OnZoom;
     }
 
 
@@ -38,8 +36,9 @@ public class C_Camera : MonoBehaviour
         cam.position = Vector3.Lerp(lastPos, targetPos, lerpTime);
     }
 
-    private void OnZoom(float amount) // amount < 0 : 확대
+    private void OnZoom(string param) // float, amount < 0 : 확대
     {
+        float amount = float.Parse(param);
         camPositionY -= amount * zoomStrength;
 
         if(camPositionY < minCamPositionY) // 더 확대할 수 없는 경우인데 확대하려는 경우

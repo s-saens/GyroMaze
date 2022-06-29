@@ -3,13 +3,13 @@ using UnityEngine.EventSystems;
 
 public class BackInput : MonoBehaviour
 {
-    [SerializeField] private ButtonEvent backEvent;
+    [SerializeField] private Event backEvent;
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            backEvent.OnClick?.Invoke("");
+            backEvent.callback?.Invoke("");
         }
     }
 }

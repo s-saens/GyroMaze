@@ -10,7 +10,7 @@ public class StageSelectionView : MonoBehaviour
     public StageSelectionData viewData;
 
     // Events
-    public SlideEvent slideEvent;
+    public Event slideEvent;
 
     // Views
     public Slider slider;
@@ -67,7 +67,7 @@ public class StageSelectionView : MonoBehaviour
     {
         slider.minValue = 0;
         slider.maxValue = UserData.stage.value - 1;
-        slider.onValueChanged.AddListener((value) => slideEvent.OnSlide?.Invoke((int)value));
+        slider.onValueChanged.AddListener((value) => slideEvent.callback?.Invoke(value.ToString()) );
         slider.value = GameData.stageIndex.value;
     }
 

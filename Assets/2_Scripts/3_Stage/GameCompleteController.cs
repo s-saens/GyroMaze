@@ -3,21 +3,21 @@ using UnityEngine;
 public class GameCompleteController : MonoBehaviour
 {
     [SerializeField] private string completeViewIndex = "3";
-    [SerializeField] private CollideEvent endPointCollisionEvent;
-    [SerializeField] private ButtonEvent viewToggleEvent;
+    [SerializeField] private Event endPointCollisionEvent;
+    [SerializeField] private Event viewToggleEvent;
 
     private void OnEnable()
     {
-        endPointCollisionEvent.OnCollide += GameComplete;
+        endPointCollisionEvent.callback += GameComplete;
     }
     private void OnDisable()
     {
-        endPointCollisionEvent.OnCollide -= GameComplete;
+        endPointCollisionEvent.callback -= GameComplete;
     }
 
 
-    private void GameComplete(float f)
+    private void GameComplete(string f)
     {
-        viewToggleEvent.OnClick?.Invoke(completeViewIndex);
+        viewToggleEvent.callback?.Invoke(completeViewIndex);
     }
 }

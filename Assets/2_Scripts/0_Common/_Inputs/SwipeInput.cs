@@ -5,13 +5,15 @@ using UnityEngine.EventSystems;
 
 public class SwipeInput : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public SwipeEvent swipeEvent;
+    public Event swipeStartEvent;
+    public Event swipingEvent;
+    public Event swipeEndEvent;
 
     private float firstX;
 
     public void OnInitializePotentialDrag(PointerEventData e)
     {
-        swipeEvent.OnTouchDown?.Invoke();
+        swipeStartEvent.callback?.Invoke("");
     }
 
     public void OnBeginDrag(PointerEventData e)
@@ -21,12 +23,12 @@ public class SwipeInput : MonoBehaviour, IInitializePotentialDragHandler, IBegin
 
     public void OnDrag(PointerEventData e)
     {
-        swipeEvent.OnSwipe?.Invoke(e.delta.x * Time.deltaTime * 60);
+        swipingEvent.callback?.Invoke((e.delta.x * Time.deltaTime * 60).ToString());
     }
 
     public void OnEndDrag(PointerEventData e)
     {
-        swipeEvent.OnSwipeEnd?.Invoke(e.delta.x * Time.deltaTime * 60);
+        swipeEndEvent.callback?.Invoke((e.delta.x * Time.deltaTime * 60).ToString());
     }
 
 }

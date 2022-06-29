@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class QuitApp : MonoBehaviour
 {
-    public ButtonEvent quitEvent;
+    public Event quitEvent;
     
     private void OnEnable()
     {
-        quitEvent.OnClick += Quit;
+        quitEvent.callback += Quit;
     }
 
     private void OnDisable()
     {
-        quitEvent.OnClick -= Quit;
+        quitEvent.callback -= Quit;
     }
 
     private void Quit(string s)

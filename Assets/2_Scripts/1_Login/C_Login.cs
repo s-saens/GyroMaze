@@ -19,7 +19,7 @@ public class C_Login : MonoBehaviour
     FirebaseInit fi = new FirebaseInit();
 
     // Events
-    [SerializeField] private ButtonEvent clickEvent;
+    [SerializeField] private Event clickEvent;
 
     // Login
     private string loginType = "Google";
@@ -38,11 +38,11 @@ public class C_Login : MonoBehaviour
 
     private void OnEnable()
     {
-        clickEvent.OnClick += Login;
+        clickEvent.callback += Login;
     }
     private void OnDisable()
     {
-        clickEvent.OnClick += Login;
+        clickEvent.callback += Login;
     }
 
     private void Login(string value)

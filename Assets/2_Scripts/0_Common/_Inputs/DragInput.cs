@@ -1,9 +1,9 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using Newtonsoft.Json;
 
 public class DragInput : MonoBehaviour
 {
-    public DragEvent dragEvent;
+    public Event dragEvent;
 
 
     private void Update()
@@ -13,6 +13,6 @@ public class DragInput : MonoBehaviour
         Touch t = Input.touches[0];
         Vector2 draggingVector = t.deltaPosition;
 
-        dragEvent.OnDrag?.Invoke(draggingVector * Time.deltaTime * 60);
+        dragEvent.callback?.Invoke(JsonConvert.SerializeObject(draggingVector * Time.deltaTime * 60));
     }
 }

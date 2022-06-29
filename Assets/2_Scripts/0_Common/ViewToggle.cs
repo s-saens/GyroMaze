@@ -15,19 +15,19 @@ public class ViewToggle : MonoBehaviour
     private Stack<int> viewIndexHistory = new Stack<int>();
 
     // Events
-    [SerializeField] private ButtonEvent backEvent;
-    [SerializeField] private ButtonEvent viewToggleEvent;
+    [SerializeField] private Event backEvent;
+    [SerializeField] private Event viewToggleEvent;
 
 
     private void OnEnable()
     {
-        viewToggleEvent.OnClick += Open;
-        backEvent.OnClick += Back;
+        viewToggleEvent.callback += Open;
+        backEvent.callback += Back;
     }
     private void OnDisable()
     {
-        viewToggleEvent.OnClick -= Open;
-        backEvent.OnClick -= Back;
+        viewToggleEvent.callback -= Open;
+        backEvent.callback -= Back;
     }
 
     private void Awake()
@@ -42,7 +42,7 @@ public class ViewToggle : MonoBehaviour
 
     public void Open(string index) // = Push
     {
-        int i = Int32.Parse(index);
+        int i = int.Parse(index);
         viewIndexHistory.Push(activeViewIndex);
         views[activeViewIndex].SetActive(false);
         views[i].SetActive(true);

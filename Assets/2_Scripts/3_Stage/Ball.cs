@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class Ball : MonoBehaviour
 {
-    public RollEvent rollEvent;
-    public CollideEvent collideEvent;
+    public Event rollingEvent;
+    public Event rollEndEvent;
+    public Event collideEvent;
 
     private Rigidbody rigid;
     private Vector3 velocity;
@@ -38,11 +38,11 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionStay(Collision coll)
     {
-        rollEvent.OnRoll?.Invoke(rigid.velocity.magnitude * Time.deltaTime * 60);
+        rollingEvent.callback?.Invoke(JsonConvert.SerializeObject(rigid.velocity.magnitude * Time.deltaTime * 60));
     }
     private void OnCollisionExit(Collision coll)
     {
-        rollEvent.OnExitFloor?.Invoke();
+        rollEndEvent.callback?.Invoke("");
     }
     private void OnCollisionEnter(Collision coll)
     {
@@ -58,7 +58,7 @@ public class Ball : MonoBehaviour
         float normalVelocity = Mathf.Abs(Vector3.Dot(velocity, normal));
 
 
-        collideEvent.OnCollide?.Invoke(normalVelocity);
+        collideEvent.callback?.Invoke(normalVelocity.ToString());
     }
 
     private void QuantizeNormal(ref Vector3 normal)

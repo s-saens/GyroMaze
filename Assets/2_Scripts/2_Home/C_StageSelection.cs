@@ -7,9 +7,11 @@ public class C_StageSelection : MonoBehaviour
     [SerializeField] private StageSelectionData viewData;
 
     // Events : Operation
-    [SerializeField] private SwipeEvent swipeEvent;
-    [SerializeField] private SlideEvent slideEvent;
-    [SerializeField] private ButtonEvent buttonEvent;
+    [SerializeField] private Event swipeStartEvent;
+    [SerializeField] private Event swipingEvent;
+    [SerializeField] private Event swipeEndEvent;
+    [SerializeField] private Event slideEvent;
+    [SerializeField] private Event buttonEvent;
 
     // Views
     [SerializeField] private StageSelectionView stageSwipeView;
@@ -19,56 +21,56 @@ public class C_StageSelection : MonoBehaviour
     {
         GameData.stageIndex.onChange += OnChangeStageIndex;
 
-        swipeEvent.OnTouchDown += OnTouchDown;
-        swipeEvent.OnSwipe += OnSwipe;
-        swipeEvent.OnSwipeEnd += OnSwipeEnd;
-        slideEvent.OnSlide += OnSlide;
-        buttonEvent.OnClick += OnClickStage;
+        swipeStartEvent.callback += OnTouchDown;
+        swipingEvent.callback += OnSwipe;
+        swipeEndEvent.callback += OnSwipeEnd;
+        slideEvent.callback += OnSlide;
+        buttonEvent.callback += OnClickStage;
     }
 
     private void OnDisable()
     {
         GameData.stageIndex.onChange -= OnChangeStageIndex;
 
-        swipeEvent.OnTouchDown -= OnTouchDown;
-        swipeEvent.OnSwipe -= OnSwipe;
-        swipeEvent.OnSwipeEnd -= OnSwipeEnd;
-        slideEvent.OnSlide -= OnSlide;
-        buttonEvent.OnClick -= OnClickStage;
+        swipeStartEvent.callback -= OnTouchDown;
+        swipingEvent.callback -= OnSwipe;
+        swipeEndEvent.callback -= OnSwipeEnd;
+        slideEvent.callback -= OnSlide;
+        buttonEvent.callback -= OnClickStage;
     }
 
 
     // Events
-    private void OnTouchDown()
+    private void OnTouchDown(string s)
     {
         stageSwipeView.Magnet();
     }
 
-    private void OnSwipe(float deltaX)
+    private void OnSwipe(string deltaX) // float
     {
-        stageSwipeView.Swipe(deltaX);
+        stageSwipeView.Swipe(float.Parse(deltaX));
     }
 
-    private void OnSwipeEnd(float deltaX)
+    private void OnSwipeEnd(string deltaX) // float
     {
-        stageSwipeView.SwipeEnd(deltaX);
+        stageSwipeView.SwipeEnd(float.Parse(deltaX));
     }
 
-    private void OnSlide(int value)
+    private void OnSlide(string value)
     {
-        stageSwipeView.MoveToIndex(value);
+        stageSwipeView.MoveToIndex(int.Parse(value));
     }
     private void OnClickStage(string id)
     {
-        GameData.stageIndex.value = Int32.Parse(id);
+        GameData.stageIndex.value = int.Parse(id);
         SceneController.Instance.LoadScene(SceneEnum.Level);
     }
 
     // Change Data
     private void OnChangeStageIndex(int index)
     {
-        slideEvent.OnSlide -= OnSlide;
+        slideEvent.callback -= OnSlide;
         stageSwipeView.SetSliderHandle(index);
-        slideEvent.OnSlide += OnSlide;
+        slideEvent.callback += OnSlide;
     }
 }

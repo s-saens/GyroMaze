@@ -1,8 +1,9 @@
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class GyroInput : MonoBehaviour
 {
-    public GyroEvent gyroEvent;
+    public Event gyroEvent;
 
     private Gyroscope gyro;
     private bool gyroEnabled;
@@ -25,6 +26,6 @@ public class GyroInput : MonoBehaviour
         {
             return;
         }
-        gyroEvent.OnGyroAttitude?.Invoke(gyro);
+        gyroEvent.callback?.Invoke(JsonConvert.SerializeObject(gyro));
     }
 }

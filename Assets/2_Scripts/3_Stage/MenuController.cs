@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private ButtonEvent homeButton;
-    [SerializeField] private ButtonEvent retryButton;
+    [SerializeField] private Event homeButton;
+    [SerializeField] private Event retryButton;
 
 
     private void OnEnable()
     {
-        homeButton.OnClick += GoHome;
+        homeButton.callback += GoHome;
     }
     private void OnDisable()
     {
-        homeButton.OnClick -= GoHome;
+        homeButton.callback -= GoHome;
     }
 
     private void GoHome(string s)
