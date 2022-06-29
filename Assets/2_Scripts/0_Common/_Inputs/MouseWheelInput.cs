@@ -7,6 +7,6 @@ public class MouseWheelInput : MonoBehaviour, IScrollHandler
     public void OnScroll(PointerEventData e)
     {
         float scrollDelta = Mathf.Sign(e.scrollDelta.y);
-        zoomEvent.Invoke(scrollDelta.ToString());
+        zoomEvent.callback?.Invoke(scrollDelta.ToString());
     }
 }

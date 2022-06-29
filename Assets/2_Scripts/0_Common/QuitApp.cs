@@ -16,7 +16,7 @@ public class QuitApp : MonoBehaviour
         quitEvent.callback -= Quit;
     }
 
-    private void Quit(object param)
+    private void Quit(string s)
     {
         Application.Quit();
     }

@@ -16,8 +16,8 @@ public class GameCompleteController : MonoBehaviour
     }
 
 
-    private void GameComplete(object f)
+    private void GameComplete(string f)
     {
-        viewToggleEvent.Invoke((string)completeViewIndex);
+        viewToggleEvent.callback?.Invoke(completeViewIndex);
     }
 }

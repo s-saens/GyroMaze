@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a81b38004374e47b7b10c0506c8791, type: 3}
-  m_Name: EventSlider
+  m_Script: {fileID: 11500000, guid: 6acb6b9e08cd1429b9d4cca60b34a1d6, type: 3}
+  m_Name: CollideEvent_Ball
   m_EditorClassIdentifier: 

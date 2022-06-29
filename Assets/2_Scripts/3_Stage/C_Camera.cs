@@ -36,9 +36,9 @@ public class C_Camera : MonoBehaviour
         cam.position = Vector3.Lerp(lastPos, targetPos, lerpTime);
     }
 
-    private void OnZoom(object param) // float, amount < 0 : 확대
+    private void OnZoom(string param) // float, amount < 0 : 확대
     {
-        float amount = (float)param;
+        float amount = float.Parse(param);
         camPositionY -= amount * zoomStrength;
 
         if(camPositionY < minCamPositionY) // 더 확대할 수 없는 경우인데 확대하려는 경우

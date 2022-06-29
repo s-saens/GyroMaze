@@ -26,6 +26,6 @@ public class GyroInput : MonoBehaviour
         {
             return;
         }
-        gyroEvent.Invoke(gyro);
+        gyroEvent.callback?.Invoke(JsonConvert.SerializeObject(gyro));
     }
 }

@@ -20,7 +20,6 @@ public class C_Login : MonoBehaviour
 
     // Events
     [SerializeField] private Event clickEvent;
-    [SerializeField] private Event sceneLoadEvent;
 
     // Login
     private string loginType = "Google";
@@ -46,11 +45,11 @@ public class C_Login : MonoBehaviour
         clickEvent.callback += Login;
     }
 
-    private void Login(object param)
+    private void Login(string value)
     {
-        loginType = (string)param;
+        loginType = value;
         IndicatorController.Instance.ShowIndicator();
-        switch(loginType)
+        switch(value)
         {
             case "Google":
                 LoginGoogle();
@@ -59,7 +58,7 @@ public class C_Login : MonoBehaviour
                 LoginGoogleGames();
                 break;
             default:
-                Debug.LogWarning($"Login Value {loginType} is not valid.");
+                Debug.LogWarning($"Login Value {value} is not valid.");
                 break;
         }
     }
@@ -82,10 +81,10 @@ public class C_Login : MonoBehaviour
     private void TestLogin(string uid)
     {
         UserData.SetFirebaseUser_Test(uid, "TestAccount");
-        UserDBUpdater.UpdateUser((System.Action)(() =>
+        UserDBUpdater.UpdateUser(() =>
         {
-            sceneLoadEvent.Invoke((object)SceneEnum.Home);
-        }));
+            SceneController.Instance.LoadScene(SceneEnum.Home);
+        });
     }
 
     private void LoginGoogleGames()
@@ -136,7 +135,7 @@ public class C_Login : MonoBehaviour
                 UserData.SetFirebaseUser(task.Result);
 
                 UserDBUpdater.UpdateUser(() => {
-                    sceneLoadEvent.Invoke(SceneEnum.Home);
+                    SceneController.Instance.LoadScene(SceneEnum.Home);
                 });
                 return;
             }
