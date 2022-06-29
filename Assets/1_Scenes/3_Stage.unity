@@ -765,16 +765,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 82316025}
     m_Modifications:
-    - target: {fileID: 420662968867278968, guid: e69536a1cfbd74eaf96d4ef29822cd32,
-        type: 3}
-      propertyPath: m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 420662968867278968, guid: e69536a1cfbd74eaf96d4ef29822cd32,
-        type: 3}
-      propertyPath: m_TimeSlicingMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3332798912045989444, guid: e69536a1cfbd74eaf96d4ef29822cd32,
         type: 3}
       propertyPath: m_RootOrder
@@ -830,18 +820,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4552078052876654671, guid: e69536a1cfbd74eaf96d4ef29822cd32,
-        type: 3}
-      propertyPath: rollEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 9a26222b47aea46a7965a8e1dafe597d,
-        type: 2}
-    - target: {fileID: 4552078052876654671, guid: e69536a1cfbd74eaf96d4ef29822cd32,
-        type: 3}
-      propertyPath: collideEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 04e79c7ff2a144816b70d6cd8ddbad87,
-        type: 2}
     - target: {fileID: 7305436860757237840, guid: e69536a1cfbd74eaf96d4ef29822cd32,
         type: 3}
       propertyPath: m_Name
@@ -1312,7 +1290,6 @@ GameObject:
   - component: {fileID: 1433752447}
   - component: {fileID: 1433752446}
   - component: {fileID: 1433752445}
-  - component: {fileID: 1433752450}
   m_Layer: 0
   m_Name: _INPUTS
   m_TagString: Untagged
@@ -1348,7 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05055a2b723d1431289ce8cc94f1f08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
+  zoomEvent: {fileID: 11400000, guid: dfb90528ee71b414f8f381544173ef55, type: 2}
 --- !u!114 &1433752446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,7 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec29cefb16b945bbbb40172b018f21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gyroEvent: {fileID: 11400000, guid: 95b65b8e8ddef41af87e9adc9166ce86, type: 2}
+  gyroEvent: {fileID: 11400000, guid: 4b515e4146f954bbe84f6f8ad2696704, type: 2}
 --- !u!114 &1433752447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,7 +1351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a2c4eedbb834171b188cee4c047879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragEvent: {fileID: 11400000, guid: e9bb92379647c4a65a9b2b05f2fb83ac, type: 2}
+  dragEvent: {fileID: 11400000, guid: 9febbae78abb345bbbb7946b2863fb79, type: 2}
 --- !u!114 &1433752448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,19 +1386,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &1433752450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433752443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ceb1acd6b4b45f18cddd04af35f509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backEvent: {fileID: 11400000, guid: 6e7ba197615d9435db49153ff97fb3c4, type: 2}
 --- !u!1001 &1545421647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1760,8 +1724,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rollSound: {fileID: 868897200}
   collideSound: {fileID: 868897199}
-  rollEvent: {fileID: 11400000, guid: 9a26222b47aea46a7965a8e1dafe597d, type: 2}
-  collideEvent: {fileID: 11400000, guid: 04e79c7ff2a144816b70d6cd8ddbad87, type: 2}
+  rollingEvent: {fileID: 11400000, guid: ab2912839038945efada6db3d2b63034, type: 2}
+  rollEndEvent: {fileID: 11400000, guid: 9da7fca1799b74607b8ba674ce5bca8d, type: 2}
+  collideEvent: {fileID: 11400000, guid: 57b1dbac1482646b389c72d2ea4f466e, type: 2}
 --- !u!1001 &908130943887582182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1893,7 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d2bdc3d65e8486884421dead9bcd82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gyroEvent: {fileID: 11400000, guid: 95b65b8e8ddef41af87e9adc9166ce86, type: 2}
+  gyroEvent: {fileID: 11400000, guid: 4b515e4146f954bbe84f6f8ad2696704, type: 2}
   lightTransform: {fileID: 705507995}
 --- !u!4 &2194940329199630479
 Transform:
@@ -1940,7 +1905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc21e802ff4e41a68d30c9aceff9c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomEvent: {fileID: 11400000, guid: 68f98225548b24408ac7041b8582c721, type: 2}
+  zoomEvent: {fileID: 11400000, guid: dfb90528ee71b414f8f381544173ef55, type: 2}
   cam: {fileID: 963194228}
   target: {fileID: 868897198}
   minCamPositionY: 5

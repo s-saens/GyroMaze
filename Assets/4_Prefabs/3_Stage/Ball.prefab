@@ -324,8 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da8666a1f79346e8aca72b5be237529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollEvent: {fileID: 11400000, guid: 9a26222b47aea46a7965a8e1dafe597d, type: 2}
-  collideEvent: {fileID: 11400000, guid: 04e79c7ff2a144816b70d6cd8ddbad87, type: 2}
+  rollingEvent: {fileID: 11400000, guid: ab2912839038945efada6db3d2b63034, type: 2}
+  rollEndEvent: {fileID: 11400000, guid: 9da7fca1799b74607b8ba674ce5bca8d, type: 2}
+  collideEvent: {fileID: 11400000, guid: 57b1dbac1482646b389c72d2ea4f466e, type: 2}
 --- !u!1 &9141814560825735868
 GameObject:
   m_ObjectHideFlags: 0

@@ -326,8 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3803730795f479a94c6c9c5a21c2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeButton: {fileID: 11400000, guid: d255d8bb660b84850b00e5cabd12e300, type: 2}
-  retryButton: {fileID: 11400000, guid: a0487acc8e1534bc9b771d3aa258b16e, type: 2}
+  homeButton: {fileID: 11400000, guid: ac8653215700d42afaee7b36316e1060, type: 2}
+  retryButton: {fileID: 11400000, guid: 603e4aeaee840407880eaf46c1f6e364, type: 2}
 --- !u!1001 &39203123365392690
 PrefabInstance:
   m_ObjectHideFlags: 0
