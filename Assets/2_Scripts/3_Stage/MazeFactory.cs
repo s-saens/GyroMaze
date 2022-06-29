@@ -143,14 +143,14 @@ public class MazeFactory : MonoBehaviour
     }
 
     [SerializeField] private GameObject ball;
-    [SerializeField] private GameObject endFlag;
+    [SerializeField] private GameObject endPoint;
 
     private void MakeStartPoint()
     {
-        ball.transform.position = new Vector3(1, 0, 1) * (maze.startX + (spaceSize * 0.5f));
+        ball.transform.position = new Vector3(maze.startX + (spaceSize * 0.5f), 0, maze.startY + (spaceSize * 0.5f));
     }
     private void MakeEndPoint()
     {
-
+        endPoint.transform.position = new Vector3(maze.endX + (spaceSize * 0.5f), 0, maze.endY + (spaceSize * 0.5f));
     }
 }

@@ -12,6 +12,9 @@ public class SingletonFactory : MonoBehaviour
     {
         if(!singletonsWereMade)
         {
+#if UNITY_EDITOR
+            UserData.stage.value = 34;
+#endif
             foreach (GameObject go in singletonObjects)
             {
                 DontDestroyOnLoad(Instantiate(go));
