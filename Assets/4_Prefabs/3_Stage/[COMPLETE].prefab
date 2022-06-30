@@ -326,8 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3803730795f479a94c6c9c5a21c2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeButton: {fileID: 11400000, guid: ac8653215700d42afaee7b36316e1060, type: 2}
-  retryButton: {fileID: 11400000, guid: 603e4aeaee840407880eaf46c1f6e364, type: 2}
+  nextEvent: {fileID: 11400000, guid: 09ff52c265ea94d708957814f8d3d1c1, type: 2}
   stageText: {fileID: 8265749413635145174}
 --- !u!1001 &39203123365392690
 PrefabInstance:
