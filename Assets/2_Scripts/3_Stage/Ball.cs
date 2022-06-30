@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionStay(Collision coll)
     {
-        rollingEvent.callback?.Invoke(JsonConvert.SerializeObject(rigid.velocity.magnitude * Time.deltaTime * 60));
+        rollingEvent.callback?.Invoke((rigid.velocity.magnitude * Time.deltaTime * 60).ToString());
     }
     private void OnCollisionExit(Collision coll)
     {
