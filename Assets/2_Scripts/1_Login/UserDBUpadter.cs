@@ -12,34 +12,24 @@ public static class UserDBUpdater
 
     public static void FetchUser(string uid)
     {
-        userDataRef = DBRef.user.Child(uid);
+        userDataRef = FirebaseDBReference.Reference("user", uid);
     }
 
     public static void UpdateUser(Action callback)
     {
-        FetchUser(UserData.uid.value);
-
-        userDataRef.GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsCompleted)
-            {
-                if (task.Result.Value == null)
-                {
-                    AddUserOnDatabase(callback);
-                    return;
-                }
-
-                User user = JsonConvert.DeserializeObject<User>(task.Result.GetRawJsonValue());
+        FirebaseDBAccessor.GetValue(
+            FirebaseDBReference.Reference(FirebaseDBReference.user, UserData.uid.value),
+            (value) => {
+                User user = JsonConvert.DeserializeObject<User>(value);
                 UserData.SetUser(user);
-
                 callback?.Invoke();
-                return;
+            },
+            () => {
+
+                Debug.LogWarning("Searching User From Database Failed");
+                IndicatorController.Instance.HideIndicator();
             }
-
-            Debug.LogWarning("Searching User From Database Failed");
-
-            IndicatorController.Instance.HideIndicator();
-        }).LogExceptionIfFaulted();
+        );
     }
 
     private static void AddUserOnDatabase(Action callback)

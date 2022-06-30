@@ -27,21 +27,14 @@ public class C_Game : MonoBehaviour
         {
             IndicatorController.Instance.ShowIndicator();
         }
-        DatabaseReference mazeReference = DBRef.maze.Child(GameData.stageIndex.value.ToString());
-        Task t = mazeReference.GetValueAsync().ContinueWithOnMainThread((task) =>
-        {
-            if (task.IsCompleted)
-            {
-                if (task.Result.Value == null)
-                {
-                    Debug.LogError($"THERE IS NO MAZE OF STAGE {GameData.stageIndex.value} ON DATABASE");
-                    return;
-                }
-                Maze maze = JsonConvert.DeserializeObject<Maze>(task.Result.GetRawJsonValue());
+
+        FirebaseDBAccessor.GetValue(
+            FirebaseDBReference.Reference("maze", GameData.stageIndex.value.ToString()),
+            (value) => {
+                Maze maze = JsonConvert.DeserializeObject<Maze>(value);
                 mazeFactory.MakeMaze(maze);
                 IndicatorController.Instance.HideIndicator();
             }
-        });
-        t.LogExceptionIfFaulted();
+        );
     }
 }
