@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8437524541599506334}
-  - component: {fileID: 8582345146219596923}
+  - component: {fileID: 3460287911142626961}
   m_Layer: 5
   m_Name: '[COMPLETE]'
   m_TagString: Untagged
@@ -314,7 +314,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8582345146219596923
+--- !u!114 &3460287911142626961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homeButton: {fileID: 11400000, guid: ac8653215700d42afaee7b36316e1060, type: 2}
   retryButton: {fileID: 11400000, guid: 603e4aeaee840407880eaf46c1f6e364, type: 2}
+  stageText: {fileID: 8265749413635145174}
 --- !u!1001 &39203123365392690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -337,14 +338,25 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
+      propertyPath: parameter
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
       propertyPath: buttonEvents.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
       propertyPath: buttonEvents.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: d1070a877a98340c696f3105218ebead,
+      objectReference: {fileID: 11400000, guid: 09ff52c265ea94d708957814f8d3d1c1,
+        type: 2}
+    - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
+      propertyPath: buttonEvents.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c8519e5de9ef465283f565cace61bca,
         type: 2}
     - target: {fileID: 7958292741536065705, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
@@ -465,7 +477,7 @@ PrefabInstance:
     - target: {fileID: 7958292741536065710, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
       propertyPath: m_Name
-      value: Resume
+      value: Next
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31d21334747a146d9a33d3003de33471, type: 3}
@@ -484,6 +496,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
+      propertyPath: parameter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
       propertyPath: buttonEvents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -491,7 +508,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonEvents.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: d255d8bb660b84850b00e5cabd12e300,
+      objectReference: {fileID: 11400000, guid: 9c8519e5de9ef465283f565cace61bca,
         type: 2}
     - target: {fileID: 7958292741536065705, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
@@ -631,6 +648,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
+      propertyPath: parameter
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
       propertyPath: buttonEvents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -638,7 +660,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonEvents.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: a0487acc8e1534bc9b771d3aa258b16e,
+      objectReference: {fileID: 11400000, guid: 9c8519e5de9ef465283f565cace61bca,
         type: 2}
     - target: {fileID: 7958292741536065705, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}

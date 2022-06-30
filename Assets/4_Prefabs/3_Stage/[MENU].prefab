@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8437524541599506334}
-  - component: {fileID: 8582345146219596923}
+  - component: {fileID: 242519825243678456}
   m_Layer: 5
   m_Name: '[MENU]'
   m_TagString: Untagged
@@ -315,7 +315,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8582345146219596923
+--- !u!114 &242519825243678456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,11 +324,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8437524541599506333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3803730795f479a94c6c9c5a21c2fc, type: 3}
+  m_Script: {fileID: 11500000, guid: b81b3f93e38df4b199d011bb8a26a39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeButton: {fileID: 11400000, guid: ac8653215700d42afaee7b36316e1060, type: 2}
-  retryButton: {fileID: 11400000, guid: 603e4aeaee840407880eaf46c1f6e364, type: 2}
+  stageText: {fileID: 7445172611953445866}
 --- !u!1001 &1469630441917181043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -338,6 +337,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
+      propertyPath: parameter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
       propertyPath: buttonEvents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -345,7 +349,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonEvents.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ac8653215700d42afaee7b36316e1060,
+      objectReference: {fileID: 11400000, guid: 9c8519e5de9ef465283f565cace61bca,
         type: 2}
     - target: {fileID: 7958292741536065705, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
@@ -740,6 +744,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}
+      propertyPath: parameter
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 13280878270518932, guid: 31d21334747a146d9a33d3003de33471,
+        type: 3}
       propertyPath: buttonEvents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -747,7 +756,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonEvents.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 603e4aeaee840407880eaf46c1f6e364,
+      objectReference: {fileID: 11400000, guid: 9c8519e5de9ef465283f565cace61bca,
         type: 2}
     - target: {fileID: 7958292741536065705, guid: 31d21334747a146d9a33d3003de33471,
         type: 3}

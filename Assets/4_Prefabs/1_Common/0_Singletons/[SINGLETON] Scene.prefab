@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d68c88cbf82443aab21040493184de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoadEvent: {fileID: 11400000, guid: b279bb27c18f94d4a94d02e3d93858f3, type: 2}
+  loadSceneEvent: {fileID: 11400000, guid: 9c8519e5de9ef465283f565cace61bca, type: 2}
