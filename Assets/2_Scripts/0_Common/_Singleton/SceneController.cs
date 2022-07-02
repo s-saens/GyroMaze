@@ -44,7 +44,7 @@ public class SceneController : SingletonMono<SceneController>
 
     IEnumerator SceneMoveCoroutine(AsyncOperation loadOperation, bool indicator = true)
     {
-        IndicatorController.Instance.ShowIndicator();
+        IndicatorController.Instance.Show();
         while(!loadOperation.isDone)
         {
             yield return 0;

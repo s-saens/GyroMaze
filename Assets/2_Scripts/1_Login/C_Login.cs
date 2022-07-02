@@ -48,7 +48,7 @@ public class C_Login : MonoBehaviour
     private void Login(string value)
     {
         loginType = value;
-        IndicatorController.Instance.ShowIndicator();
+        IndicatorController.Instance.Show();
         switch(value)
         {
             case "Google":
@@ -95,7 +95,10 @@ public class C_Login : MonoBehaviour
 
         Debug.Log("Google Games Login...");
 
-        GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnLoginFinished).LogExceptionIfFaulted();
+        GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnLoginFinished).OnFaulted(() =>
+        {
+
+        });
     }
 
     private void OnSignInSilently()
@@ -106,7 +109,10 @@ public class C_Login : MonoBehaviour
 
         Debug.Log("Google Login (silently)...");
 
-        GoogleSignIn.DefaultInstance.SignInSilently().ContinueWithOnMainThread(OnLoginFinished).LogExceptionIfFaulted();
+        GoogleSignIn.DefaultInstance.SignInSilently().ContinueWithOnMainThread(OnLoginFinished).OnFaulted(() =>
+        {
+
+        });
     }
 
     private void OnLoginFinished(Task<GoogleSignInUser> task)
@@ -119,7 +125,7 @@ public class C_Login : MonoBehaviour
         }
         Debug.LogWarning("Login Failed");
 
-        IndicatorController.Instance.HideIndicator();
+        IndicatorController.Instance.Hide();
     }
 
     private void SetAuthCredential(string googleIdToken, string googleAccessToken)
@@ -141,7 +147,10 @@ public class C_Login : MonoBehaviour
             }
             Debug.LogWarning("Setting Credetial Failed");
 
-            IndicatorController.Instance.HideIndicator();
-        }).LogExceptionIfFaulted();
+            IndicatorController.Instance.Hide();
+        }).OnFaulted(() =>
+        {
+
+        });
     }
 }

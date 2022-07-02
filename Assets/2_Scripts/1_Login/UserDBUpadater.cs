@@ -25,9 +25,10 @@ public static class UserDBUpdater
                 callback?.Invoke();
             },
             () => {
-
-                Debug.LogWarning("Searching User From Database Failed");
-                IndicatorController.Instance.HideIndicator();
+                Debug.Log($"No User of UID: {UserData.uid.value}. Adding new instance of user...");
+                AddUserOnDatabase(() => {
+                    IndicatorController.Instance.Hide();
+                });
             }
         );
     }
@@ -39,18 +40,12 @@ public static class UserDBUpdater
         User user = new User();
         string userJson = JsonConvert.SerializeObject(user);
 
-        userDataRef.SetRawJsonValueAsync(userJson).ContinueWithOnMainThread(task =>
-        {
-            if (task.IsCompleted)
-            {
-                UserData.SetUser(user);
+        FirebaseDBAccessor.SetValue(
+            FirebaseDBReference.Reference(FirebaseDBReference.user, UserData.uid.value),
+            userJson,
+            () => {
                 callback?.Invoke();
-                return;
             }
-
-            Debug.LogWarning("Adding User On Database Failed");
-
-            IndicatorController.Instance.HideIndicator();
-        }).LogExceptionIfFaulted();
+        );
     }
 }
