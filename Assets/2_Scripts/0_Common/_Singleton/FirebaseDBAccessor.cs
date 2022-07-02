@@ -20,10 +20,7 @@ public static class FirebaseDBAccessor
                 }
                 callback?.Invoke(task.Result.GetRawJsonValue());
             }
-        }).OnFaulted(()=>
-        {
-
-        });
+        }).HandleFaulted();
     }
 
     public static void SetValue(DatabaseReference dbRef, string value, Action callback = null)
@@ -34,9 +31,6 @@ public static class FirebaseDBAccessor
             {
                 callback?.Invoke();
             }
-        }).OnFaulted(() =>
-        {
-
-        });
+        }).HandleFaulted();
     }
 }

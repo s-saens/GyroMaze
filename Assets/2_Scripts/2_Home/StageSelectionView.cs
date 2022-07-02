@@ -61,7 +61,7 @@ public class StageSelectionView : MonoBehaviour
         buttons = stageButtonFactory.MakeButtons(UserData.stage.value, viewData.originalSize);
         slider.gameObject.SetActive(UserData.stage.value > 1);
         UpdateAllScale();
-        IndicatorController.Instance?.Hide();
+        PopupIndicator.Instance?.Hide();
     }
     private void InitializeSlider()
     {

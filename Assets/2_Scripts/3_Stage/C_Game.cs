@@ -23,9 +23,9 @@ public class C_Game : MonoBehaviour
         FirebaseInit fi = new FirebaseInit();
         fi.Init();
 #endif
-        if(!IndicatorController.Instance.IsOn)
+        if(!PopupIndicator.Instance.IsOn)
         {
-            IndicatorController.Instance.Show();
+            PopupIndicator.Instance.Show();
         }
 
         FirebaseDBAccessor.GetValue(
@@ -33,7 +33,7 @@ public class C_Game : MonoBehaviour
             (value) => {
                 Maze maze = JsonConvert.DeserializeObject<Maze>(value);
                 mazeFactory.MakeMaze(maze);
-                IndicatorController.Instance.Hide();
+                PopupIndicator.Instance.Hide();
             }
         );
     }
