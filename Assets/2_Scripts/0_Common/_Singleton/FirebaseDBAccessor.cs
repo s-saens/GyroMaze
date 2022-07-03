@@ -2,7 +2,6 @@ using UnityEngine;
 using System;
 using Firebase.Database;
 using Firebase.Extensions;
-using System.Threading.Tasks;
 
 
 public static class FirebaseDBAccessor
