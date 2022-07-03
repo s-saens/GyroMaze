@@ -10,8 +10,7 @@ public static class TaskExts
         {
             if (t.IsFaulted)
             {
-                PopupIndicator.Instance.Hide();
-                PopupNetworkError.Instance.Show();
+                Debug.LogException(t.Exception.Flatten().InnerException);
             }
         });
     }

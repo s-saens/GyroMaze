@@ -19,6 +19,7 @@ public static class FirebaseDBAccessor
                     return;
                 }
                 callback?.Invoke(task.Result.GetRawJsonValue());
+                return;
             }
         }).HandleFaulted();
     }

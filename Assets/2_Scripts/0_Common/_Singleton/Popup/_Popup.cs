@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class _Popup : SingletonMono<_Popup>
+public class _Popup<T> : SingletonMono<_Popup<T>>
 {
     [SerializeField] private Animator anim;
 

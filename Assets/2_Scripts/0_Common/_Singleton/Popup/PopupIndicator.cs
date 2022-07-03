@@ -1,5 +1,5 @@
 using UnityEngine;
 
-public class PopupIndicator : _Popup
+public class PopupIndicator : _Popup<PopupIndicator>
 {
 }

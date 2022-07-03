@@ -150,9 +150,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3271860096382042121}
-  - component: {fileID: 3271860096382042120}
+  - component: {fileID: 6333566949413526346}
   m_Layer: 0
-  m_Name: '[SINGLETON] Indicator'
+  m_Name: '[SINGLETON][Popup] Indicator'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3271860096382042120
+--- !u!114 &6333566949413526346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,10 +183,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3271860096382042127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad9fba5e4caeb45809a3ad7d3e2c6984, type: 3}
+  m_Script: {fileID: 11500000, guid: 84e7183909bb34ffea01d04e8a7ddf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 3271860096306012064}
+  anim: {fileID: 3271860096306012064}
 --- !u!1 &3271860097493169102
 GameObject:
   m_ObjectHideFlags: 0
