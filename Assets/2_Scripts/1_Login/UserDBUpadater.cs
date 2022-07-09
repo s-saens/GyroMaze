@@ -18,14 +18,13 @@ public static class UserDBUpdater
     public static void UpdateUser(Action callback)
     {
         FirebaseDBAccessor.GetValue(
-            FirebaseDBReference.Reference(FirebaseDBReference.user, UserData.uid.value),
+            FirebaseDBReference.Reference(FirebaseDBReference.user, UserData.authUser.uid),
             (value) => {
-                User user = JsonConvert.DeserializeObject<User>(value);
-                UserData.SetUser(user);
+                UserData.databaseUser = JsonConvert.DeserializeObject<User>(value);
                 callback?.Invoke();
             },
             () => {
-                Debug.Log($"No User of UID: {UserData.uid.value}. Adding new instance of user...");
+                Debug.Log($"No User of UID: {UserData.authUser.uid}. Adding new instance of user...");
                 AddUserOnDatabase(() => {
                     PopupIndicator.Instance.Hide();
                 });
@@ -41,7 +40,7 @@ public static class UserDBUpdater
         string userJson = JsonConvert.SerializeObject(user);
 
         FirebaseDBAccessor.SetValue(
-            FirebaseDBReference.Reference(FirebaseDBReference.user, UserData.uid.value),
+            FirebaseDBReference.Reference(FirebaseDBReference.user, UserData.authUser.uid),
             userJson,
             () => {
                 callback?.Invoke();

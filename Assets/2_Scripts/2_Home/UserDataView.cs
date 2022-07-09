@@ -12,18 +12,8 @@ public class UserDataView : MonoBehaviour
 
     private void Start()
     {
-        SetNameText(UserData.displayName.value);
-        SetProfileImage(UserData.imgUrl.value);
-    }
-    private void OnEnable()
-    {
-        UserData.displayName.onChange += SetNameText;
-        UserData.imgUrl.onChange += SetProfileImage;
-    }
-    private void OnDisable()
-    {
-        UserData.displayName.onChange -= SetNameText;
-        UserData.imgUrl.onChange -= SetProfileImage;
+        SetNameText(UserData.authUser.displayName);
+        SetProfileImage(UserData.authUser.imgUrl);
     }
 
     private void SetNameText(string name)

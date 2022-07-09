@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
+using Firebase.Auth;
 using Firebase.Database;
 using Newtonsoft.Json;
 
@@ -12,7 +13,6 @@ public class MazeGeneratorWindow : EditorWindow
     
     private MazeGenerator mg = new MazeGenerator();
     private MazeUploader mu = new MazeUploader();
-    private FirebaseInit fi = new FirebaseInit();
 
     // Add menu item named "My Window" to the Window menu
     [MenuItem("SAENS/MazeGeneratorWindow")]
@@ -56,11 +56,17 @@ public class MazeGeneratorWindow : EditorWindow
 
     private void UploadMaze()
     {
-        fi.Init();
+        InitFirebaseInstances();
         for(int i=range.x ; i<=range.y ; ++i)
         {
             mu.Upload(i, mazes[i-range.x]);
         }
+    }
+
+    private void InitFirebaseInstances()
+    {
+        FirebaseInstances.auth = FirebaseAuth.DefaultInstance;
+        FirebaseInstances.db = FirebaseDatabase.GetInstance("https://gyromaze-a8ee3-default-rtdb.asia-southeast1.firebasedatabase.app/");
     }
 }
 #endif

@@ -2,9 +2,9 @@ using UnityEngine;
 using Firebase.Auth;
 using Firebase.Database;
 
-public class FirebaseInit
+public class FirebaseInitiator : SingletonMono<FirebaseInitiator>
 {
-    public void Init()
+    public void Awake()
     {
         InitInstances();
     }

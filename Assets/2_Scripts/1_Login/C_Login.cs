@@ -3,9 +3,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using Google;
 using Firebase.Auth;
-using Firebase.Database;
 using Firebase.Extensions;
-using Newtonsoft.Json;
 
 public enum LoginType
 {
@@ -15,11 +13,8 @@ public enum LoginType
 
 public class C_Login : MonoBehaviour
 {
-    // Initiator
-    FirebaseInit fi = new FirebaseInit();
-
     // Events
-    [SerializeField] private Event clickEvent;
+    [SerializeField] private Event loginEvent;
 
     // Login
     private string loginType = "Google";
@@ -28,7 +23,6 @@ public class C_Login : MonoBehaviour
 
     private void Awake()
     {
-        fi.Init();
         configuration = new GoogleSignInConfiguration
         {
             WebClientId = clientId,
@@ -38,11 +32,11 @@ public class C_Login : MonoBehaviour
 
     private void OnEnable()
     {
-        clickEvent.callback += Login;
+        loginEvent.callback += Login;
     }
     private void OnDisable()
     {
-        clickEvent.callback += Login;
+        loginEvent.callback += Login;
     }
 
     private void Login(string value)
@@ -80,7 +74,7 @@ public class C_Login : MonoBehaviour
 
     private void TestLogin(string uid)
     {
-        UserData.SetFirebaseUser_Test(uid, "TestAccount");
+        UserData.authUser.Set(uid, "TestAccount");
         UserDBUpdater.UpdateUser(() =>
         {
             SceneController.Instance.LoadScene(SceneEnum.Home);
@@ -132,7 +126,7 @@ public class C_Login : MonoBehaviour
         {
             if(task.IsCompleted)
             {
-                UserData.SetFirebaseUser(task.Result);
+                UserData.authUser.Set(task.Result);
 
                 UserDBUpdater.UpdateUser(() => {
                     SceneController.Instance.LoadScene(SceneEnum.Home);

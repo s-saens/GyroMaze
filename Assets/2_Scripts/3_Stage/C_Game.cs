@@ -19,10 +19,6 @@ public class C_Game : MonoBehaviour
 
     private void MakeMaze()
     {
-#if UNITY_EDITOR
-        FirebaseInit fi = new FirebaseInit();
-        fi.Init();
-#endif
         if(!PopupIndicator.Instance.IsOn)
         {
             PopupIndicator.Instance.Show();
