@@ -147,7 +147,16 @@ public class MazeFactory : MonoBehaviour
 
     private void MakeStartPoint()
     {
-        ball.transform.position = new Vector3(maze.startX + (spaceSize * 0.5f), 0, maze.startY + (spaceSize * 0.5f));
+        Vector3 ballPosition;
+        if(UserData.databaseUser.snapshot.stage < 0)
+        {
+            ballPosition = UserData.databaseUser.snapshot.position;
+        }
+        else
+        {
+            ballPosition = new Vector3(maze.startX + (spaceSize * 0.5f), 0, maze.startY + (spaceSize * 0.5f));
+        }
+        ball.transform.position = ballPosition;
     }
     private void MakeEndPoint()
     {

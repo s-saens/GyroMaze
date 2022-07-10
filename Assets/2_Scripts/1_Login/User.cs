@@ -4,14 +4,39 @@ using Firebase.Auth;
 
 public class PlayTime
 {
-    public int startDate;
-    public int duration;
+    public string startDate;
+    public int duration; // minute
+
+    public PlayTime()
+    {
+        this.startDate = "SDS";
+        this.duration = 10;
+    }
+}
+public class Snapshot
+{
+    public int stage;
+    public Vector3 position;
+
+    public Snapshot()
+    {
+        this.stage = -1;
+        this.position = new Vector3(0.5f, 0.5f, 0.5f);
+    }
 }
 
 public class User
 {
-    public int stage = 4;
+    public int stage;
     public PlayTime playTime;
+    public Snapshot snapshot;
+
+    public User()
+    {
+        stage = 1;
+        playTime = new PlayTime();
+        snapshot = new Snapshot();
+    }
 }
 
 public class AuthUser

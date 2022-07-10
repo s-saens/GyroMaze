@@ -7,7 +7,7 @@ public enum SceneEnum
 {
     Login = 0,
     Home,
-    Level,
+    Stage,
 }
 
 public class SceneController : SingletonMono<SceneController>

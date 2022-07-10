@@ -13,7 +13,7 @@ public static class FirebaseDBAccessor
             {
                 if (task.Result.Value == null)
                 {
-                    Debug.LogError($"THERE IS NO DATA ON DATABASE");
+                    Debug.LogWarning($"THERE IS NO DATA ON DATABASE");
                     noDataCallback?.Invoke();
                     return;
                 }

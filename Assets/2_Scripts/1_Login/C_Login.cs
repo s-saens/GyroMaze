@@ -75,10 +75,7 @@ public class C_Login : MonoBehaviour
     private void TestLogin(string uid)
     {
         UserData.authUser.Set(uid, "TestAccount");
-        UserDBUpdater.UpdateUser(() =>
-        {
-            SceneController.Instance.LoadScene(SceneEnum.Home);
-        });
+        UserDBUpdater.UpdateUser(OnLoginFinished);
     }
 
     private void LoginGoogleGames()
@@ -89,7 +86,7 @@ public class C_Login : MonoBehaviour
 
         Debug.Log("Google Games Login...");
 
-        GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnLoginFinished).HandleFaulted();
+        GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnSignInFinished).HandleFaulted();
     }
 
     private void OnSignInSilently()
@@ -100,15 +97,15 @@ public class C_Login : MonoBehaviour
 
         Debug.Log("Google Login (silently)...");
 
-        GoogleSignIn.DefaultInstance.SignInSilently().ContinueWithOnMainThread(OnLoginFinished).HandleFaulted();
+        GoogleSignIn.DefaultInstance.SignInSilently().ContinueWithOnMainThread(OnSignInFinished).HandleFaulted();
     }
 
-    private void OnLoginFinished(Task<GoogleSignInUser> task)
+    private void OnSignInFinished(Task<GoogleSignInUser> task)
     {
         if(task.IsCompleted)
         {
-            SetAuthCredential(task.Result.IdToken, null);
             PlayerPrefs.SetString(ConstData.KEY_LOGIN_TYPE, loginType);
+            SetAuthCredential(task.Result.IdToken, null);
             return;
         }
         Debug.LogWarning("Login Failed");
@@ -127,15 +124,24 @@ public class C_Login : MonoBehaviour
             if(task.IsCompleted)
             {
                 UserData.authUser.Set(task.Result);
-
-                UserDBUpdater.UpdateUser(() => {
-                    SceneController.Instance.LoadScene(SceneEnum.Home);
-                });
+                UserDBUpdater.UpdateUser(OnLoginFinished);
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
 
             PopupIndicator.Instance.Hide();
         }).HandleFaulted();
+    }
+
+    private void OnLoginFinished()
+    {
+        if(UserData.databaseUser.snapshot.stage < 0)
+        {
+            SceneController.Instance.LoadScene(SceneEnum.Home);
+            return;
+        }
+
+        SceneController.Instance.LoadScene(SceneEnum.Stage);
+
     }
 }

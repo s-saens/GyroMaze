@@ -10,11 +10,6 @@ public static class UserDBUpdater
 {
     private static DatabaseReference userDataRef;
 
-    public static void FetchUser(string uid)
-    {
-        userDataRef = FirebaseDBReference.Reference("user", uid);
-    }
-
     public static void UpdateUser(Action callback)
     {
         FirebaseDBAccessor.GetValue(
@@ -37,7 +32,10 @@ public static class UserDBUpdater
         Debug.Log("Adding User On Database");
 
         User user = new User();
-        string userJson = JsonConvert.SerializeObject(user);
+        var setting = new JsonSerializerSettings();
+        setting.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        string userJson = JsonConvert.SerializeObject(user, setting);
+        Debug.Log(userJson);
 
         FirebaseDBAccessor.SetValue(
             FirebaseDBReference.Reference(FirebaseDBReference.user, UserData.authUser.uid),
