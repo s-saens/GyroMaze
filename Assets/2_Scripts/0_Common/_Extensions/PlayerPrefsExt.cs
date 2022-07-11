@@ -14,4 +14,8 @@ public static class PlayerPrefsExt
         string value = PlayerPrefs.GetString(key, null);
         return JsonConvert.DeserializeObject<T>(value);
     }
+    public static string GetObjectRaw(string key)
+    {
+        return PlayerPrefs.GetString(key, null);
+    }
 }
