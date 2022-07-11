@@ -8,11 +8,9 @@ public class MazeGenerator
 
     private Maze maze;
     private int[,] distances; // [Y][X]
-    private int maxDistance;
 
     private void InitDistances(int sizeY, int sizeX)
     {
-        maxDistance = 0;
         distances = new int[sizeY, sizeX];
         for (int y = 0; y < sizeY; ++y) for (int x = 0; x < sizeX; ++x) distances[y, x] = 0;
     }
