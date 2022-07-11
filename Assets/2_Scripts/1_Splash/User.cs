@@ -2,45 +2,38 @@ using UnityEngine;
 using System;
 using Firebase.Auth;
 
-public class PlayTime
-{
-    public string startDate;
-    public int duration; // minute
-
-    public PlayTime()
-    {
-        this.startDate = "SDS";
-        this.duration = 10;
-    }
-}
-public class Snapshot
-{
-    public int stage;
-    public Vector3 position;
-
-    public Snapshot()
-    {
-        this.stage = -1;
-        this.position = new Vector3(0.5f, 0.5f, 0.5f);
-    }
-}
-
 public class User
 {
-    public int stage;
-    public PlayTime playTime;
-    public Snapshot snapshot;
+    public int stage { get; private set; }
+    public string countStartDate { get; private set; }
+    public int countDuration { get; private set; }
 
-    public User()
+    public void SetStage(int value, bool prefs = true)
     {
-        stage = 1;
-        playTime = new PlayTime();
-        snapshot = new Snapshot();
+        this.stage = value;
+        if (prefs) PlayerPrefs.SetInt(KeyData.USER_STAGE, value);
+    }
+    public void SetCount(string startDate, int duration, bool prefs = true)
+    {
+        this.countStartDate = startDate;
+        this.countDuration = duration;
+        if (prefs)
+        {
+            PlayerPrefs.SetString(KeyData.USER_COUNT_START_DATE, startDate);
+            PlayerPrefs.SetInt(KeyData.USER_COUNT_DURATION, duration);
+        }
     }
 
-    public void SavePrefs()
+    public void LoadPrefs()
     {
-        PlayerPrefsExt.SetObject<User>(ConstData.KEY_USER, this);
+        this.stage = PlayerPrefs.GetInt(KeyData.USER_STAGE, 1);
+        this.countStartDate = PlayerPrefs.GetString(KeyData.USER_COUNT_START_DATE, "ASD");
+        this.countDuration = PlayerPrefs.GetInt(KeyData.USER_COUNT_DURATION, 10);
+    }
+
+    public void Sync()
+    {
+        // FirebaseDBAccessor.SetValue();
     }
 }
 

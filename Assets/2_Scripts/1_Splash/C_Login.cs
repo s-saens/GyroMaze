@@ -46,7 +46,7 @@ public class C_Login : MonoBehaviour
 
 #if UNITY_EDITOR
         UserData.authUser.Set("TESTACCOUNT", "TestAccount");
-        UserDBUpdater.UpdateUser(OnLoginFinished);
+        UserDBUpdater.UpdateUser(OnAuthFinished);
 #else
         switch(value)
         {
@@ -105,7 +105,7 @@ public class C_Login : MonoBehaviour
     {
         if(task.IsCompleted)
         {
-            PlayerPrefs.SetString(ConstData.KEY_LOGIN_TYPE, loginType);
+            PlayerPrefs.SetString(KeyData.LOGIN_TYPE, loginType);
             SetAuthCredential(task.Result.IdToken, null);
             return;
         }
@@ -125,7 +125,7 @@ public class C_Login : MonoBehaviour
             if(task.IsCompleted)
             {
                 UserData.authUser.Set(task.Result);
-                UserDBUpdater.UpdateUser(OnLoginFinished);
+                UserDBUpdater.UpdateUser(OnAuthFinished);
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
@@ -134,7 +134,7 @@ public class C_Login : MonoBehaviour
         }).HandleFaulted();
     }
 
-    private void OnLoginFinished()
+    private void OnAuthFinished()
     {
         loginEndEvent.callback.Invoke("");
     }

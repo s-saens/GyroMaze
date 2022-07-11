@@ -40,10 +40,16 @@ public class LogoView : MonoBehaviour
     private void Login()
     {
         NetworkChecker.Instance.Check((isConnected)=>{
-            string loginType = isConnected && PlayerPrefs.HasKey(ConstData.KEY_LOGIN_TYPE)
-                                ? PlayerPrefs.GetString(ConstData.KEY_LOGIN_TYPE)
-                                : "Offline";
-            loginEvent.callback?.Invoke(loginType);
+            if(isConnected && PlayerPrefs.HasKey(KeyData.LOGIN_TYPE))
+            {
+                string loginType = PlayerPrefs.GetString(KeyData.LOGIN_TYPE);
+                loginEvent.callback?.Invoke(loginType);
+            }
+            else
+            {
+                UserData.databaseUser.LoadPrefs();
+                OnLoginEnd("");
+            }
         });
     }
 
@@ -65,6 +71,14 @@ public class LogoView : MonoBehaviour
 
     private void LoadScene()
     {
-        SceneController.Instance.LoadScene(SceneEnum.Home, false);
+        SceneEnum whereToGo = SceneEnum.Home;
+        if(PlayerPrefs.HasKey(KeyData.LAST_STAGE))
+        {
+            int lastStage = PlayerPrefs.GetInt(KeyData.LAST_STAGE);
+            GameData.stageIndex.value = lastStage;
+            if(lastStage >= 0) whereToGo = SceneEnum.Stage;
+        }
+        
+        SceneController.Instance.LoadScene(whereToGo, false);
     }
 }
