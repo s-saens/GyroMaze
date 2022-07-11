@@ -15,6 +15,7 @@ public class C_Login : MonoBehaviour
 {
     // Events
     [SerializeField] private Event loginEvent;
+    [SerializeField] private Event loginEndEvent;
 
     // Login
     private string loginType = "Google";
@@ -42,14 +43,24 @@ public class C_Login : MonoBehaviour
     private void Login(string value)
     {
         loginType = value;
-        PopupIndicator.Instance.Show();
+#if UNITY_EDITOR
+        UserData.authUser.Set("TESTACCOUNT", "TestAccount");
+        UserDBUpdater.UpdateUser(OnLoginFinished);
+        return;
+#endif
+
         switch(value)
         {
             case "Google":
+                PopupIndicator.Instance.Show();
                 LoginGoogle();
                 break;
             case "GoogleGames":
+                PopupIndicator.Instance.Show();
                 LoginGoogleGames();
+                break;
+            case "GoogleSilently":
+                LoginGoogleSilently();
                 break;
             default:
                 Debug.LogWarning($"Login Value {value} is not valid.");
@@ -63,20 +74,10 @@ public class C_Login : MonoBehaviour
         GoogleSignIn.Configuration.UseGameSignIn = false;
         GoogleSignIn.Configuration.RequestIdToken = true;
         
-#if UNITY_EDITOR
-        Debug.Log("Test Login...");
-        TestLogin("TESTACCOUNT");
-#else
         Debug.Log("Google Login...");
-        GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnLoginFinished).LogExceptionIfFaulted();
-#endif
+        GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnSignInFinished).HandleFaulted();
     }
 
-    private void TestLogin(string uid)
-    {
-        UserData.authUser.Set(uid, "TestAccount");
-        UserDBUpdater.UpdateUser(OnLoginFinished);
-    }
 
     private void LoginGoogleGames()
     {
@@ -89,7 +90,7 @@ public class C_Login : MonoBehaviour
         GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnSignInFinished).HandleFaulted();
     }
 
-    private void OnSignInSilently()
+    private void LoginGoogleSilently()
     {
         GoogleSignIn.Configuration = configuration;
         GoogleSignIn.Configuration.UseGameSignIn = false;
@@ -135,13 +136,6 @@ public class C_Login : MonoBehaviour
 
     private void OnLoginFinished()
     {
-        if(UserData.databaseUser.snapshot.stage < 0)
-        {
-            SceneController.Instance.LoadScene(SceneEnum.Home);
-            return;
-        }
-
-        SceneController.Instance.LoadScene(SceneEnum.Stage);
-
+        loginEndEvent.callback.Invoke("");
     }
 }

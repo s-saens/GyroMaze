@@ -15,24 +15,24 @@ public class Ball : MonoBehaviour
         this.rigid = this.GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         velocity = rigid.velocity;
         if(Input.GetKey(KeyCode.W))
         {
-            rigid.AddForce(Vector3.forward * 1000);
+            rigid.AddForce(Vector3.forward * 100);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigid.AddForce(Vector3.back * 1000);
+            rigid.AddForce(Vector3.back * 100);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rigid.AddForce(Vector3.left * 1000);
+            rigid.AddForce(Vector3.left * 100);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigid.AddForce(Vector3.right * 1000);
+            rigid.AddForce(Vector3.right * 100);
         }
     }
 
