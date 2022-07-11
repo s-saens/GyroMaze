@@ -39,13 +39,12 @@ public class LogoView : MonoBehaviour
     }
     private void Login()
     {
-        if(!PlayerPrefs.HasKey(ConstData.KEY_LOGIN_TYPE))
-        {
-            Debug.Log("NO KEY");
-            loginEndEvent.callback.Invoke("");
-            return;
-        }
-        loginEvent.callback?.Invoke("GoogleSilently");
+        NetworkChecker.Instance.Check((isConnected)=>{
+            string loginType = isConnected && PlayerPrefs.HasKey(ConstData.KEY_LOGIN_TYPE)
+                                ? PlayerPrefs.GetString(ConstData.KEY_LOGIN_TYPE)
+                                : "Offline";
+            loginEvent.callback?.Invoke(loginType);
+        });
     }
 
     private void OnLoginEnd(string param)

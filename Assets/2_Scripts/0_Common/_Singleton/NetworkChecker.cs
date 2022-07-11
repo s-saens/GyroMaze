@@ -5,23 +5,17 @@ using System.Collections;
 
 public class NetworkChecker : SingletonMono<NetworkChecker>
 {
-    public static Data<bool> isConnected = new Data<bool>();
-
-    private void Start()
+    public void Check(Action<bool> callback)
     {
-        StartCoroutine(CheckCoroutine());
-
-        isConnected.onChange += (v)=> Debug.Log(v);
+        StartCoroutine(CheckCoroutine(callback));
     }
 
-    private IEnumerator CheckCoroutine()
+    private IEnumerator CheckCoroutine(Action<bool> callback)
     {
         UnityWebRequest req = UnityWebRequest.Get("https://www.google.com");
-        req.timeout = 3;
+        req.timeout = 2;
         yield return req.SendWebRequest();
-
-        isConnected.value = req.result == UnityWebRequest.Result.Success;
-        yield return new WaitForSecondsRealtime(1);
-        yield return CheckCoroutine(); // 무한히 실행
+        
+        callback?.Invoke(req.result == UnityWebRequest.Result.Success);
     }
 }
