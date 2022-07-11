@@ -7,20 +7,18 @@ using TMPro;
 
 public class UserDataView : MonoBehaviour
 {
-    [SerializeField] private TMP_Text userNameText;
     [SerializeField] private RawImage image;
+    [SerializeField] private GameObject loginButton;
+    [SerializeField] private GameObject photo;
 
     private void Start()
     {
-        SetNameText(UserData.authUser.displayName);
-        SetProfileImage(UserData.authUser.imgUrl);
-    }
+        loginButton.SetActive(!UserData.loggedIn);
+        photo.SetActive(UserData.loggedIn);
 
-    private void SetNameText(string name)
-    {
-        userNameText.text = name;
+        if(UserData.loggedIn) SetProfileImage(UserData.authUser.imgUrl);
     }
-
+    
     private IEnumerator getTextureCoroutine;
     private void SetProfileImage(Uri imgUrl)
     {

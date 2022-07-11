@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7958292741536065705}
   - component: {fileID: 7958292741536065706}
   - component: {fileID: 7958292741536065707}
-  - component: {fileID: 4339133828715588661}
   - component: {fileID: 13280878270518932}
   m_Layer: 5
   m_Name: ButtonTemplate
@@ -78,26 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &4339133828715588661
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7958292741536065710}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9dffcce8ccc494180a790800649c04ea, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &13280878270518932
 MonoBehaviour:
   m_ObjectHideFlags: 0

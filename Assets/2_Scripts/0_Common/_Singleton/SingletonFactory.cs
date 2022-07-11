@@ -8,7 +8,7 @@ public class SingletonFactory : MonoBehaviour
 
     [SerializeField] private GameObject[] singletonObjects;
 
-    private void Start()
+    private void Awake()
     {
         if(!singletonsWereMade)
         {
