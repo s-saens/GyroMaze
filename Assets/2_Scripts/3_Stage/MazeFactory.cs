@@ -147,6 +147,7 @@ public class MazeFactory : MonoBehaviour
 
     private void MakeStartPoint()
     {
+        ball.SetActive(true);
         Vector3 ballPosition;
         if(UserData.databaseUser.snapshot.stage < 0)
         {
