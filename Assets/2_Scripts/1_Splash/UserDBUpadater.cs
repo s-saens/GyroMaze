@@ -22,6 +22,7 @@ public static class UserDBUpdater
                 Debug.Log($"No User of UID: {UserData.authUser.uid}. Adding new instance of user...");
                 AddUserOnDatabase(() => {
                     PopupIndicator.Instance.Hide();
+                    callback?.Invoke();
                 });
             }
         );

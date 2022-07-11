@@ -5,7 +5,9 @@ public static class PlayerPrefsExt
 {
     public static void SetObject<T>(string key, T value)
     {
-        PlayerPrefs.SetString(key, JsonConvert.SerializeObject(value));
+        var settings = new JsonSerializerSettings();
+        settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        PlayerPrefs.SetString(key, JsonConvert.SerializeObject(value, settings));
     }
     public static T GetObject<T>(string key)
     {

@@ -43,12 +43,11 @@ public class C_Login : MonoBehaviour
     private void Login(string value)
     {
         loginType = value;
+
 #if UNITY_EDITOR
         UserData.authUser.Set("TESTACCOUNT", "TestAccount");
         UserDBUpdater.UpdateUser(OnLoginFinished);
-        return;
-#endif
-
+#else
         switch(value)
         {
             case "Google":
@@ -66,6 +65,7 @@ public class C_Login : MonoBehaviour
                 Debug.LogWarning($"Login Value {value} is not valid.");
                 break;
         }
+#endif
     }
 
     private void LoginGoogle()

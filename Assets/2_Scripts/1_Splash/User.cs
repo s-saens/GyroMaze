@@ -37,6 +37,11 @@ public class User
         playTime = new PlayTime();
         snapshot = new Snapshot();
     }
+
+    public void SavePrefs()
+    {
+        PlayerPrefsExt.SetObject<User>(ConstData.KEY_USER, this);
+    }
 }
 
 public class AuthUser
