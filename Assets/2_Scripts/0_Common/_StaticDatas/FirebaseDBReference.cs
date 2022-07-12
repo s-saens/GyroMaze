@@ -4,7 +4,12 @@ using Firebase.Database;
 public static class FirebaseDBReference
 {
     public static readonly string maze = "maze";
-    public static readonly string user = "user";
+    public static DatabaseReference user
+    {
+        get {
+            return Reference("user", UserData.authUser.uid);
+        }
+    }
 
     public static DatabaseReference Reference(params string[] keys)
     {

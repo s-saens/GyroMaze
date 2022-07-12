@@ -53,11 +53,9 @@ public class C_Login : MonoBehaviour
                 LoginOffline();
                 break;
             case "Google":
-                PopupIndicator.Instance.Show();
                 LoginGoogle();
                 break;
             case "GoogleGames":
-                PopupIndicator.Instance.Show();
                 LoginGoogleGames();
                 break;
             case "GoogleSilently":
@@ -72,13 +70,12 @@ public class C_Login : MonoBehaviour
     private void LoginTest()
     {
         UserData.authUser.Set("TESTACCOUNT", "TestAccountName");
-        if(NetworkChecker.isConnected) UserDBUpdater.UpdateUser(LoginEnd);
+        if(NetworkChecker.isConnected) UserData.databaseUser.Sync();
         LoginOffline();
     }
 
     private void LoginOffline()
     {
-        UserData.databaseUser.LoadPrefs();
         LoginEnd();
     }
 
@@ -124,8 +121,6 @@ public class C_Login : MonoBehaviour
             return;
         }
         Debug.LogWarning("Login Failed");
-
-        PopupIndicator.Instance.Hide();
     }
 
     private void SetAuthCredential(string googleIdToken, string googleAccessToken)
@@ -139,17 +134,15 @@ public class C_Login : MonoBehaviour
             if(task.IsCompleted)
             {
                 UserData.authUser.Set(task.Result);
-                UserDBUpdater.UpdateUser(LoginEnd);
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
-
-            PopupIndicator.Instance.Hide();
         }).HandleFaulted();
     }
 
     private void LoginEnd()
     {
+        UserData.databaseUser.LoadPrefs();
         loginEndEvent.callback.Invoke("");
     }
 }
