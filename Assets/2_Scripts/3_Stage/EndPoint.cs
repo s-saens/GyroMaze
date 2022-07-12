@@ -8,7 +8,7 @@ public class EndPoint : MonoBehaviour
     {
         if(coll.transform.tag == "Player")
         {
-            endPointCollisionEvent.Invoke("");
+            endPointCollisionEvent.callback?.Invoke("");
         }
     }
 }

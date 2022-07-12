@@ -10,7 +10,7 @@ public class BackInput : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape) && canBack)
         {
-            backEvent.Invoke("");
+            backEvent.callback?.Invoke("");
         }
     }
 }

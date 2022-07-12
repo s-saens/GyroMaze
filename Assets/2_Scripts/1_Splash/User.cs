@@ -42,14 +42,6 @@ public class User
     {
         PlayerPrefsExt.SetObject<User>(ConstData.KEY_USER, this);
     }
-
-    public void Load()
-    {
-        User user = PlayerPrefsExt.GetObject<User>(ConstData.KEY_USER);
-        this.stage = user.stage;
-        this.playTime = user.playTime;
-        this.snapshot = user.snapshot;
-    }
 }
 
 public class AuthUser

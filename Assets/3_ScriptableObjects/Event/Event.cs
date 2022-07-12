@@ -5,9 +5,4 @@ using System;
 public class Event : ScriptableObject
 {
     public Action<string> callback;
-
-    public void Invoke(string parameter)
-    {
-        callback?.Invoke(parameter);
-    }
 }
