@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.SetInt(KeyData.LAST_STAGE, GameData.stageIndex.value);
         this.rigid = this.GetComponent<Rigidbody>();
     }
 

@@ -154,6 +154,7 @@ public class MazeFactory : MonoBehaviour
         if(PlayerPrefs.HasKey(KeyData.LAST_STAGE) && PlayerPrefs.GetInt(KeyData.LAST_STAGE) >= 0)
         {
             ballPosition = PlayerPrefsExt.GetObject<Vector3>(KeyData.LAST_POSITION, Vector3.one * 0.5f);
+            PlayerPrefs.DeleteKey(KeyData.LAST_POSITION);
         }
         ball.transform.position = ballPosition;
     }

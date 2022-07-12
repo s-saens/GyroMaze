@@ -55,6 +55,7 @@ public class StageSelectionView : MonoBehaviour
     {
         InitializeButtons();
         InitializeSlider();
+        SetSliderHandle(UserData.databaseUser.stage - 1);
     }
     private void InitializeButtons()
     {
