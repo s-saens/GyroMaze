@@ -40,6 +40,7 @@ public class StageSelectionView : MonoBehaviour
     public void SetSliderHandle(int value)
     {
         slider.value = value;
+        PlayerPrefs.SetInt(KeyData.LAST_STAGE, value);
     }
 
     public void Magnet()
@@ -55,7 +56,7 @@ public class StageSelectionView : MonoBehaviour
     {
         InitializeButtons();
         InitializeSlider();
-        SetSliderHandle(UserData.databaseUser.stage - 1);
+        SetSliderHandle(PlayerPrefs.GetInt(KeyData.LAST_STAGE, 0));
     }
     private void InitializeButtons()
     {

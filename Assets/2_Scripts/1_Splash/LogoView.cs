@@ -67,7 +67,7 @@ public class LogoView : MonoBehaviour
     private void LoadScene()
     {
         SceneEnum whereToGo = SceneEnum.Home;
-        if(PlayerPrefs.HasKey(KeyData.LAST_STAGE))
+        if(PlayerPrefs.HasKey(KeyData.LAST_POSITION))
         {
             int lastStage = PlayerPrefs.GetInt(KeyData.LAST_STAGE);
             GameData.stageIndex.value = lastStage;

@@ -149,9 +149,7 @@ public class MazeFactory : MonoBehaviour
     {
         ball.SetActive(true);
         Vector3 ballPosition = new Vector3(maze.startX + (spaceSize * 0.5f), 0, maze.startY + (spaceSize * 0.5f));
-        Debug.Log(PlayerPrefsExt.GetObjectRaw(KeyData.LAST_POSITION));
-
-        if(PlayerPrefs.HasKey(KeyData.LAST_STAGE) && PlayerPrefs.GetInt(KeyData.LAST_STAGE) >= 0)
+        if(PlayerPrefs.HasKey(KeyData.LAST_POSITION))
         {
             ballPosition = PlayerPrefsExt.GetObject<Vector3>(KeyData.LAST_POSITION, Vector3.one * 0.5f);
             PlayerPrefs.DeleteKey(KeyData.LAST_POSITION);
