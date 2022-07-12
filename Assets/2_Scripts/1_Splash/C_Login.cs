@@ -43,6 +43,11 @@ public class C_Login : MonoBehaviour
     private void Login(string value)
     {
         loginType = value;
+        if(value == "Offline")
+        {
+            UserData.databaseUser.Load();
+            OnLoginFinished();
+        }
 
 #if UNITY_EDITOR
         UserData.authUser.Set("TESTACCOUNT", "TestAccount");
@@ -73,7 +78,7 @@ public class C_Login : MonoBehaviour
         GoogleSignIn.Configuration = configuration;
         GoogleSignIn.Configuration.UseGameSignIn = false;
         GoogleSignIn.Configuration.RequestIdToken = true;
-        
+
         Debug.Log("Google Login...");
         GoogleSignIn.DefaultInstance.SignIn().ContinueWithOnMainThread(OnSignInFinished).HandleFaulted();
     }
@@ -136,6 +141,6 @@ public class C_Login : MonoBehaviour
 
     private void OnLoginFinished()
     {
-        loginEndEvent.callback.Invoke("");
+        loginEndEvent.Invoke("");
     }
 }

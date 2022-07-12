@@ -20,6 +20,6 @@ public class GameCompleteController : MonoBehaviour
     {
         UserData.databaseUser.stage++;
         UserData.databaseUser.SavePrefs();
-        viewToggleEvent.callback?.Invoke(completeViewIndex);
+        viewToggleEvent.Invoke(completeViewIndex);
     }
 }

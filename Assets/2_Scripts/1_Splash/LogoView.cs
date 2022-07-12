@@ -43,7 +43,7 @@ public class LogoView : MonoBehaviour
             string loginType = isConnected && PlayerPrefs.HasKey(ConstData.KEY_LOGIN_TYPE)
                                 ? PlayerPrefs.GetString(ConstData.KEY_LOGIN_TYPE)
                                 : "Offline";
-            loginEvent.callback?.Invoke(loginType);
+            loginEvent.Invoke(loginType);
         });
     }
 
