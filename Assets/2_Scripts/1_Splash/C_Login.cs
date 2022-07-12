@@ -44,12 +44,14 @@ public class C_Login : MonoBehaviour
     {
         loginType = value;
 
-#if UNITY_EDITOR
-        UserData.authUser.Set("TESTACCOUNT", "TestAccount");
-        UserDBUpdater.UpdateUser(OnAuthFinished);
-#else
         switch(value)
         {
+            case "Test":
+                LoginTest();
+                break;
+            case "Offline":
+                LoginOffline();
+                break;
             case "Google":
                 PopupIndicator.Instance.Show();
                 LoginGoogle();
@@ -65,7 +67,19 @@ public class C_Login : MonoBehaviour
                 Debug.LogWarning($"Login Value {value} is not valid.");
                 break;
         }
-#endif
+    }
+
+    private void LoginTest()
+    {
+        UserData.authUser.Set("TESTACCOUNT", "TestAccountName");
+        if(NetworkChecker.isConnected) UserDBUpdater.UpdateUser(LoginEnd);
+        LoginOffline();
+    }
+
+    private void LoginOffline()
+    {
+        UserData.databaseUser.LoadPrefs();
+        LoginEnd();
     }
 
     private void LoginGoogle()
@@ -125,7 +139,7 @@ public class C_Login : MonoBehaviour
             if(task.IsCompleted)
             {
                 UserData.authUser.Set(task.Result);
-                UserDBUpdater.UpdateUser(OnAuthFinished);
+                UserDBUpdater.UpdateUser(LoginEnd);
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
@@ -134,7 +148,7 @@ public class C_Login : MonoBehaviour
         }).HandleFaulted();
     }
 
-    private void OnAuthFinished()
+    private void LoginEnd()
     {
         loginEndEvent.callback.Invoke("");
     }

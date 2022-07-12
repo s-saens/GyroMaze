@@ -31,7 +31,7 @@ public class LogoView : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         while(image.color.a < 0.999)
         {
-            image.color = Color.Lerp(image.color, new Color(1, 1, 1, 1), 0.5f);
+            image.color = Color.Lerp(image.color, new Color(1, 1, 1, 1), 0.2f);
             yield return 0;
         }
         yield return new WaitForSecondsRealtime(0.5f);
@@ -39,18 +39,13 @@ public class LogoView : MonoBehaviour
     }
     private void Login()
     {
-        NetworkChecker.Instance.Check((isConnected)=>{
-            if(isConnected && PlayerPrefs.HasKey(KeyData.LOGIN_TYPE))
-            {
-                string loginType = PlayerPrefs.GetString(KeyData.LOGIN_TYPE);
-                loginEvent.callback?.Invoke(loginType);
-            }
-            else
-            {
-                UserData.databaseUser.LoadPrefs();
-                OnLoginEnd("");
-            }
-        });
+        string loginType;
+        if (NetworkChecker.isConnected && PlayerPrefs.HasKey(KeyData.LOGIN_TYPE)) loginType = PlayerPrefs.GetString(KeyData.LOGIN_TYPE);
+        else loginType = "Offline";
+#if UNITY_EDITOR
+        loginType = "Test";
+#endif
+        loginEvent.callback?.Invoke(loginType);
     }
 
     private void OnLoginEnd(string param)
