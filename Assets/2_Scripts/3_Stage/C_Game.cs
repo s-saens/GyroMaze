@@ -15,6 +15,7 @@ public class C_Game : MonoBehaviour
     private void Start()
     {
         MakeMaze();
+        PlayerPrefs.SetInt(KeyData.LAST_STAGE, GameData.stageIndex.value);
     }
 
     private void MakeMaze()

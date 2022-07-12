@@ -148,14 +148,13 @@ public class MazeFactory : MonoBehaviour
     private void MakeStartPoint()
     {
         ball.SetActive(true);
-        Vector3 ballPosition;
-        if(UserData.databaseUser.snapshot.stage < 0)
+        Vector3 ballPosition = new Vector3(maze.startX + (spaceSize * 0.5f), 0, maze.startY + (spaceSize * 0.5f));
+        Debug.Log(PlayerPrefsExt.GetObjectRaw(KeyData.LAST_POSITION));
+
+        if(PlayerPrefs.HasKey(KeyData.LAST_STAGE) && PlayerPrefs.GetInt(KeyData.LAST_STAGE) >= 0)
         {
-            ballPosition = UserData.databaseUser.snapshot.position;
-        }
-        else
-        {
-            ballPosition = new Vector3(maze.startX + (spaceSize * 0.5f), 0, maze.startY + (spaceSize * 0.5f));
+            ballPosition = PlayerPrefsExt.GetObject<Vector3>(KeyData.LAST_POSITION, Vector3.one * 0.5f);
+            PlayerPrefs.DeleteKey(KeyData.LAST_POSITION);
         }
         ball.transform.position = ballPosition;
     }

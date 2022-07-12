@@ -12,11 +12,14 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.SetInt(KeyData.LAST_STAGE, GameData.stageIndex.value);
         this.rigid = this.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
+        PlayerPrefsExt.SetObject<Vector3>(KeyData.LAST_POSITION, this.transform.position);
+
         velocity = rigid.velocity;
         if(Input.GetKey(KeyCode.W))
         {
@@ -34,6 +37,7 @@ public class Ball : MonoBehaviour
         {
             rigid.AddForce(Vector3.right * 100);
         }
+
     }
 
     private void OnCollisionStay(Collision coll)

@@ -31,7 +31,7 @@ public class LogoView : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         while(image.color.a < 0.999)
         {
-            image.color = Color.Lerp(image.color, new Color(1, 1, 1, 1), 0.5f);
+            image.color = Color.Lerp(image.color, new Color(1, 1, 1, 1), 0.2f);
             yield return 0;
         }
         yield return new WaitForSecondsRealtime(0.5f);
@@ -39,12 +39,13 @@ public class LogoView : MonoBehaviour
     }
     private void Login()
     {
-        NetworkChecker.Instance.Check((isConnected)=>{
-            string loginType = isConnected && PlayerPrefs.HasKey(ConstData.KEY_LOGIN_TYPE)
-                                ? PlayerPrefs.GetString(ConstData.KEY_LOGIN_TYPE)
-                                : "Offline";
-            loginEvent.callback?.Invoke(loginType);
-        });
+        string loginType;
+        if (NetworkChecker.isConnected && PlayerPrefs.HasKey(KeyData.LOGIN_TYPE)) loginType = PlayerPrefs.GetString(KeyData.LOGIN_TYPE);
+        else loginType = "Offline";
+#if UNITY_EDITOR
+        loginType = "Test";
+#endif
+        loginEvent.callback?.Invoke(loginType);
     }
 
     private void OnLoginEnd(string param)
@@ -65,6 +66,14 @@ public class LogoView : MonoBehaviour
 
     private void LoadScene()
     {
-        SceneController.Instance.LoadScene(SceneEnum.Home, false);
+        SceneEnum whereToGo = SceneEnum.Home;
+        if(PlayerPrefs.HasKey(KeyData.LAST_STAGE))
+        {
+            int lastStage = PlayerPrefs.GetInt(KeyData.LAST_STAGE);
+            GameData.stageIndex.value = lastStage;
+            if(lastStage >= 0) whereToGo = SceneEnum.Stage;
+        }
+        
+        SceneController.Instance.LoadScene(whereToGo, false);
     }
 }

@@ -18,8 +18,8 @@ public class GameCompleteController : MonoBehaviour
 
     private void GameComplete(string f)
     {
-        UserData.databaseUser.stage++;
-        UserData.databaseUser.SavePrefs();
+        if(UserData.databaseUser.stage - 1 == GameData.stageIndex.value) UserData.databaseUser.SetStage(UserData.databaseUser.stage + 1);
+        PlayerPrefs.DeleteKey(KeyData.LAST_STAGE);
         viewToggleEvent.callback?.Invoke(completeViewIndex);
     }
 }

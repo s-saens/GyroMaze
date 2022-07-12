@@ -20,6 +20,7 @@ public class _Popup<T> : SingletonMono<_Popup<T>>
     }
     public virtual void Hide()
     {
+        if(!IsOn) return;
         anim.SetBool(onHash, false);
         IsOn = false;
     }

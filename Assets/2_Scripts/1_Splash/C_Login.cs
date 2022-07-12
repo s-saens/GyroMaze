@@ -44,18 +44,18 @@ public class C_Login : MonoBehaviour
     {
         loginType = value;
 
-#if UNITY_EDITOR
-        UserData.authUser.Set("TESTACCOUNT", "TestAccount");
-        UserDBUpdater.UpdateUser(OnLoginFinished);
-#else
         switch(value)
         {
+            case "Test":
+                LoginTest();
+                break;
+            case "Offline":
+                LoginOffline();
+                break;
             case "Google":
-                PopupIndicator.Instance.Show();
                 LoginGoogle();
                 break;
             case "GoogleGames":
-                PopupIndicator.Instance.Show();
                 LoginGoogleGames();
                 break;
             case "GoogleSilently":
@@ -65,7 +65,18 @@ public class C_Login : MonoBehaviour
                 Debug.LogWarning($"Login Value {value} is not valid.");
                 break;
         }
-#endif
+    }
+
+    private void LoginTest()
+    {
+        UserData.authUser.Set("TESTACCOUNT", "TestAccountName");
+        if(NetworkChecker.isConnected) UserData.databaseUser.Sync();
+        LoginOffline();
+    }
+
+    private void LoginOffline()
+    {
+        LoginEnd();
     }
 
     private void LoginGoogle()
@@ -105,13 +116,11 @@ public class C_Login : MonoBehaviour
     {
         if(task.IsCompleted)
         {
-            PlayerPrefs.SetString(ConstData.KEY_LOGIN_TYPE, loginType);
+            PlayerPrefs.SetString(KeyData.LOGIN_TYPE, loginType);
             SetAuthCredential(task.Result.IdToken, null);
             return;
         }
         Debug.LogWarning("Login Failed");
-
-        PopupIndicator.Instance.Hide();
     }
 
     private void SetAuthCredential(string googleIdToken, string googleAccessToken)
@@ -125,17 +134,15 @@ public class C_Login : MonoBehaviour
             if(task.IsCompleted)
             {
                 UserData.authUser.Set(task.Result);
-                UserDBUpdater.UpdateUser(OnLoginFinished);
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
-
-            PopupIndicator.Instance.Hide();
         }).HandleFaulted();
     }
 
-    private void OnLoginFinished()
+    private void LoginEnd()
     {
+        UserData.databaseUser.LoadPrefs();
         loginEndEvent.callback.Invoke("");
     }
 }

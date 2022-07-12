@@ -9,10 +9,22 @@ public static class PlayerPrefsExt
         settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         PlayerPrefs.SetString(key, JsonConvert.SerializeObject(value, settings));
     }
-    public static T GetObject<T>(string key)
+    public static T GetObject<T>(string key, T defaultValue = default(T))
     {
-        string value = PlayerPrefs.GetString(key, null);
-        return JsonConvert.DeserializeObject<T>(value);
+        if(!PlayerPrefs.HasKey(key))
+        {
+            Debug.LogWarning($"NO PREFS OF KEY {key}");
+            return defaultValue;
+        }
+        string value = PlayerPrefs.GetString(key, "");
+        if(value == "")
+        {
+            return defaultValue;
+        }
+        else
+        {
+            return JsonConvert.DeserializeObject<T>(value);
+        }
     }
     public static string GetObjectRaw(string key)
     {
