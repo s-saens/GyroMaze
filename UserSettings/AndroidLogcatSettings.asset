@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R5CT50632WK",
         "name": "com.saens.gyromaze",
-        "processId": 13445,
+        "processId": 19186,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -47,24 +47,6 @@
         {
             "deviceId": "R5CT50632WK",
             "name": "com.saens.gyromaze",
-            "processId": 31564,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT50632WK",
-            "name": "com.saens.gyromaze",
-            "processId": 2278,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT50632WK",
-            "name": "com.saens.gyromaze",
-            "processId": 5915,
-            "exited": true
-        },
-        {
-            "deviceId": "R5CT50632WK",
-            "name": "com.saens.gyromaze",
             "processId": 10939,
             "exited": true
         },
@@ -72,6 +54,24 @@
             "deviceId": "R5CT50632WK",
             "name": "com.saens.gyromaze",
             "processId": 13445,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT50632WK",
+            "name": "com.saens.gyromaze",
+            "processId": 18109,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT50632WK",
+            "name": "com.saens.gyromaze",
+            "processId": 18655,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT50632WK",
+            "name": "com.saens.gyromaze",
+            "processId": 19186,
             "exited": false
         }
     ],

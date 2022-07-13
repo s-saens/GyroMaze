@@ -37,7 +37,7 @@ public class C_Login : MonoBehaviour
     }
     private void OnDisable()
     {
-        loginEvent.callback += Login;
+        loginEvent.callback -= Login;
     }
 
     private void Login(string value)
@@ -134,6 +134,7 @@ public class C_Login : MonoBehaviour
             {
                 UserData.authUser.Set(task.Result);
                 UserData.loggedIn = true;
+                LoginEnd();
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
