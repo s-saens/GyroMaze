@@ -56,7 +56,7 @@ public class StageSelectionView : MonoBehaviour
     {
         InitializeButtons();
         InitializeSlider();
-        SetSliderHandle(PlayerPrefs.GetInt(KeyData.LAST_STAGE, 0));
+        SetSliderHandle(PlayerPrefs.GetInt(KeyData.LAST_STAGE, UserData.databaseUser.stage));
     }
     private void InitializeButtons()
     {

@@ -19,6 +19,8 @@ public class User
     {
         this.stage = value;
         if (prefs) PlayerPrefs.SetInt(KeyData.USER_STAGE, value);
+
+        SaveToDB();
     }
     public void SetCount(string startDate, int duration, bool prefs = true)
     {
@@ -29,6 +31,8 @@ public class User
             PlayerPrefs.SetString(KeyData.USER_COUNT_START_DATE, startDate);
             PlayerPrefs.SetInt(KeyData.USER_COUNT_DURATION, duration);
         }
+
+        SaveToDB();
     }
 
     public void LoadPrefs()
@@ -40,7 +44,7 @@ public class User
 
     public void SaveToDB()
     {
-        FirebaseDBAccessor.SetValue(FirebaseDBReference.user, this);
+        FirebaseDBAccessor.SetValue<User>(FirebaseDBReference.user, this);
     }
 
     public void LoadFromDB()
