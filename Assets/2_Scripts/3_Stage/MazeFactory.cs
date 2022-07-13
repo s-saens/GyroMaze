@@ -18,11 +18,12 @@ public class MazeFactory : MonoBehaviour
     public void MakeMaze(Maze m)
     {
         maze = m;
+        
         Make();
     }
     public void MakeMaze(string m)
     {
-        maze = JsonConvert.DeserializeObject<Maze>(m, JsonSettings.Settings);
+        maze = JsonConvert.DeserializeObject<Maze>(m);
         Make();
     }
 
@@ -41,6 +42,7 @@ public class MazeFactory : MonoBehaviour
     private void MakeFloor()
     {
         GameObject floor = Instantiate(floorPrefab, this.transform);
+
         float sizeX = spaceSize * maze.sizeX + wallThickness;
         float sizeZ = spaceSize * maze.sizeY + wallThickness;
         floor.transform.localScale = new Vector3(sizeX, panelThickness, sizeZ);

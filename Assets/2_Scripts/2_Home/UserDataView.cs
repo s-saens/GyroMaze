@@ -11,7 +11,7 @@ public class UserDataView : MonoBehaviour
     [SerializeField] private GameObject loginButton;
     [SerializeField] private GameObject photo;
 
-    private void Start()
+    private void OnEnable()
     {
         loginButton.SetActive(!UserData.loggedIn);
         photo.SetActive(UserData.loggedIn);

@@ -21,7 +21,7 @@ public static class PlayerPrefsExt
         }
         else
         {
-            return JsonConvert.DeserializeObject<T>(value, JsonSettings.Settings);
+            return JsonConvert.DeserializeObject<T>(value);
         }
     }
     public static string GetObjectRaw(string key)

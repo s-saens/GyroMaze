@@ -22,7 +22,7 @@ public class C_GravityRotater : MonoBehaviour
     private void OnGyroAttitude(string param) // Gyroscope
     {
         // Set Gravity
-        Vector3 gravityVector = JsonConvert.DeserializeObject<Vector3>(param, JsonSettings.Settings);
+        Vector3 gravityVector = JsonConvert.DeserializeObject<Vector3>(param);
         Physics.gravity = gravityVector * 12 * Time.deltaTime * 60;
 
         // Set Light Rotation

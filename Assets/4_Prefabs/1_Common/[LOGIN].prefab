@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginEvent: {fileID: 11400000, guid: dc4161cf45ff2425e9ffb3a2eda76f5a, type: 2}
+  loginEndEvent: {fileID: 11400000, guid: 4bd6cbf32e1b64697bce8823b3618a51, type: 2}
   clientId: 630965815426-go9stbqquhg1vsa37017ss6c1huqonub.apps.googleusercontent.com
 --- !u!1 &1870226499870855473
 GameObject:
@@ -727,7 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d5269dc7e8f4d4db4a5ab4beef41d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameter: Google
+  parameter: Apple
   buttonEvents:
   - {fileID: 11400000, guid: dc4161cf45ff2425e9ffb3a2eda76f5a, type: 2}
 --- !u!1 &7334226862049998616

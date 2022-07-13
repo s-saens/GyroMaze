@@ -10,7 +10,7 @@ public static class TaskExts
         {
             if (t.IsFaulted)
             {
-                Debug.LogException(t.Exception.Flatten().InnerException);
+                Debug.Log(t.Exception.Flatten().InnerException);
             }
         });
     }

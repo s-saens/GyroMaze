@@ -44,7 +44,7 @@ public class User
 
     public void SaveToDB()
     {
-        FirebaseDBAccessor.SetValue<User>(FirebaseDBReference.user, this);
+        if(UserData.loggedIn && NetworkChecker.isConnected) FirebaseDBAccessor.SetValue<User>(FirebaseDBReference.user, this);
     }
 
     public void LoadFromDB()

@@ -30,7 +30,7 @@ public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IP
     {
         if(!isDown)
         {
-            animator.SetTrigger(down);
+            animator?.SetTrigger(down);
             isDown = true;
         }
     }
@@ -38,7 +38,7 @@ public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IP
     {
         if(isEnter)
         {
-            animator.SetTrigger(enter);
+            animator?.SetTrigger(enter);
         }
         else
         {

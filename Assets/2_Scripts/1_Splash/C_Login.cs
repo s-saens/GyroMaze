@@ -133,6 +133,7 @@ public class C_Login : MonoBehaviour
             if(task.IsCompleted)
             {
                 UserData.authUser.Set(task.Result);
+                UserData.loggedIn = true;
                 return;
             }
             Debug.LogWarning("Setting Credetial Failed");
@@ -142,8 +143,7 @@ public class C_Login : MonoBehaviour
     private void LoginEnd()
     {
         UserData.databaseUser.LoadPrefs();
-        
-        if (NetworkChecker.isConnected) UserData.databaseUser.SaveToDB();
+        UserData.databaseUser.SaveToDB();
 
         loginEndEvent.callback.Invoke("");
     }

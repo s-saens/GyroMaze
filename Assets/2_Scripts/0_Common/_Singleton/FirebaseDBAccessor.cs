@@ -17,7 +17,7 @@ public static class FirebaseDBAccessor
                     noDataCallback?.Invoke();
                     return;
                 }
-                callback?.Invoke(JsonConvert.DeserializeObject<T>(task.Result.GetRawJsonValue(), JsonSettings.Settings));
+                callback?.Invoke(JsonConvert.DeserializeObject<T>(task.Result.GetRawJsonValue()));
                 return;
             }
         }).HandleFaulted();
