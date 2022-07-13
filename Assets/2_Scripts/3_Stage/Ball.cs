@@ -42,11 +42,11 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionStay(Collision coll)
     {
-        rollingEvent.callback?.Invoke((rigid.velocity.magnitude * Time.deltaTime * 60).ToString());
+        rollingEvent.Invoke((rigid.velocity.magnitude * Time.deltaTime * 60).ToString());
     }
     private void OnCollisionExit(Collision coll)
     {
-        rollEndEvent.callback?.Invoke("");
+        rollEndEvent.Invoke("");
     }
     private void OnCollisionEnter(Collision coll)
     {
@@ -62,7 +62,7 @@ public class Ball : MonoBehaviour
         float normalVelocity = Mathf.Abs(Vector3.Dot(velocity, normal));
 
 
-        collideEvent.callback?.Invoke(normalVelocity.ToString());
+        collideEvent.Invoke(normalVelocity.ToString());
     }
 
     private void QuantizeNormal(ref Vector3 normal)

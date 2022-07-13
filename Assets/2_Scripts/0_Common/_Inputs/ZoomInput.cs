@@ -36,11 +36,11 @@ public class ZoomInput : MonoBehaviour
 
         if(deltaDistance > 0.001f) // 두 점 사이가 멀어짐 : 축소
         {
-            zoomEvent.callback?.Invoke(deltaDistance.ToString());
+            zoomEvent.Invoke(deltaDistance.ToString());
         }
         else if(deltaDistance < -0.001f) // 두 점 사이가 가까워짐 : 확대
         {
-            zoomEvent.callback?.Invoke(deltaDistance.ToString());
+            zoomEvent.Invoke(deltaDistance.ToString());
         }
 
         lastDistance = nowDistance;

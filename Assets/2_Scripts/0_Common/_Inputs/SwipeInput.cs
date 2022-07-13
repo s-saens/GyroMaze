@@ -13,7 +13,7 @@ public class SwipeInput : MonoBehaviour, IInitializePotentialDragHandler, IBegin
 
     public void OnInitializePotentialDrag(PointerEventData e)
     {
-        swipeStartEvent.callback?.Invoke("");
+        swipeStartEvent.Invoke("");
     }
 
     public void OnBeginDrag(PointerEventData e)
@@ -23,12 +23,12 @@ public class SwipeInput : MonoBehaviour, IInitializePotentialDragHandler, IBegin
 
     public void OnDrag(PointerEventData e)
     {
-        swipingEvent.callback?.Invoke((e.delta.x * Time.deltaTime * 60).ToString());
+        swipingEvent.Invoke((e.delta.x * Time.deltaTime * 60).ToString());
     }
 
     public void OnEndDrag(PointerEventData e)
     {
-        swipeEndEvent.callback?.Invoke((e.delta.x * Time.deltaTime * 60).ToString());
+        swipeEndEvent.Invoke((e.delta.x * Time.deltaTime * 60).ToString());
     }
 
 }

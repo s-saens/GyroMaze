@@ -23,6 +23,6 @@ public class GameCompleteController : MonoBehaviour
             UserData.databaseUser.SetStage(UserData.databaseUser.stage + 1);
         }
         PlayerPrefs.DeleteKey(KeyData.LAST_POSITION);
-        viewToggleEvent.callback?.Invoke(completeViewIndex);
+        viewToggleEvent.Invoke(completeViewIndex);
     }
 }

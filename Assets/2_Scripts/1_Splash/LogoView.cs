@@ -45,7 +45,7 @@ public class LogoView : MonoBehaviour
 #if UNITY_EDITOR
         loginType = "Test";
 #endif
-        loginEvent.callback?.Invoke(loginType);
+        loginEvent.Invoke(loginType);
     }
 
     private void OnLoginEnd(string param)

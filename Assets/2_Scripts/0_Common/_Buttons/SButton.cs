@@ -62,7 +62,7 @@ public class SButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IP
     {
         foreach(Event b in buttonEvents)
         {
-            b.callback?.Invoke(parameter);
+            b.Invoke(parameter);
         }
     }
 }

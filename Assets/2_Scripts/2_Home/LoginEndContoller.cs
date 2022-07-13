@@ -17,6 +17,6 @@ public class LoginEndController : MonoBehaviour
 
     private void OnLoginEnd(string param)
     {
-        viewToggleEvent.callback?.Invoke("1");
+        viewToggleEvent.Invoke("1");
     }
 }
