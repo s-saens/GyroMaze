@@ -20,7 +20,7 @@ public class C_GravityRotater : MonoBehaviour
 
     private void OnGyroAttitude(string param) // Gyroscope
     {
-        Gyroscope gyro = JsonConvert.DeserializeObject<Gyroscope>(param);
+        Gyroscope gyro = JsonConvert.DeserializeObject<Gyroscope>(param, JsonSettings.Settings);
         
         // Set Gravity
         Vector3 gravityVector = new Vector3(gyro.gravity.x, gyro.gravity.z, gyro.gravity.y);

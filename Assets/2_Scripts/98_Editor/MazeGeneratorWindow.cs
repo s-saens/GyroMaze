@@ -50,7 +50,7 @@ public class MazeGeneratorWindow : EditorWindow
         for (int i = 0; i < count; ++i)
         {
             mazes[i] = mg.MakeMazeDFS(size.x, size.y, size.x/2, size.y/2);
-            Debug.Log(JsonConvert.SerializeObject(mazes));
+            Debug.Log(JsonConvert.SerializeObject(mazes, JsonSettings.Settings));
         }
     }
 

@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R5CT50632WK",
         "name": "com.saens.gyromaze",
-        "processId": 25029,
+        "processId": 27165,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -54,6 +54,12 @@
             "deviceId": "R5CT50632WK",
             "name": "com.saens.gyromaze",
             "processId": 25029,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT50632WK",
+            "name": "com.saens.gyromaze",
+            "processId": 27165,
             "exited": false
         }
     ],

@@ -3,11 +3,9 @@ using Newtonsoft.Json;
 
 public static class PlayerPrefsExt
 {
-    private static JsonSerializerSettings serializerSettings = new JsonSerializerSettings();
     public static void SetObject<T>(string key, T value)
     {
-        serializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-        PlayerPrefs.SetString(key, JsonConvert.SerializeObject(value, serializerSettings));
+        PlayerPrefs.SetString(key, JsonConvert.SerializeObject(value, JsonSettings.Settings));
     }
     public static T GetObject<T>(string key, T defaultValue = default(T))
     {
@@ -23,7 +21,7 @@ public static class PlayerPrefsExt
         }
         else
         {
-            return JsonConvert.DeserializeObject<T>(value);
+            return JsonConvert.DeserializeObject<T>(value, JsonSettings.Settings);
         }
     }
     public static string GetObjectRaw(string key)

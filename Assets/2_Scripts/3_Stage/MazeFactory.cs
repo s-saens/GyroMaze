@@ -22,7 +22,7 @@ public class MazeFactory : MonoBehaviour
     }
     public void MakeMaze(string m)
     {
-        maze = JsonConvert.DeserializeObject<Maze>(m);
+        maze = JsonConvert.DeserializeObject<Maze>(m, JsonSettings.Settings);
         Make();
     }
 
