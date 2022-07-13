@@ -8,6 +8,13 @@ public class User
     public string countStartDate { get; private set; }
     public int countDuration { get; private set; }
 
+    private void Set(User user)
+    {
+        this.stage = user.stage;
+        this.countStartDate = user.countStartDate;
+        this.countDuration = user.countDuration;
+    }
+
     public void SetStage(int value, bool prefs = true)
     {
         this.stage = value;
@@ -31,9 +38,17 @@ public class User
         this.countDuration = PlayerPrefs.GetInt(KeyData.USER_COUNT_DURATION, 10);
     }
 
-    public void Sync()
+    public void SaveToDB()
     {
-        // FirebaseDBAccessor.SetValue();
+        FirebaseDBAccessor.SetValue(FirebaseDBReference.user, this);
+    }
+
+    public void LoadFromDB()
+    {
+        FirebaseDBAccessor.GetValue<User>(
+            FirebaseDBReference.user,
+            (user) => Set(user)
+        );
     }
 }
 

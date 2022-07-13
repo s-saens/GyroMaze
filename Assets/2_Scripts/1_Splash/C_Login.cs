@@ -70,7 +70,7 @@ public class C_Login : MonoBehaviour
     private void LoginTest()
     {
         UserData.authUser.Set("TESTACCOUNT", "TestAccountName");
-        if(NetworkChecker.isConnected) UserData.databaseUser.Sync();
+        if(NetworkChecker.isConnected) UserData.databaseUser.SaveToDB();
         LoginOffline();
     }
 

@@ -25,10 +25,9 @@ public class C_Game : MonoBehaviour
             PopupIndicator.Instance.Show();
         }
 
-        FirebaseDBAccessor.GetValue(
+        FirebaseDBAccessor.GetValue<Maze>(
             FirebaseDBReference.Reference("maze", GameData.stageIndex.value.ToString()),
-            (value) => {
-                Maze maze = JsonConvert.DeserializeObject<Maze>(value);
+            (maze) => {
                 mazeFactory.MakeMaze(maze);
                 PopupIndicator.Instance.Hide();
             }
