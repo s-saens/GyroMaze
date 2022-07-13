@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 public static class FirebaseDBAccessor
 {
+    private static JsonSerializerSettings serializerSettings = new JsonSerializerSettings();
     public static void GetValue<T>(DatabaseReference dbRef, Action<T> callback = null, Action noDataCallback = null)
     {
         dbRef.GetValueAsync().ContinueWithOnMainThread((task)=> {
@@ -17,7 +18,8 @@ public static class FirebaseDBAccessor
                     noDataCallback?.Invoke();
                     return;
                 }
-                callback?.Invoke(JsonConvert.DeserializeObject<T>(task.Result.GetRawJsonValue()));
+                serializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                callback?.Invoke(JsonConvert.DeserializeObject<T>(task.Result.GetRawJsonValue(), serializerSettings));
                 return;
             }
         }).HandleFaulted();

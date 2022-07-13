@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "RF9R2007TKL",
+    "m_SelectedDeviceId": "R5CT50632WK",
     "m_SelectedPackage": {
-        "deviceId": "RF9R2007TKL",
+        "deviceId": "R5CT50632WK",
         "name": "com.saens.gyromaze",
-        "processId": 21681,
+        "processId": 25029,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -42,6 +42,18 @@
             "deviceId": "RF9R2007TKL",
             "name": "com.saens.gyromaze",
             "processId": 21681,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT50632WK",
+            "name": "com.saens.gyromaze",
+            "processId": 20758,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CT50632WK",
+            "name": "com.saens.gyromaze",
+            "processId": 25029,
             "exited": false
         }
     ],

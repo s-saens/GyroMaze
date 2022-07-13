@@ -1,7 +1,7 @@
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class C_MapRotate : MonoBehaviour
+public class C_GravityRotater : MonoBehaviour
 {
     public Event gyroEvent;
     public Transform lightTransform;

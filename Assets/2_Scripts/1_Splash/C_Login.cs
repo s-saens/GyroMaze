@@ -70,7 +70,6 @@ public class C_Login : MonoBehaviour
     private void LoginTest()
     {
         UserData.authUser.Set("TESTACCOUNT", "TestAccountName");
-        if(NetworkChecker.isConnected) UserData.databaseUser.SaveToDB();
         LoginOffline();
     }
 
@@ -143,6 +142,9 @@ public class C_Login : MonoBehaviour
     private void LoginEnd()
     {
         UserData.databaseUser.LoadPrefs();
+        
+        if (NetworkChecker.isConnected) UserData.databaseUser.SaveToDB();
+
         loginEndEvent.callback.Invoke("");
     }
 }
