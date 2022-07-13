@@ -5,6 +5,7 @@ public class C_GravityRotater : MonoBehaviour
 {
     public Event gyroEvent;
     public Transform lightTransform;
+    private Gyroscope gyro;
 
 
     public void OnEnable()
@@ -20,10 +21,8 @@ public class C_GravityRotater : MonoBehaviour
 
     private void OnGyroAttitude(string param) // Gyroscope
     {
-        Gyroscope gyro = JsonConvert.DeserializeObject<Gyroscope>(param, JsonSettings.Settings);
-        
         // Set Gravity
-        Vector3 gravityVector = new Vector3(gyro.gravity.x, gyro.gravity.z, gyro.gravity.y);
+        Vector3 gravityVector = JsonConvert.DeserializeObject<Vector3>(param, JsonSettings.Settings);
         Physics.gravity = gravityVector * 12 * Time.deltaTime * 60;
 
         // Set Light Rotation

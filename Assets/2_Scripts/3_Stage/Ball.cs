@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
     {
         PlayerPrefsExt.SetObject<Vector3>(KeyData.LAST_POSITION, this.transform.position);
 
+#if UNITY_EDITOR
         velocity = rigid.velocity;
         if(Input.GetKey(KeyCode.W))
         {
@@ -36,7 +37,7 @@ public class Ball : MonoBehaviour
         {
             rigid.AddForce(Vector3.right * 100);
         }
-
+#endif
     }
 
     private void OnCollisionStay(Collision coll)
