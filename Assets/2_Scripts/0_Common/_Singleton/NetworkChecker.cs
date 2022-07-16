@@ -8,7 +8,7 @@ public static class NetworkChecker
     public static bool isConnected
     {
         get {
-            return Application.internetReachability == NetworkReachability.NotReachable;
+            return !(Application.internetReachability == NetworkReachability.NotReachable);
         }
     }
 }

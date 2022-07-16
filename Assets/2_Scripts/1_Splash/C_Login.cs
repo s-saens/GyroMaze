@@ -69,12 +69,13 @@ public class C_Login : MonoBehaviour
 
     private void LoginTest()
     {
-        UserData.authUser.Set("TESTACCOUNT", "TestAccountName");
+        UserData.authUser.Set("TESTACCOUNT");
         LoginOffline();
     }
 
     private void LoginOffline()
     {
+        UserData.databaseUser.LoadPrefs();
         LoginEnd();
     }
 
@@ -133,7 +134,6 @@ public class C_Login : MonoBehaviour
             if(task.IsCompleted)
             {
                 UserData.authUser.Set(task.Result);
-                UserData.loggedIn = true;
                 LoginEnd();
                 return;
             }
@@ -143,9 +143,6 @@ public class C_Login : MonoBehaviour
 
     private void LoginEnd()
     {
-        UserData.databaseUser.LoadPrefs();
-        UserData.databaseUser.SaveToDB();
-
         loginEndEvent.callback.Invoke("");
     }
 }

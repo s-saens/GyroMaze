@@ -4,9 +4,9 @@ using Firebase.Auth;
 
 public class User
 {
-    public int stage { get; private set; }
-    public string countStartDate { get; private set; }
-    public int countDuration { get; private set; }
+    public int stage;
+    public string countStartDate;
+    public int countDuration;
 
     private void Set(User user)
     {
@@ -37,6 +37,7 @@ public class User
 
     public void LoadPrefs()
     {
+        Debug.Log("LoadPrefs");
         this.stage = PlayerPrefs.GetInt(KeyData.USER_STAGE, 1);
         this.countStartDate = PlayerPrefs.GetString(KeyData.USER_COUNT_START_DATE, "ASD");
         this.countDuration = PlayerPrefs.GetInt(KeyData.USER_COUNT_DURATION, 10);
@@ -44,33 +45,43 @@ public class User
 
     public void SaveToDB()
     {
-        if(UserData.loggedIn && NetworkChecker.isConnected) FirebaseDBAccessor.SetValue<User>(FirebaseDBReference.user, this);
+        Debug.Log("SaveToDB");
+        if (UserData.loggedIn && NetworkChecker.isConnected)
+        {
+            FirebaseDBAccessor.SetValue<User>(FirebaseDBReference.user, this);
+        }
     }
 
     public void LoadFromDB()
     {
+        Debug.Log("LoadFromDB");
         FirebaseDBAccessor.GetValue<User>(
             FirebaseDBReference.user,
-            (user) => Set(user)
+            (user) => {
+                if(user.stage < UserData.databaseUser.stage) SaveToDB();
+                else Set(user);
+            }
         );
     }
 }
 
 public class AuthUser
 {
-    public string uid;
-    public string displayName;
+    public string uid
+    {
+        get {
+            return PlayerPrefs.GetString(KeyData.USER_UID, null);
+        }
+    }
     public Uri imgUrl;
 
     public void Set(FirebaseUser fUser)
     {
-        this.uid = fUser.UserId;
-        this.displayName = fUser.DisplayName;
+        PlayerPrefs.SetString(KeyData.USER_UID, fUser.UserId);
         this.imgUrl = fUser.PhotoUrl;
     }
-    public void Set(string uid, string displayName)
+    public void Set(string uid)
     {
-        this.uid = uid;
-        this.displayName = displayName;
+        PlayerPrefs.SetString(KeyData.USER_UID, uid);
     }
 }

@@ -20,7 +20,7 @@ public class GyroInput : MonoBehaviour
         gyro.enabled = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(gyroEnabled == false)
         {

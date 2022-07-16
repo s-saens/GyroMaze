@@ -9,6 +9,10 @@ public class KeyData
     public const string USER_COUNT_START_DATE = "User Count Start Date";
     public const string USER_COUNT_DURATION = "User Count Duration";
 
+    public const string USER_UID = "User UID";
+    public const string USER_PHOTO_URI = "User Photo URI";
+
     public const string LAST_STAGE = "Last Stage";
     public const string LAST_POSITION = "Last Position";
+
 }

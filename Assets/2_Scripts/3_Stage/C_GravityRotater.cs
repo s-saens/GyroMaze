@@ -23,7 +23,7 @@ public class C_GravityRotater : MonoBehaviour
     {
         // Set Gravity
         Vector3 gravityVector = JsonConvert.DeserializeObject<Vector3>(param);
-        Physics.gravity = gravityVector * 12 * Time.deltaTime * 60;
+        Physics.gravity = gravityVector * 50 * Time.deltaTime * 60;
 
         // Set Light Rotation
         Quaternion lookAtRotation = Quaternion.LookRotation(gravityVector);

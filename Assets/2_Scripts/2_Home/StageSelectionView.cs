@@ -58,6 +58,12 @@ public class StageSelectionView : MonoBehaviour
         InitializeSlider();
         SetSliderHandle(PlayerPrefs.GetInt(KeyData.LAST_STAGE, UserData.databaseUser.stage));
     }
+
+    private void OnEnable()
+    {
+        UpdateButtons();
+    }
+
     private void InitializeButtons()
     {
         buttons = stageButtonFactory.MakeButtons(UserData.databaseUser.stage, viewData.originalSize);
@@ -65,6 +71,7 @@ public class StageSelectionView : MonoBehaviour
         UpdateAllScale();
         PopupIndicator.Instance?.Hide();
     }
+
     private void InitializeSlider()
     {
         slider.minValue = 0;
@@ -73,6 +80,10 @@ public class StageSelectionView : MonoBehaviour
         slider.value = GameData.stageIndex.value;
     }
 
+    private void UpdateButtons()
+    {
+        
+    }
 
     private int NowIndexPositionX
     {

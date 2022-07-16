@@ -50,6 +50,7 @@ public class LogoView : MonoBehaviour
 
     private void OnLoginEnd(string param)
     {
+        UserData.databaseUser.LoadFromDB();
         StartCoroutine(FadeOut());
     }
 
@@ -71,7 +72,7 @@ public class LogoView : MonoBehaviour
         {
             int lastStage = PlayerPrefs.GetInt(KeyData.LAST_STAGE);
             GameData.stageIndex.value = lastStage;
-            if(lastStage >= 0) whereToGo = SceneEnum.Stage;
+            if(lastStage >= 0 && NetworkChecker.isConnected) whereToGo = SceneEnum.Stage;
         }
         
         SceneController.Instance.LoadScene(whereToGo, false);

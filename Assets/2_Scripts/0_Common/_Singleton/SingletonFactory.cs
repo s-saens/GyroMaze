@@ -18,8 +18,12 @@ public class SingletonFactory : MonoBehaviour
             }
             singletonsWereMade = true;
         }
-#if UNITY_EDITOR
-        UserData.databaseUser.LoadPrefs();
-#endif
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q)) PlayerPrefs.DeleteAll();
+    }
+#endif
 }
