@@ -8,12 +8,18 @@ public class User
     public int stage;
     public string countEndDate;
 
+    [JsonIgnore] public DateTime CountEndDate
+    {
+        get {
+            return DateTime.Parse(countEndDate);
+        }
+    }
+
     [JsonIgnore] public TimeSpan remainTime
     {
-        get
-        {
+        get {
             if(countEndDate == null) return new TimeSpan(-1, 0, 0);
-            return DateTime.Parse(countEndDate) - DateTime.Now;
+            return CountEndDate - DateTime.Now;
         }
     }
 
@@ -23,19 +29,20 @@ public class User
         this.countEndDate = user.countEndDate;
     }
 
-    public void SetStage(int value, bool prefs = true)
+    public void SetStage(int stage, bool prefs = true)
     {
-        this.stage = value;
-        if (prefs) PlayerPrefs.SetInt(KeyData.USER_STAGE, value);
+        this.stage = stage;
+        if (prefs) PlayerPrefs.SetInt(KeyData.USER_STAGE, stage);
 
         SaveToDB();
     }
-    public void SetCount(string endDate, bool prefs = true)
+
+    public void SetCount(string countEndDate, bool prefs = true)
     {
-        this.countEndDate = endDate;
+        this.countEndDate = countEndDate;
         if (prefs)
         {
-            PlayerPrefs.SetString(KeyData.USER_COUNT_END_DATE, endDate);
+            PlayerPrefs.SetString(KeyData.USER_COUNT_END_DATE, countEndDate);
         }
 
         SaveToDB();
@@ -45,7 +52,7 @@ public class User
     {
         Debug.Log("LoadPrefs");
         this.stage = PlayerPrefs.GetInt(KeyData.USER_STAGE, 1);
-        this.countEndDate = PlayerPrefs.GetString(KeyData.USER_COUNT_END_DATE, "7/18/2024 10:12:25 AM");
+        this.countEndDate = PlayerPrefs.GetString(KeyData.USER_COUNT_END_DATE, "1999/5/26 17:23:51");
     }
 
     public void SaveToDB()
@@ -66,8 +73,9 @@ public class User
         FirebaseDBAccessor.GetValue<User>(
             FirebaseDBReference.user,
             (user) => {
-                if(user.stage < UserData.databaseUser.stage) SaveToDB();
-                else Set(user);
+                Debug.Log(user.CountEndDate + ", " + CountEndDate + " : " + (user.CountEndDate > CountEndDate));
+                if (user.stage > stage) SetStage(user.stage);
+                if (user.CountEndDate > CountEndDate) SetCount(user.countEndDate);
             }
         );
     }
