@@ -4,8 +4,6 @@ public class LoginEndController : MonoBehaviour
 {
     [SerializeField] private Event loginEndEvent;
 
-    [SerializeField] private Event viewToggleEvent;
-
     private void OnEnable()
     {
         loginEndEvent.callback += OnLoginEnd;
@@ -23,6 +21,6 @@ public class LoginEndController : MonoBehaviour
             (user) => { UserData.databaseUser.LoadFromDB(); },
             () => { UserData.databaseUser.SaveToDB(); }
         );
-        viewToggleEvent.Invoke("1");
+        SceneController.Instance.LoadScene(SceneEnum.Home);
     }
 }
