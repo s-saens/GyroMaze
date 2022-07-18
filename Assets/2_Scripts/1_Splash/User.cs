@@ -54,6 +54,9 @@ public class User
 
     public void LoadFromDB()
     {
+        Debug.Log(UserData.authUser.uid);
+        if(UserData.authUser.uid == null) return;
+
         Debug.Log("LoadFromDB");
         FirebaseDBAccessor.GetValue<User>(
             FirebaseDBReference.user,

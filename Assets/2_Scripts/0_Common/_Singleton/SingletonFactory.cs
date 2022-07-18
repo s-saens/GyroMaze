@@ -23,7 +23,11 @@ public class SingletonFactory : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q)) PlayerPrefs.DeleteAll();
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("DELETE PREFS");
+            PlayerPrefs.DeleteAll();
+        }
     }
 #endif
 }
