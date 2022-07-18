@@ -62,6 +62,7 @@ public class LogoView : MonoBehaviour
             image.color = Color.Lerp(image.color, new Color(1, 1, 1, 0), 0.2f);
             yield return 0;
         }
+        TickInvoker.Instance.StartTick();
         LoadScene();
     }
 

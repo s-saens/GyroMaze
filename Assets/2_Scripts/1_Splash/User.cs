@@ -1,18 +1,26 @@
 using UnityEngine;
 using System;
 using Firebase.Auth;
+using Newtonsoft.Json;
 
 public class User
 {
     public int stage;
-    public string countStartDate;
-    public int countDuration;
+    public string countEndDate;
+
+    [JsonIgnore] public TimeSpan remainTime
+    {
+        get
+        {
+            if(countEndDate == null) return new TimeSpan(-1, 0, 0);
+            return DateTime.Parse(countEndDate) - DateTime.Now;
+        }
+    }
 
     private void Set(User user)
     {
         this.stage = user.stage;
-        this.countStartDate = user.countStartDate;
-        this.countDuration = user.countDuration;
+        this.countEndDate = user.countEndDate;
     }
 
     public void SetStage(int value, bool prefs = true)
@@ -22,14 +30,12 @@ public class User
 
         SaveToDB();
     }
-    public void SetCount(string startDate, int duration, bool prefs = true)
+    public void SetCount(string endDate, bool prefs = true)
     {
-        this.countStartDate = startDate;
-        this.countDuration = duration;
+        this.countEndDate = endDate;
         if (prefs)
         {
-            PlayerPrefs.SetString(KeyData.USER_COUNT_START_DATE, startDate);
-            PlayerPrefs.SetInt(KeyData.USER_COUNT_DURATION, duration);
+            PlayerPrefs.SetString(KeyData.USER_COUNT_END_DATE, endDate);
         }
 
         SaveToDB();
@@ -39,8 +45,7 @@ public class User
     {
         Debug.Log("LoadPrefs");
         this.stage = PlayerPrefs.GetInt(KeyData.USER_STAGE, 1);
-        this.countStartDate = PlayerPrefs.GetString(KeyData.USER_COUNT_START_DATE, "ASD");
-        this.countDuration = PlayerPrefs.GetInt(KeyData.USER_COUNT_DURATION, 10);
+        this.countEndDate = PlayerPrefs.GetString(KeyData.USER_COUNT_END_DATE, "7/18/2024 10:12:25 AM");
     }
 
     public void SaveToDB()
@@ -65,6 +70,11 @@ public class User
                 else Set(user);
             }
         );
+    }
+
+    public override string ToString()
+    {
+        return JsonConvert.SerializeObject(this);
     }
 }
 
