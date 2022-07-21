@@ -11,10 +11,10 @@ public class GravityKeyboardInput : MonoBehaviour
     {
         gravityX = 0;
         gravityY = 0;
-        if(Input.GetKey(KeyCode.A)) gravityX -= 2f;
-        if(Input.GetKey(KeyCode.S)) gravityY -= 2f;
-        if(Input.GetKey(KeyCode.D)) gravityX += 2f;
-        if(Input.GetKey(KeyCode.W)) gravityY += 2f;
+        if(Input.GetKey(KeyCode.A)) gravityX -= 10f;
+        if(Input.GetKey(KeyCode.S)) gravityY -= 10f;
+        if(Input.GetKey(KeyCode.D)) gravityX += 10f;
+        if(Input.GetKey(KeyCode.W)) gravityY += 10f;
 
         gravityEvent.Invoke(new Vector2(gravityX, gravityY));
     }
