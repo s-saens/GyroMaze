@@ -1,3 +1,3 @@
 using UnityEngine;
-[CreateAssetMenu(menuName = "Event/Float", fileName = "EventFloat")]
+[CreateAssetMenu(menuName = "Event/GameComleteInfo", fileName = "EventGameCompleteInfo")]
 public class EventGameComplete : Event<GameCompleteInfo> { }
