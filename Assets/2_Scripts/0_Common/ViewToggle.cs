@@ -16,7 +16,7 @@ public class ViewToggle : MonoBehaviour
 
     // Events
     [SerializeField] private Event backEvent;
-    [SerializeField] private Event viewToggleEvent;
+    [SerializeField] private EventInt viewToggleEvent;
 
 
     private void OnEnable()
@@ -40,20 +40,19 @@ public class ViewToggle : MonoBehaviour
         views[1].SetActive(true);
     }
 
-    public void Open(string index) // = Push
+    public void Open(int i) // = Push
     {
-        int i = int.Parse(index);
         viewIndexHistory.Push(activeViewIndex);
         views[activeViewIndex].SetActive(false);
         views[i].SetActive(true);
         activeViewIndex = i;
     }
 
-    private void Back(string s = "") // = Pop
+    private void Back() // = Pop
     {
         if(viewIndexHistory.Count <= 0)
         {
-            Open("0");
+            Open(0);
             return;
         }
 

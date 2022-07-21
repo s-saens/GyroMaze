@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class ZoomInput : MonoBehaviour
 {
-    public Event zoomEvent;
+    public EventFloat zoomEvent;
 
     Vector3 lastPos;
     Vector3 draggingPos;
@@ -36,11 +36,11 @@ public class ZoomInput : MonoBehaviour
 
         if(deltaDistance > 0.001f) // 두 점 사이가 멀어짐 : 축소
         {
-            zoomEvent.Invoke(deltaDistance.ToString());
+            zoomEvent.Invoke(deltaDistance);
         }
         else if(deltaDistance < -0.001f) // 두 점 사이가 가까워짐 : 확대
         {
-            zoomEvent.Invoke(deltaDistance.ToString());
+            zoomEvent.Invoke(deltaDistance);
         }
 
         lastDistance = nowDistance;

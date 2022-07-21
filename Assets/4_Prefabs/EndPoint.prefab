@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4375378100748783688}
   - component: {fileID: 4375378100748783689}
   - component: {fileID: 4375378100748783694}
+  - component: {fileID: -8607095715445278715}
   m_Layer: 0
   m_Name: EndPoint
   m_TagString: Untagged
@@ -123,3 +124,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8607095715445278715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375378100748783695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a48aaf3d6e41445096bf026cf7c5b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completeEvent: {fileID: 11400000, guid: a74c4bb06b31d411a87236cf65bb0518, type: 2}

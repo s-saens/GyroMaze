@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 public class GyroInput : MonoBehaviour
 {
-    public Event gyroEvent;
+    public EventGyroscope gyroEvent;
 
     private Gyroscope gyro;
     private bool gyroEnabled;
@@ -22,12 +22,7 @@ public class GyroInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(gyroEnabled == false)
-        {
-            return;
-        }
-
-        Vector3 gravity = new Vector3(gyro.gravity.x, gyro.gravity.z, gyro.gravity.y);
-        gyroEvent.Invoke(JsonConvert.SerializeObject(gravity, JsonSettings.Settings));
+        if(gyroEnabled == false) return;
+        gyroEvent.Invoke(gyro);
     }
 }

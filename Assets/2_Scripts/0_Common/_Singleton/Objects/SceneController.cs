@@ -12,7 +12,7 @@ public enum SceneEnum
 
 public class SceneController : SingletonMono<SceneController>
 {
-    [SerializeField] private Event loadSceneEvent;
+    [SerializeField] private EventString loadSceneEvent;
 
     private void OnEnable()
     {

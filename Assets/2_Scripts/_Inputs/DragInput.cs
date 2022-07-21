@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 public class DragInput : MonoBehaviour
 {
-    public Event dragEvent;
+    public EventVector3 dragEvent;
 
 
     private void Update()
@@ -13,6 +13,6 @@ public class DragInput : MonoBehaviour
         Touch t = Input.touches[0];
         Vector2 draggingVector = t.deltaPosition;
 
-        dragEvent.Invoke(JsonConvert.SerializeObject(draggingVector * Time.deltaTime * 60, JsonSettings.Settings));
+        dragEvent.Invoke(draggingVector * Time.deltaTime * 60);
     }
 }
