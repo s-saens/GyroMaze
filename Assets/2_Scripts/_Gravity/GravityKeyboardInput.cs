@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class GravityKeyboardInput : MonoBehaviour
 {
-    private Rigidbody2D ball;
-    void Start()
-    {
-        ball = this.GetComponent<Rigidbody2D>();
-    }
+    [SerializeField] private EventVector2 gravityEvent;
+
+    private float gravityX = 0;
+    private float gravityY = 0;
+
     void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.A)) ball.AddForce(Vector2.left);
-        if(Input.GetKey(KeyCode.S)) ball.AddForce(Vector2.down);
-        if(Input.GetKey(KeyCode.D)) ball.AddForce(Vector2.right);
-        if(Input.GetKey(KeyCode.W)) ball.AddForce(Vector2.up);
+        gravityX = 0;
+        gravityY = 0;
+        if(Input.GetKey(KeyCode.A)) gravityX -= 2f;
+        if(Input.GetKey(KeyCode.S)) gravityY -= 2f;
+        if(Input.GetKey(KeyCode.D)) gravityX += 2f;
+        if(Input.GetKey(KeyCode.W)) gravityY += 2f;
+
+        gravityEvent.Invoke(new Vector2(gravityX, gravityY));
     }
 }

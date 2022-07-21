@@ -1,9 +1,9 @@
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class GyroInput : MonoBehaviour
+public class GravityInput : MonoBehaviour
 {
-    public EventGyroscope gyroEvent;
+    public EventVector2 gravityEvent;
 
     private Gyroscope gyro;
     private bool gyroEnabled;
@@ -23,6 +23,6 @@ public class GyroInput : MonoBehaviour
     private void FixedUpdate()
     {
         if(gyroEnabled == false) return;
-        gyroEvent.Invoke(gyro);
+        gravityEvent.Invoke(gyro.gravity);
     }
 }
