@@ -240,7 +240,7 @@ MonoBehaviour:
   wallPrefab: {fileID: 6591356827584392738, guid: d68b07e53532b485dbbb72495256728c, type: 3}
   floorPrefab: {fileID: 858795655184803637, guid: 8a6c3fe352cce43f0ba4bc58aa5ef6f6, type: 3}
   spaceSize: 1
-  wallThickness: 0.1
+  wallThickness: 0.15
   ballPrefab: {fileID: 3533124828736446899, guid: fe20841da2fcf40cabf6b0b7adac51d9, type: 3}
   endPointPrefab: {fileID: 4375378100748783695, guid: 28725331c66c346a09b9dc4be60cf66f, type: 3}
 --- !u!4 &1333099566
@@ -271,5 +271,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1333099565}
-  sizeX: 10
-  sizeY: 10
+  sizeX: 5
+  sizeY: 8

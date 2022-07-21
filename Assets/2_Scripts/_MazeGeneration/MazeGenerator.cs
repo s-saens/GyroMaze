@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class MazeGenerator
 {
-    private int[] dx = new int[4] { 0, 0, -1, 1 };
-    private int[] dy = new int[4] { -1, 1, 0, 0 };
+    private readonly int[] dx = new int[4] { 0, 0, -1, 1 };
+    private readonly int[] dy = new int[4] { -1, 1, 0, 0 };
 
     private Maze maze;
     private int[,] distances; // [Y, X]
@@ -12,7 +12,7 @@ public class MazeGenerator
 
     public Maze MakeMazeDFS(int sizeX, int sizeY, int startX, int startY)
     {
-        maze = new Maze(sizeX, sizeY);
+        maze = new Maze(sizeX, sizeY, startX, startY);
 
         InitDistances(sizeX, sizeY);
 
@@ -22,12 +22,10 @@ public class MazeGenerator
         DFS(sx, sy, 1);
         FindEndPoint(ref maze);
 
-        Debug.Log($"{maze.startX}, {maze.startY}, {maze.endX}, {maze.endY}");
-
         return maze;
     }
 
-    private void InitDistances(int sizeY, int sizeX)
+    private void InitDistances(int sizeX, int sizeY)
     {
         distances = new int[sizeY, sizeX];
         for (int y = 0; y < sizeY; ++y) for (int x = 0; x < sizeX; ++x) distances[y, x] = 0;
@@ -36,12 +34,6 @@ public class MazeGenerator
     private void DFS(int x, int y, int dist)
     {
         distances[y, x] = dist;
-        // if(dist >= maxDistance)
-        // {
-        //     maxDistance = dist;
-        //     maze.endX = x;
-        //     maze.endY = y;
-        // }
 
         List<int> directionToGo = new List<int>() {0, 1, 2, 3};
         for(int i=4 ; i>0 ; --i)
@@ -54,7 +46,7 @@ public class MazeGenerator
             int ny = y + dy[dir];
 
             if (nx < 0 || nx >= maze.sizeX || ny < 0 || ny >= maze.sizeY) continue;
-            if (distances[ny,nx] > 0) continue;
+            if (distances[ny, nx] > 0) continue;
 
             // 벽 파괴
             if (dir == 0) {maze.horizontalWalls[y, x] = false;} // 위
@@ -62,6 +54,7 @@ public class MazeGenerator
             else if (dir == 2) {maze.verticalWalls[y, x] = false;} // 왼쪽
             else if (dir == 3) {maze.verticalWalls[y, x + 1] = false;} // 오른쪽
 
+            distances[ny, nx] = dist + 1;
             DFS(nx, ny, dist+1);
         }
     }

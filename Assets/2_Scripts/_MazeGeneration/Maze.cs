@@ -8,10 +8,12 @@ public class Maze
     public int startX, startY;
     public int endX, endY;
 
-    public Maze(int sizeX, int sizeY)
+    public Maze(int sizeX, int sizeY, int startX, int startY)
     {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        this.startX = startX;
+        this.startY = startY;
 
         horizontalWalls = new bool[sizeY + 1, sizeX];
         verticalWalls = new bool[sizeY, sizeX + 1];
