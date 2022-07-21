@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Event/Param/GameCompleteInfo")]
-public class GameCompleteInfo : ScriptableObject
+public class GameCompleteInfo
 {
     public Transform ballT;
     public Rigidbody2D ballR;

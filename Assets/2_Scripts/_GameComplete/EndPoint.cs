@@ -5,7 +5,7 @@ public class EndPoint : MonoBehaviour
 {
     [SerializeField] private EventGameComplete completeEvent;
 
-    [SerializeField] private GameCompleteInfo info;
+    [SerializeField] private GameCompleteInfo info = new GameCompleteInfo();
 
     void OnTriggerEnter(Collider coll)
     {
@@ -14,7 +14,7 @@ public class EndPoint : MonoBehaviour
         info.ballR = coll.GetComponent<Rigidbody2D>();
         info.ballT = coll.transform;
         info.endPointT = this.transform;
-        
+
         completeEvent.Invoke(info);
     }
 }
