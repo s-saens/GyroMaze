@@ -7,13 +7,8 @@ public class MazeGenerator
     private int[] dy = new int[4] { -1, 1, 0, 0 };
 
     private Maze maze;
-    private int[,] distances; // [Y][X]
+    private int[,] distances; // [Y, X]
 
-    private void InitDistances(int sizeY, int sizeX)
-    {
-        distances = new int[sizeY, sizeX];
-        for (int y = 0; y < sizeY; ++y) for (int x = 0; x < sizeX; ++x) distances[y, x] = 0;
-    }
 
     public Maze MakeMazeDFS(int sizeX, int sizeY, int startX, int startY)
     {
@@ -21,10 +16,21 @@ public class MazeGenerator
 
         InitDistances(sizeX, sizeY);
 
-        DFS(startX, startY, 1);
+        int sx = Random.Range(0, sizeX);
+        int sy = Random.Range(0, sizeY);
+
+        DFS(sx, sy, 1);
         FindEndPoint(ref maze);
 
+        Debug.Log($"{maze.startX}, {maze.startY}, {maze.endX}, {maze.endY}");
+
         return maze;
+    }
+
+    private void InitDistances(int sizeY, int sizeX)
+    {
+        distances = new int[sizeY, sizeX];
+        for (int y = 0; y < sizeY; ++y) for (int x = 0; x < sizeX; ++x) distances[y, x] = 0;
     }
 
     private void DFS(int x, int y, int dist)

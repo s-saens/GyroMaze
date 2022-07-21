@@ -5,13 +5,9 @@ public class MazeFactory : MonoBehaviour
 {
     [SerializeField] private GameObject wallPrefab;
     [SerializeField] private GameObject floorPrefab;
-    [SerializeField] private GameObject ceilingPrefab;
 
-    [SerializeField] private float spaceSize = 1; // World 내에서 한 칸의 길이
-    [SerializeField] private float wallThickness = 0.1f; // 벽의 두께 = x scale(세로벽 기준)
-    [SerializeField] private float wallHeight = 2f; // 벽의 높이 = y scale
-
-    [SerializeField] private float panelThickness = 0.1f; // floor, ceiling의 두께 = y scale
+    [SerializeField] private float spaceSize = 1;
+    [SerializeField] private float wallThickness = 0.1f;
 
     private Maze maze;
 
@@ -29,36 +25,12 @@ public class MazeFactory : MonoBehaviour
 
     private void Make()
     {
-        MakeFloor();
-        MakeCeiling();
-
         MakeHorizontalWalls();
         MakeVerticalWalls();
 
-        MakeStartPoint();
+        MakeFloor();
+        MakeBallAtStartPoint();
         MakeEndPoint();
-    }
-
-    private void MakeFloor()
-    {
-        GameObject floor = Instantiate(floorPrefab, this.transform);
-
-        float sizeX = spaceSize * maze.sizeX + wallThickness;
-        float sizeZ = spaceSize * maze.sizeY + wallThickness;
-        floor.transform.localScale = new Vector3(sizeX, panelThickness, sizeZ);
-        float posX = spaceSize * maze.sizeX * 0.5f;
-        float posZ = spaceSize * maze.sizeY * 0.5f;
-        floor.transform.localPosition = new Vector3(posX, -(wallHeight+panelThickness) * 0.5f, posZ);
-    }
-    private void MakeCeiling()
-    {
-        GameObject ceiling = Instantiate(ceilingPrefab, this.transform);
-        float sizeX = spaceSize * maze.sizeX + wallThickness;
-        float sizeZ = spaceSize * maze.sizeY + wallThickness;
-        ceiling.transform.localScale = new Vector3(sizeX, panelThickness, sizeZ);
-        float posX = spaceSize * maze.sizeX * 0.5f;
-        float posZ = spaceSize * maze.sizeY * 0.5f;
-        ceiling.transform.localPosition = new Vector3(posX, (wallHeight+ panelThickness) * 0.5f, posZ);
     }
 
     private void MakeHorizontalWalls()
@@ -89,12 +61,12 @@ public class MazeFactory : MonoBehaviour
                         }
 
                         float wallLength = spaceSize * seq + wallThickness;
-                        wall.transform.localScale = new Vector3(wallLength, wallHeight, wallThickness);
+                        wall.transform.localScale = new Vector2(wallLength, wallThickness);
 
                         // Set Position
                         float posX = spaceSize * x - (spaceSize * seq * 0.5f);
-                        float posZ = y * spaceSize;
-                        wall.transform.localPosition = new Vector3(posX, 0, posZ);
+                        float posY = y * spaceSize;
+                        wall.transform.localPosition = new Vector2(posX, posY);
                     }
 
                     seq = 0;
@@ -130,12 +102,12 @@ public class MazeFactory : MonoBehaviour
                         }
 
                         float wallLength = spaceSize * seq + wallThickness;
-                        wall.transform.localScale = new Vector3(wallThickness, wallHeight, wallLength);
+                        wall.transform.localScale = new Vector2(wallThickness, wallLength);
 
                         // Set Position
                         float posX = x * spaceSize;
-                        float posZ = spaceSize * y - (spaceSize * seq * 0.5f);
-                        wall.transform.localPosition = new Vector3(posX, 0, posZ);
+                        float posY = spaceSize * y - (spaceSize * seq * 0.5f);
+                        wall.transform.localPosition = new Vector2(posX, posY);
                     }
 
                     seq = 0;
@@ -144,22 +116,37 @@ public class MazeFactory : MonoBehaviour
         }
     }
 
-    [SerializeField] private GameObject ball;
-    [SerializeField] private GameObject endPoint;
+    [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private GameObject endPointPrefab;
 
-    private void MakeStartPoint()
+
+    private void MakeFloor()
     {
-        ball.SetActive(true);
-        Vector3 ballPosition = new Vector3(maze.startX + (spaceSize * 0.5f), 0, maze.startY + (spaceSize * 0.5f));
+        GameObject floor = Instantiate(floorPrefab, this.transform);
+
+        float sizeX = spaceSize * maze.sizeX + wallThickness;
+        float sizeY = spaceSize * maze.sizeY + wallThickness;
+        floor.transform.localScale = new Vector2(sizeX, sizeY);
+        float posX = spaceSize * maze.sizeX * 0.5f;
+        float posY = spaceSize * maze.sizeY * 0.5f;
+        floor.transform.localPosition = new Vector3(posX, posY, 1);
+    }
+
+    private void MakeBallAtStartPoint()
+    {
+        Instantiate(ballPrefab, this.transform);
+
+        Vector3 ballPos = new Vector3(maze.startX + (spaceSize * 0.5f), maze.startY + (spaceSize * 0.5f), -2);
+
         if(PlayerPrefs.HasKey(KeyData.LAST_POSITION))
         {
-            ballPosition = PlayerPrefsExt.GetObject<Vector3>(KeyData.LAST_POSITION, Vector3.one * 0.5f);
-            PlayerPrefs.DeleteKey(KeyData.LAST_POSITION);
+            ballPrefab.transform.position = PlayerPrefsExt.GetObject<Vector3>(KeyData.LAST_POSITION, ballPos);
         }
-        ball.transform.position = ballPosition;
+        ballPrefab.transform.position = ballPos;
     }
     private void MakeEndPoint()
     {
-        endPoint.transform.position = new Vector3(maze.endX + (spaceSize * 0.5f), 0, maze.endY + (spaceSize * 0.5f));
+        GameObject endPoint = Instantiate(endPointPrefab, this.transform);
+        endPoint.transform.position = new Vector3(maze.endX + (spaceSize * 0.5f), maze.endY + (spaceSize * 0.5f), -1);
     }
 }
