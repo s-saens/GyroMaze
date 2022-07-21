@@ -375,8 +375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1333099565}
-  sizeX: 2
-  sizeY: 2
+  sizeX: 15
+  sizeY: 15
 --- !u!1 &1787314148
 GameObject:
   m_ObjectHideFlags: 0

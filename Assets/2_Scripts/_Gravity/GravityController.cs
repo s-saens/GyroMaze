@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GravityController : MonoBehaviour
 {
+    [SerializeField] private int strength = 20;
     [SerializeField] private EventVector2 gravityEvent;
 
     private void OnEnable()
@@ -15,7 +16,6 @@ public class GravityController : MonoBehaviour
 
     private void ChangeGravity(Vector2 gravity)
     {
-        Debug.Log(gravity);
-        Physics2D.gravity = gravity;
+        Physics2D.gravity = gravity * strength;
     }
 }
