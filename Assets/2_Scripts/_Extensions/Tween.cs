@@ -4,51 +4,42 @@ using System.Collections;
 
 public static class Tween
 {
-    public static IEnumerator AddForceTo(this Rigidbody2D r, Transform destPosition, int strength = 1)
+    public static IEnumerator AddForceTo(this Rigidbody2D r, Vector2 destPosition, float strength = 1)
     {
-        yield return r.AddForceTo((Vector2)r.position, strength);
-    }
-    public static IEnumerator AddForceTo(this Rigidbody2D r, Vector2 destPosition, int strength = 1)
-    {
-        Vector2 dir = r.position - destPosition;
-        while(dir.magnitude < 0.001f)
+        Vector2 dir = destPosition - r.position;
+        r.drag = 15;
+        r.gravityScale = 0;
+        while(dir.magnitude > 0.001f)
         {
-            r.AddForce(dir.normalized * strength);
+            r.AddForce((dir) * strength);
 
-            if(Vector2.Dot(destPosition - (r.position + r.velocity), destPosition - r.position) < 0) break; // 지나가버릴 연산이라면 break하기.
-
-            dir = r.position - destPosition;
+            dir = destPosition - r.position;
             yield return new WaitForFixedUpdate();
         }
         r.position = destPosition;
+        r.velocity = Vector2.zero;
         yield return 0;
     }
 
-    public static IEnumerator ScaleTo(this Transform t, Vector2 destScale, float time = 0.4f)
+    public static IEnumerator ScaleTo(this Transform t, Vector2 destScale, float percentage = 0.1f)
     {
-        while((destScale - (Vector2)t.localScale).magnitude < 0.001f)
+        while((destScale - (Vector2)t.localScale).magnitude > 0.001f)
         {
-            Vector2.Lerp(t.localScale, destScale, time);
+            t.localScale = Vector2.Lerp(t.localScale, destScale, percentage);
             yield return new WaitForFixedUpdate();
         }
         t.localScale = destScale;
         yield return 0;
     }
 
-    public static IEnumerator OrthographicSizeTo(this Camera cam, int destination, float time = 0.4f)
+    public static IEnumerator OrthographicSizeTo(this Camera cam, float destination, float percentage = 0.1f)
     {
-        while(MathF.Abs(cam.orthographicSize - destination) < 0.001f)
+        while(MathF.Abs(cam.orthographicSize - destination) > 0.001f)
         {
-            Mathf.Lerp(cam.orthographicSize, destination, time);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, destination, percentage);
             yield return new WaitForFixedUpdate();
         }
         cam.orthographicSize = destination;
         yield return 0;
-    }
-
-    public static IEnumerator Then(this IEnumerator ienum, Action callback)
-    {
-        yield return ienum;
-        callback?.Invoke();
     }
 }

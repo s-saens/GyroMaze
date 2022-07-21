@@ -26,7 +26,8 @@ public class GameCompleteController : MonoBehaviour
 
     private void CompleteGame(GameCompleteInfo info)
     {
-        StartCoroutine(info.ballR.AddForceTo(info.endPointT).Concat(cam.OrthographicSizeTo(0)));
+        Debug.Log(info.ballR.velocity.magnitude);
+        StartCoroutine(info.ballR.AddForceTo(info.endPointT.position).Then(()=>Debug.Log("!")));
         StartCoroutine(info.ballT.ScaleTo(Vector2.zero));
     }
 }

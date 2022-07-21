@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3515ac414df4e40e4b0588a9b71288bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completeEvent: {fileID: 0}
+  completeEvent: {fileID: 11400000, guid: a74c4bb06b31d411a87236cf65bb0518, type: 2}
   cam: {fileID: 490740132}
 --- !u!4 &1214723371
 Transform:
@@ -332,5 +332,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1333099565}
-  sizeX: 5
-  sizeY: 8
+  sizeX: 2
+  sizeY: 2

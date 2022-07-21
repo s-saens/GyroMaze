@@ -7,6 +7,10 @@ public abstract class Event<T> : ScriptableObject
     
     public void Invoke(T param)
     {
+#if UNITY_EDITOR
+        Type t = typeof(T);
+        Debug.Log($"Event{t.ToString()} was invoked");
+#endif
         callback?.Invoke(param);
     }
 }

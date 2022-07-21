@@ -11,6 +11,6 @@ public class MazeMaker : MonoBehaviour
 
     void Start()
     {
-        factory.MakeMaze(generator.MakeMazeDFS(sizeX, sizeY, Random.Range(0, sizeX), Random.Range(0, sizeY)));
+        factory.MakeMaze(generator.MakeMazeDFS(sizeX, sizeY, 0, 0));
     }
 }
