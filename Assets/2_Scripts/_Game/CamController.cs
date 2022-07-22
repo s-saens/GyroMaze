@@ -1,18 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CamController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Event sinkEndEvent_;
+    [SerializeField] private Event loadNextEvent;
+
+
+    [SerializeField] private float minimumOrthographicSize = 0.001f;
+    [SerializeField] private float maximumOrthographicSize = 1000f;
+
+    private Camera cam;
+    
+    private void OnEnable()
     {
-        
+        sinkEndEvent_.callback += ZoomIn;
+    }
+    private void OnDisable()
+    {
+        sinkEndEvent_.callback -= ZoomIn;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ZoomIn()
     {
-        
+        Zoom(minimumOrthographicSize);
+    }
+    private void ZoomOut()
+    {
+        Zoom(maximumOrthographicSize);
+    }
+
+    private void Zoom(float orthSize)
+    {
+        cam.OrthographicSizeTo(orthSize).Then(() => loadNextEvent.Invoke());
     }
 }

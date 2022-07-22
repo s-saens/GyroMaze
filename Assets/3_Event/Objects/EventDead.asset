@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517be91e81dd7498ab7e56598471a282, type: 3}
-  m_Name: EventGameComplete
+  m_Script: {fileID: 11500000, guid: c1cf35aa9e629400c809cf9fe13863ea, type: 3}
+  m_Name: EventDead
   m_EditorClassIdentifier: 
