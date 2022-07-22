@@ -16,7 +16,7 @@ public abstract class Event<T> : ScriptableObject
 }
 
 // DEFAULT
-[CreateAssetMenu(menuName = "Event/_Default")]
+[CreateAssetMenu(menuName = "Event/_Default", fileName="Event")]
 public class Event : ScriptableObject
 {
     public Action callback;
