@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 public class DragInput : MonoBehaviour
 {
-    public EventVector3 dragEvent;
+    public EventVector2 dragEvent;
 
 
     private void Update()
